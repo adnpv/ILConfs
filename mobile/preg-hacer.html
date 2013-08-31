@@ -2,20 +2,39 @@
 <html>
 	<head>
 		<title>Plataforma interactiva</title>
-		
+
+		<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	</head>
 
 	<body>
-		<div data-role="page">
+		<div data-role="page">  
 			<div data-role="header">
-				<h1>Evento 1</h1>
+				<a href="evento1.html" data-icon="arrow-l" >Back</a>
+				
+				
+				
+				<h1>Criptografia de Hoy</h1>
+				<a href="index.html" data-icon="home" >Home</a>
+				<span class="ui-title" />
 			</div><!-- /header -->
 			<div data-role="content">
-				<p>Welcome to the page</p>
+
+
+				<div data-role="fieldcontain">
+
+
+				<label for="basic">Titulo:</label>
+    				<input type="text" name="name" id="basic" value=""  />
+				<label for="textarea">Pregunta:</label>
+					<textarea name="textarea" id="textarea"></textarea>
+				</div>
+
+				<a href="evento1-temas.html" data-role="button" data-theme="a">Submit</a>
 			</div><!-- /content -->
 			<div data-role="footer">
 				<h4>By Group 1ner</h4>
@@ -23,3 +42,4 @@
 		</div><!-- /page -->
 	</body>
 </html>
+
