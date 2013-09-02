@@ -1,0 +1,27 @@
+organizador:
+	index.html
+	evento:
+		actualizar
+		crear
+		listar
+		Reporte		(reportes!)
+	sorteo:
+		sorteo.html
+		actualizar
+		crear
+		listar
+		resultadoSorteo
+	usuario:
+		actualizar
+		crear
+	
+moderador:
+	alternativa:
+		crear
+		actualizar
+	pregunta:
+		crear
+		actualizar
+	trivia:
+		crear
+		ganador.
