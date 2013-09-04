@@ -628,7 +628,7 @@ color: #001217;
 }
 
 input[type=submit].btn_post_message {
-background: #D0D1D4 url(../images/post_message.png) no-repeat;
+background: #D0D1D4 url(../static/images/icn_search.png) no-repeat;
 display: block;
 width: 37px;
 border: none;

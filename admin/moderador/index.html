@@ -2,16 +2,16 @@
 <html lang="es">
     <head>
         <meta charset="utf-8"/>
-        <title>Panel de moderador</title>	
+        <title>Moderador</title>	
         <link rel="stylesheet" href="../static/css/layout.css" type="text/css" media="screen" />
-        <!--[if lt IE 9]>
-        <link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-        <script src="../static/js/jquery-1.5.2.min.js" type="text/javascript"></script>
-        <script src="../static/js/hideshow.js" type="text/javascript"></script>
-        <script src="../static/js/jquery.tablesorter.min.js" type="text/javascript"></script>
-        <script type="text/javascript" src="../static/js/jquery.equalHeight.js"></script>
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="../static/js/jquery-1.5.2.min.js" type="text/javascript"></script>
+    <script src="../static/js/hideshow.js" type="text/javascript"></script>
+    <script src="../static/js/jquery.tablesorter.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../static/js/jquery.equalHeight.js"></script>
         <script type="text/javascript">
             $(document).ready(function() 
             { 
@@ -48,7 +48,7 @@
         <header id="header">
             <hgroup>
                 <h1 class="site_title"><a href="index.html">Moderador</a></h1>
-                <h2 class="section_title">Preguntas</h2>
+                <h2 class="section_title">Tiempo Real</h2>
             </hgroup>
         </header> <!-- end of header bar -->
 
@@ -59,9 +59,9 @@
             </div>
             <div class="breadcrumbs_container">
                 <article class="breadcrumbs">
-                    <a href="index.html">Moderador</a>
+                    <a href="index.html">Panel de moderador</a>
                     <div class="breadcrumb_divider"></div> 
-                    <a class="current">Preguntas</a>
+                    <a class="current">Tiempo Real</a>
                 </article>
             </div>
         </section><!-- end of secondary bar -->
@@ -71,8 +71,7 @@
                 <input type="text" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
             </form>-->
             <hr/>
-            
-            <h3>Eventos</h3>
+          <h3>Eventos</h3>
             
             <ul class="toggle">  
                 <li class="icn_settings"><a href="index.html">Tiempo real</a></li>
@@ -111,35 +110,77 @@
 
         <section id="main" class="column">
 
-        <article class="module width_full">
+    <article class="module width_3_quarter">
             <header>
-                <h3>Crear pregunta</h3>
+                <h3>Eventos</h3>
             </header>
             <div class="module_content">
-                              
-                <fieldset style="width:30%; float:left; margin-right: 10px; height: 50px;"> <!-- to make two field float next to one another, adjust values accordingly -->
+                <fieldset style="width:48%; float:left; margin-right: 3%; margin-top: 2px;"> <!-- to make two field float next to one another, adjust values accordingly -->
                     <label>Evento</label>
-                    <select style="width:80%;">
-                        <option>Elija evento</option>
+                    <select style="width:92%;">                       
                         <option>HTML5 y CSS3</option>
-                        <option>Cóme vender a un escéptico</option>
+                        <option>Cómo vender a un escéptico</option>
                     </select>                    
+                </fieldset>                   
+                <fieldset style="text-align: center; height: 60%; padding: 3% 0 2% 0 ">
+                    <input type="submit" value="Activar" class="alt_btn" />  
                 </fieldset>
-                <fieldset style="float:left; width: 450px;">
-                    <label>Pregunta</label>
-                    <input type="text" style="width:90%;" />
-                </fieldset>  
+                <div class="clear"></div>
+                <fieldset style="width:48%; float:left; margin-right: 3%; margin-top: 2px;"> <!-- to make two field float next to one another, adjust values accordingly -->
+                    <label>Evento</label>
+                    <select style="width:92%;">                       
+                        <option>HTML5 y CSS3</option>
+                        <option>Cómo vender a un escéptico</option>
+                    </select>                    
+                </fieldset>                   
+                <fieldset style="text-align: center; height: 60%; padding: 3% 0 2% 0 ">
+                    <input type="submit" value="Generar aleatorios" class="alt_btn" />  
+                </fieldset>
                 <div class="clear"></div>
             </div>
-                <footer>
-                    <div class="submit_link" style="text-align: center;">
-                        <input type="submit" value="Guardar" class="alt_btn">
-                        <input type="submit" value="Cancelar">
-                    </div>
-                </footer>
-            </article><!-- end of post new article -->
+    </article>         
+    
+    <article class="module width_quarter">
+        <header>
+            <h3>Conectados (28)</h3>
+        </header>
+        <div class="message_list">
+            <div class="module_content">
+                <div class="message">
+                    <p>Angela Muñoz</p>                    
+                </div>
+                <div class="message">
+                    <p>Patricia Aldana</p>                    
+                </div>
+                <div class="message">
+                    <p>Enrique Arias</p>                    
+                </div>    
+                <div class="message">
+                    <p>Nombre Apellido</p>                    
+                </div>
+                <div class="message">
+                    <p>Rolf Cortes</p>                    
+                </div>
+                <div class="message">
+                    <p>Adrian Peralta</p>                    
+                </div>    
+                <div class="message">
+                    <p>Nombre2 Apellido2</p>                    
+                </div>
+                <div class="message">
+                    <p>Nombre2 Apellido2</p>                    
+                </div>
+            </div>
+        </div>
+        <footer>
+           <form class="post_message">
+                <input type="text" value="Message" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+                <input type="submit" class="btn_post_message" value="Buscar"/>
+	   </form>
+        </footer>
+    </article><!-- end of messages article -->
 
-            <div class="spacer"></div>
-        </section>
+        <div class="spacer"></div>
+        </section>   
     </body>
 </html>

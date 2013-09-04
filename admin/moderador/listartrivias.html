@@ -48,7 +48,7 @@
         <header id="header">
             <hgroup>
                 <h1 class="site_title"><a href="index.html">Moderador</a></h1>
-                <h2 class="section_title">Lista de trivias</h2>
+                <h2 class="section_title">Lista de sorteos</h2>
             </hgroup>
         </header> <!-- end of header bar -->
 
@@ -59,9 +59,9 @@
             </div>
             <div class="breadcrumbs_container">
                 <article class="breadcrumbs">
-                    <a href="index.html">Panel de moderador</a>
+                    <a href="index.html">Panel de administración</a>
                     <div class="breadcrumb_divider"></div> 
-                    <a class="current">Lista de trivias</a>
+                    <a class="current">Lista de sorteos</a>
                 </article>
             </div>
         </section><!-- end of secondary bar -->
@@ -112,7 +112,7 @@
 
         <article class="module width_3_quarter">
         <header>
-            <h3 class="tabs_involved">Lista de trivias</h3>
+            <h3 class="tabs_involved">Lista de sorteos</h3>
         </header>
 
         <div class="tab_container" style="margin: 0 auto;">
@@ -120,10 +120,10 @@
                 <table class="tablesorter" cellspacing="0"> 
                     <thead> 
                         <tr>  
-                            <th>Código</th>  
+                            <th>Codigo</th>  
                             <th>Evento</th> 
-                            <th>Trivia</th> 
-                            <th>Respuesta</th> 
+                            <th>Premio</th> 
+                            <th>Estado</th> 
                             <th>Acciones</th>
                         </tr> 
                     </thead> 
@@ -131,7 +131,7 @@
                         <tr>  
                             <td>3543</td> 
                             <td>Lorem Ipsum Dolor Sit Amet</td>                             
-                            <td>¿Beca?</td> 
+                            <td>Beca</td> 
                             <td>Entregado</td> 
                             <td><input type="image" src="../static/images/icn_edit.png" title="Actualizar"/><input type="image" src="../static/images/icn_trash.png" title="Eliminar"></td> 
                         </tr> 
@@ -152,20 +152,101 @@
                         <tr>                             
                             <td>3546</td> 
                             <td>HTML5 y CSS3</td>                             
-                            <td>¿Taza de HTML5?</td> 
-                            <td>Por lanzar</td> 
+                            <td>Taza de HTML5</td> 
+                            <td>Por sortear</td> 
                             <td><input type="image" src="../static/images/icn_edit.png" title="Actualizar"/><input type="image" src="../static/images/icn_trash.png" title="Eliminar"></td> 
                         </tr> 
                         <tr>                             
                             <td>3547</td> 
                             <td>HTML5 y CSS3</td>                             
-                            <td>¿Polo de HTML5?</td> 
-                            <td>Por lanzar</td> 
+                            <td>Polo de HTML5</td> 
+                            <td>Por sortear</td> 
                             <td><input type="image" src="../static/images/icn_edit.png" title="Actualizar"/><input type="image" src="../static/images/icn_trash.png" title="Eliminar"></td> 
                         </tr> 
                     </tbody> 
                 </table>
-            </div><!-- end of #tab1 -->           		
+            </div><!-- end of #tab1 -->
+
+            <div id="tab2" class="tab_content">
+                <table class="tablesorter" cellspacing="0"> 
+                    <thead> 
+                        <tr>  
+                            <th>Código</th>  
+                            <th>Evento</th> 
+                            <th>Expositor</th> 
+                            <th>Fecha de inicio</th> 
+                            <th>Fecha de fin</th>
+                            <th>Hora de inicio</th> 
+                            <th>Hora de fin</th>
+                            <th>Lugar</th> 
+                            <th>Estado</th>
+                        </tr> 
+                    </thead> 
+                    <tbody> 
+                        <tr>  
+                            <td>23865</td> 
+                            <td>Lorem Ipsum Dolor Sit Amet</td> 
+                            <td>Mark Corrigan</td> 
+                            <td>5th April 2013</td> 
+                            <td>5th April 2013</td>
+                            <td>9.00</td>
+                            <td>15.00</td>
+                            <td>Lorem Ipsum Dolor Sit Amet</td> 
+                            <td>Finalizado</td> 
+                            <td/><input type="image" src="../static/images/icn_edit.png" title="Actualizar"/><input type="image" src="../static/images/icn_trash.png" title="Eliminar"></td> 
+                        </tr> 
+                        <tr>                             
+                            <td>23865</td> 
+                            <td>Lorem Ipsum Dolor Sit Amet</td> 
+                            <td>Mark Corrigan</td> 
+                            <td>5th April 2013</td> 
+                            <td>5th April 2013</td>
+                            <td>9.00</td>
+                            <td>15.00</td>
+                            <td>Lorem Ipsum Dolor Sit Amet</td> 
+                            <td>Finalizado</td> 
+                            <td/><input type="image" src="../static/images/icn_edit.png" title="Actualizar"/><input type="image" src="../static/images/icn_trash.png" title="Eliminar"></td> 
+                        </tr>
+                        <tr>                             
+                            <td>23865</td> 
+                            <td>Lorem Ipsum Dolor Sit Amet</td> 
+                            <td>Mark Corrigan</td> 
+                            <td>5th April 2013</td> 
+                            <td>5th April 2013</td>
+                            <td>9.00</td>
+                            <td>15.00</td>
+                            <td>Lorem Ipsum Dolor Sit Amet</td> 
+                            <td>Finalizado</td> 
+                            <td/><input type="image" src="../static/images/icn_edit.png" title="Actualizar"/><input type="image" src="../static/images/icn_trash.png" title="Eliminar"></td> 
+                        </tr> 
+                        <tr>                             
+                            <td>23865</td> 
+                            <td>Lorem Ipsum Dolor Sit Amet</td> 
+                            <td>Mark Corrigan</td> 
+                            <td>5th April 2013</td> 
+                            <td>5th April 2013</td>
+                            <td>9.00</td>
+                            <td>15.00</td>
+                            <td>Lorem Ipsum Dolor Sit Amet</td> 
+                            <td>Finalizado</td> 
+                            <td/><input type="image" src="../static/images/icn_edit.png" title="Actualizar"/><input type="image" src="../static/images/icn_trash.png" title="Eliminar"></td> 
+                        </tr> 
+                        <tr>                             
+                            <td>23865</td> 
+                            <td>Lorem Ipsum Dolor Sit Amet</td> 
+                            <td>Mark Corrigan</td> 
+                            <td>5th April 2013</td> 
+                            <td>5th April 2013</td>
+                            <td>9.00</td>
+                            <td>15.00</td>
+                            <td>Lorem Ipsum Dolor Sit Amet</td> 
+                            <td>Finalizado</td> 
+                            <td/><input type="image" src="../static/images/icn_edit.png" title="Actualizar"/><input type="image" src="../static/images/icn_trash.png" title="Eliminar"></td> 
+                        </tr> 
+                    </tbody> 
+                </table>
+            </div><!-- end of #tab2 -->			
+        </div><!-- end of .tab_container -->		
     </article><!-- end of content manager article -->
         <div class="spacer"></div>
         </section>   
