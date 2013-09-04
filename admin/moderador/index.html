@@ -2,7 +2,7 @@
 <html lang="es">
     <head>
         <meta charset="utf-8"/>
-        <title>Moderador</title>	
+        <title>Panel de moderador</title>	
         <link rel="stylesheet" href="../static/css/layout.css" type="text/css" media="screen" />
         <!--[if lt IE 9]>
         <link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
@@ -48,7 +48,7 @@
         <header id="header">
             <hgroup>
                 <h1 class="site_title"><a href="index.html">Moderador</a></h1>
-                <h2 class="section_title">Actualizar pregunta</h2>
+                <h2 class="section_title">Preguntas</h2>
             </hgroup>
         </header> <!-- end of header bar -->
 
@@ -59,9 +59,9 @@
             </div>
             <div class="breadcrumbs_container">
                 <article class="breadcrumbs">
-                    <a href="index.html">Panel de moderador</a>
+                    <a href="index.html">Moderador</a>
                     <div class="breadcrumb_divider"></div> 
-                    <a class="current">Actualizar pregunta</a>
+                    <a class="current">Preguntas</a>
                 </article>
             </div>
         </section><!-- end of secondary bar -->
@@ -71,7 +71,8 @@
                 <input type="text" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
             </form>-->
             <hr/>
-           <h3>Eventos</h3>
+            
+            <h3>Eventos</h3>
             
             <ul class="toggle">  
                 <li class="icn_settings"><a href="index.html">Tiempo real</a></li>
@@ -106,23 +107,33 @@
                 <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
             </ul>
 
+        </aside><!-- end of sidebar -->
+
         <section id="main" class="column">
 
         <article class="module width_full">
             <header>
-                <h3>Actualizar pregunta</h3>
+                <h3>Crear pregunta</h3>
             </header>
-            <div class="module_content">                              
-                
+            <div class="module_content">
+                              
+                <fieldset style="width:30%; float:left; margin-right: 10px; height: 50px;"> <!-- to make two field float next to one another, adjust values accordingly -->
+                    <label>Evento</label>
+                    <select style="width:80%;">
+                        <option>Elija evento</option>
+                        <option>HTML5 y CSS3</option>
+                        <option>Cóme vender a un escéptico</option>
+                    </select>                    
+                </fieldset>
                 <fieldset style="float:left; width: 450px;">
                     <label>Pregunta</label>
-                    <input type="text" style="width:90%;" value="¿Donde se comenzo a utilizar HTML5?" />
+                    <input type="text" style="width:90%;" />
                 </fieldset>  
                 <div class="clear"></div>
             </div>
                 <footer>
                     <div class="submit_link" style="text-align: center;">
-                        <input type="submit" value="Actualizar" class="alt_btn">
+                        <input type="submit" value="Guardar" class="alt_btn">
                         <input type="submit" value="Cancelar">
                     </div>
                 </footer>
