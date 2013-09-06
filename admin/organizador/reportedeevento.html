@@ -2,7 +2,7 @@
 <html lang="es">
     <head>
         <meta charset="utf-8"/>
-        <title>Panel de administración</title>	
+        <title>Organizador</title>	
         <link rel="stylesheet" href="../static/css/layout.css" type="text/css" media="screen" />
         <!--[if lt IE 9]>
         <link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
@@ -47,21 +47,21 @@
     <body>
         <header id="header">
             <hgroup>
-                <h1 class="site_title"><a href="index.html">Panel de administración</a></h1>
+                <h1 class="site_title"><a href="index.html">Organizador</a></h1>
                 <h2 class="section_title">Reporte de eventos</h2>
             </hgroup>
         </header> <!-- end of header bar -->
 
         <section id="secondary_bar">
             <div class="user">
-                <p>Bienvenido administrador: John Doe</p>
+                <p>Bienvenido organizador Adrián Peralta</p>
                 <!--<a class="logout_user" href="#" title="Logout">Logout</a>-->
             </div>
             <div class="breadcrumbs_container">
                 <article class="breadcrumbs">
-                    <a href="index.html">Panel de administración</a>
+                    <a href="index.html">Panel de organizador</a>
                     <div class="breadcrumb_divider"></div> 
-                    <a class="current">Dashboard</a>
+                    <a class="current">Reporte de evento</a>
                 </article>
             </div>
         </section><!-- end of secondary bar -->
@@ -71,7 +71,7 @@
                 <input type="text" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
             </form>-->
             <hr/>
-            <h3>Eventos</h3>
+           <h3>Eventos</h3>
             <ul class="toggle">
                 <li class="icn_new_article"><a href="crearevento.html">Crear evento</a></li>
                 <li class="icn_edit_article"><a href="actualizarevento.html">Actualizar evento</a></li>
@@ -80,7 +80,7 @@
                 <li class="icn_categories"><a href="listareventos.html">Listar eventos</a></li>		
                 <li class="icn_categories"><a href="reportedeevento.html">Ver reporte de evento</a></li>
             </ul>
-
+            
             <h3>Usuarios</h3>
             <ul class="toggle">
                 <li class="icn_add_user"><a href="crearusuario.html">Crear usuario</a></li>
@@ -92,7 +92,7 @@
                 <li class="icn_profile"><a href="#">Actualizar perfil</a></li>
                 <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
             </ul>
-            
+
         </aside><!-- end of sidebar -->
         <section id="main" class="column">
             <article class="module width_full">
@@ -100,18 +100,15 @@
                 <h3>Datos</h3>
             </header>
             <div class="module_content">
-                <fieldset style="width:48%; float:left; margin-right: 3%; margin-top: 1px;"> <!-- to make two field float next to one another, adjust values accordingly -->
+                <fieldset style="width:48%; float:left; margin-right: 3%; margin-top: 2px;"> <!-- to make two field float next to one another, adjust values accordingly -->
                     <label>Evento</label>
                     <select style="width:92%;">                       
                         <option>HTML5 y CSS3</option>
                         <option>Cómo vender a un escéptico</option>
                     </select>                    
-                </fieldset>   
-                
-                <fieldset style="text-align: center; height: 45px; margin-top: 40px;">
-                    <br />
+                </fieldset>                   
+                <fieldset style="text-align: center; height: 55%; padding: 3% 0 2% 0 ">
                     <input type="submit" value="Ver Reporte" class="alt_btn" />  
-                    <br />
                 </fieldset>
                 <div class="clear"></div>
               
@@ -164,7 +161,7 @@
                             <td>Lorem Ipsum Dolor Sit Amet</td> 
                             <td>Articles</td> 
                             <td>5th April 2011</td> 
-                            <td><input type="image" src="../static/images/icn_edit.png" title="Edit"><input type="image" src="../static/images/icn_trash.png" title="Trash"></td> 
+                            <td><input type="image" src="../static/images/icn_edit.png" title="Edit"/><input type="image" src="../static/images/icn_trash.png" title="Trash"/></td> 
                         </tr> 
                         <tr> 
                             <td><input type="checkbox"></td> 
@@ -215,35 +212,35 @@
                             <td>Lorem Ipsum Dolor Sit Amet</td> 
                             <td>Mark Corrigan</td> 
                             <td>5th April 2011</td> 
-                            <td><input type="image" src="../static/images/icn_trash.png" title="Trash" /></td> 
+                            <td><input type="image" src="images/icn_trash.png" title="Trash" /></td> 
                         </tr> 
                         <tr> 
                             <td><input type="checkbox"></td> 
                             <td>Ipsum Lorem Dolor Sit Amet</td> 
                             <td>Jeremy Usbourne</td> 
                             <td>6th April 2011</td> 
-                            <td><input type="image" src="../static/images/icn_trash.png" title="Trash" /></td> 
+                            <td><input type="image" src="images/icn_trash.png" title="Trash" /></td> 
                         </tr>
                         <tr> 
                             <td><input type="checkbox"></td> 
                             <td>Sit Amet Dolor Ipsum</td> 
                             <td>Super Hans</td> 
                             <td>10th April 2011</td> 
-                            <td><input type="image" src="../static/images/icn_trash.png" title="Trash" /></td> 
+                            <td><input type="image" src="images/icn_trash.png" title="Trash" /></td> 
                         </tr> 
                         <tr> 
                             <td><input type="checkbox"></td> 
                             <td>Dolor Lorem Amet</td> 
                             <td>Alan Johnson</td> 
                             <td>16th April 2011</td> 
-                            <td><input type="image" src="../static/images/icn_trash.png" title="Trash"/></td> 
+                            <td><input type="image" src="images/icn_trash.png" title="Trash"/></td> 
                         </tr> 
                         <tr> 
                             <td><input type="checkbox"></td> 
                             <td>Dolor Lorem Amet</td> 
                             <td>Dobby</td> 
                             <td>16th April 2011</td> 
-                            <td><input type="image" src="../static/images/icn_trash.png" title="Trash"/></td> 
+                            <td><input type="image" src="images/icn_trash.png" title="Trash"/></td> 
                         </tr> 
                     </tbody> 
                 </table>
