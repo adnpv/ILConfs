@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{%block sidebar%}
+	<ul>
+		<li><a href="/all">Events</a></li>
+	</ul>
+{% endblock%}
+{% block contenido %}
+	<h1>{{event.name}}</h1>
+	<p>{{event.description}}</p>
+{% endblock %}
