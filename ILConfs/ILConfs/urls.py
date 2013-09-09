@@ -8,6 +8,7 @@ urlpatterns = patterns('',
 	(r'^', include('event.urls')),
 	(r'^/$', include('event.urls')),
 	(r'^events/$', include('event.urls')),
+    (r'^home/$', include('cms.urls')),
     # Examples:
     # url(r'^$', 'ILConfs.views.home', name='home'),
     # url(r'^ILConfs/', include('ILConfs.foo.urls')),
