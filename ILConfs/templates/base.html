@@ -4,7 +4,8 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
    		<meta charset="utf-8">
-		<title>{% block title %} my base template{% endblock %}</title>
+			<title>{% block title %} my base template {% endblock %}</title>
+
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
     	<meta name="description" content="">
     	<meta name="author" content="">
@@ -35,245 +36,71 @@
 		<link rel="apple-touch-icon-precomposed" href="{% static "assets/ico/apple-touch-icon-57-precomposed.png" %}">
 
 	</head>
-	<body>
-		<!-- MAIN WRAPPER class="wrapper" max-width="1110px"-->
+
+<!--(inicio)Nivel 2 publico web-->
+<body>
+	<!-- MAIN WRAPPER class="wrapper" max-width="1110px"-->
 	<div class="wrapper">
+
 		<header>	
 			<!-- NAVBAR-->
-		<nav class="navbar navbar-default" role="navigation">
+			<nav class="navbar navbar-default" role="navigation">
 				<div class="container">
-			  <!-- Brand and toggle get grouped for better mobile display -->
-			  <div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-				  <span class="sr-only">Toggle navigation</span>
-				  <span class="icon-bar"></span>
-				  <span class="icon-bar"></span>
-				  <span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">PIETReal.COM</a>
-			  </div>
-
-			  <!-- Collect the nav links, forms, and other content for toggling -->
-			  <div class="collapse navbar-collapse navbar-ex1-collapse">
-				<ul class="nav navbar-nav">
-				   <li><a href="#">Eventos</a></li>
-				  <li><a href="#">Servicios</a></li>
-				  <li><a href="#">Contactenos</a></li>
-
-				  <li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-					  <li><a href="#">Action</a></li>
-					  <li><a href="#">Another action</a></li>
-					  <li><a href="#">Something else here</a></li>
-					  <li><a href="#">Separated link</a></li>
-					  <li><a href="#">One more separated link</a></li>
-					</ul>
-				  </li>
-				</ul>
-				<form class="navbar-form navbar-right visible-lg" role="search">
-				  <div class="form-group">
-					<input type="text" class="form-control" placeholder="Search">
+				  <!-- Brand and toggle get grouped for better mobile display -->
+				  <div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					  	<span class="sr-only">Toggle navigation</span>
+					 	<span class="icon-bar"></span>
+					  	<span class="icon-bar"></span>
+					  	<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">PIETReal.COM</a>
 				  </div>
-				  <button type="submit" class="btn btn-primary">Submit</button>
-				</form>
-			</div><!-- /.navbar-collapse --> 
-			</div>	
-		</nav>
-		<!-- PAGE-HEADER-->
 
-						<div class="jumbotron">
-								<div class="container">
-									<div class="row">
-										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-											<h1>Real Time InEvents</h1>
-										</div>
-									</div>
-								</div>
-					    </div>
-					</header>
-					<!-- PAGE-HEADER-->
+				  <!-- Collect the nav links, forms, and other content for toggling -->
+				  <div class="collapse navbar-collapse navbar-ex1-collapse">
+						<ul class="nav navbar-nav">
+							{% block login %}
+						   		<li><a href="#">Login</a></li>
+						   	{% endblock %}
+						  	<li><a href="#">Servicios</a></li>
+						  	<li><a href="#">Contactenos</a></li>
 
-
-
-
-
-			<div id="sidebar">
-				{% block sidebar %}
-					<ul>
-						<li><a href="/all">events</a></li>
-						<li><a href="/admin/">admin</a></li>
-
-					</ul>
-				{% endblock %}
-			</div>
-					<div class="container sub">
-				    <!-- row-fluid-->
-				    <div class="row">
-					<!-- FIX Bootstrap z-index on mobiles for .pull-right normalize -->
-						<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 pull-right" style="z-index:1020;"> 
-						
-							<div id="carousel-example-generic" class="carousel slide">
-							  <!-- Indicators -->
-							  <ol class="carousel-indicators">
-								<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-								<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-								<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-							  </ol>
-
-							  <!-- Wrapper for slides -->
-							  <div class="carousel-inner">
-								<div class="item active">
-									<img src="{% static "images/thumb.jpg" %}" alt="item" />
-								  	
-								  	<div class="carousel-caption">
-										<p>Item 1</p>
-								  </div>
-								</div>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Eventos <b class="caret"></b></a>
+								{% block sidebar %}
+									<ul class="dropdown-menu">
+									  <li><a href="/all">Explorar</a></li>
+									</ul>
+								{% endblock %}
 								
-								<div class="item">
-									<img src="{% static "images/thumb.jpg" %}" alt="item"/>
-								
-								  	<div class="carousel-caption">
-										<p>Item 2</p>
-								  </div>
-								</div>
-								
-							  </div>
+							</li>
+						</ul>
 
-								  <!-- Controls -->
-								  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-									<span class="icon-prev"></span>
-								  </a>
-								  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-									<span class="icon-next"></span>
-								  </a>
-							</div>    
-								<hr>
-						</div> 
-						<!-- / .col-*-7-->
-						  <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-							<div class="well">
-								<h2>ABOUT PROJECT</h2>
-								<p class="">Here goes sub-title. Write few words about your awesome project</p>
+						<form class="navbar-form navbar-right" role="search">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Search">
 							</div>
-							<p class="lead">
-								Lead paragraph. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-							</p>
-							<p>
-							Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-							</p>
-						  </div>
+						  	<button type="submit" class="btn btn-primary">Buscar</button>
+						</form>
+
+					</div><!-- /.navbar-collapse --> 
+				</div>	
+			</nav>
+			<!-- PAGE-HEADER-->
+
+				<div class="jumbotron">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<h1>Real Time InEvents</h1>
+							</div>
+						</div>
 					</div>
-				</div>
-
-
-			<div class="container sub">
-			      <!-- Example row of columns -->
-			      <div class="row">
-			        
-
-
-
-
-
-
-
-
-			        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-						<div class="well">
-			          <h4 class="text-center"><i class="icon-fullscreen"></i> RESPONSIVE TEMPLATE</h4>
-							<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-							<p><a class="btn btn-default" href="#">View details »</a>
-							</p>
-					  </div>
-			        </div>
-			        
-
-
-
-
-
-
-
-
-			        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-						<div class="well">
-							<h4 class="text-center"><i class="icon-fullscreen"></i> RESPONSIVE TEMPLATE</h4>
-								<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-								<p><a class="btn btn-default" href="#">View details »</a></p>
-						</div> 
-				   </div>
-			        
-
-
-
-
-
-
-
-
-			        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-						<div class="well">
-							<h4 class="text-center"><i class="icon-fullscreen"></i> RESPONSIVE TEMPLATE</h4>
-								<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-								<p><a class="btn btn-default" href="#">View details »</a></p>
-						</div> 
-				   </div>
-				   
-				   
-
-
-
-
-
-
-
-
-				   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-						<div class="well">
-			          <h4 class="text-center"><i class="icon-fullscreen"></i> RESPONSIVE TEMPLATE</h4>
-							<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-							<p><a class="btn btn-default" href="#">View details »</a>
-							</p>
-					  </div>
-			        </div>
-			        
-
-
-
-
-
-
-
-
-			        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-						<div class="well">
-							<h4 class="text-center"><i class="icon-fullscreen"></i> RESPONSIVE TEMPLATE</h4>
-								<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-								<p><a class="btn btn-default" href="#">View details »</a></p>
-						</div> 
-				   </div>
-			        
-
-
-
-
-
-
-
-
-			        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-						<div class="well">
-							<h4 class="text-center"><i class="icon-fullscreen"></i> RESPONSIVE TEMPLATE</h4>
-								<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-								<p><a class="btn btn-default" href="#">View details »</a></p>
-						</div> 
-				   </div>
-				   
-				</div>
-			</div>
-			<!-- CONTAINER-->
+			    </div>
+		</header>
+		<!-- PAGE-HEADER-->
+				
 
 <div class="container">
  <!-- related projects -->
@@ -292,11 +119,12 @@
 
 <!-- FOOTER-->
 <footer>
+	{% block footer %} 
 	<div class="container">
 		<hr>
         	<p>© pietreal.com Company 2013</p>
   	</div><!-- CONTAINER FOOTER-->
-	  
+	 {% endblock %} 
 </footer>
 
 
