@@ -10,11 +10,14 @@
 	<ul class="dropdown-menu">
 	  <li><a href="/all">Explorar</a></li>
 	  <li><a href="#">Evento Activo I.</a></li>
+	  <li><a href="#">Mis Eventos</a></li>
 	  <li><a href="#">Mis Entradas</a></li>
-	  <li><a href="#">Separated link</a></li>
-	  <li><a href="#">One more separated link</a></li>
+	  
 	</ul>
+	
 {% endblock %}
+
+
 
 
 {% block topinfo %}
@@ -81,6 +84,39 @@
 </div>
 {% endblock %}
 
+{% block middle%}
+<div class="collapse navbar-collapse navbar-ex1-collapse">
+		<ul class="nav navbar-nav">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorias <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+				  <li><a href="/all">Categ1</a></li>
+				  <li><a href="#">Categ2</a></li>
+				  <li><a href="#">Categ3</a></li>
+				  <li><a href="#">Categ4</a></li>
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Fecha <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+				  <li><a href="/all">Dia</a></li>
+				  <li><a href="#">Semana</a></li>
+				  <li><a href="#">Mes</a></li>
+				  <li><a href="#">Año</a></li>
+				</ul>
+			</li>
+			<li><form class="navbar-form navbar-left" role="search">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Search">
+							</div>
+						  	<button type="submit" class="btn btn-primary">Buscar</button>
+						</form></li> 
+		</ul>
+		
+</div><!-- /.navbar-collapse --> 
+
+{% endblock %}
+
 {% block contenido %}
 
 
@@ -89,22 +125,40 @@
 	<div class="row">
 	{% if events.count > 0 %}
 		{% for event in events %}
-		
-		        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-					<div class="well">
-		          		<h4 class="text-center">
-		          			<i class="icon-fullscreen"></i> 
-		          			{{event.name}}</h4>
-
-						<p>{{ event.description | lower | truncatewords:"10" }}</p>
-
-						<p><a class="btn btn-default" href="/get/{{event.id}}">View details »</a>
-						</p>
-				  </div>
-		        </div>
-			
-		<!-- CONTAINER-->
-		{% endfor %}
+				<!-- portfolio item -->
+				<div class="box col-xs-12 col-md-4 col-sm-6 col-lg-3">
+					<!-- START WRAPPER IMG THUMBNAIL-->
+					<div class="thumbnail">
+								<!-- NAV LINKS -->
+								<div class="plus">
+										<a href="#" title="read more" class="btn btn-medium btn-default"><i class="fa-icon-heart"></i> Lugar</a>
+										<a href="#" title="pin it" class="btn btn-medium btn-warning">Comprar!</a>
+										<!--  btn-danger-->
+								</div>
+								<!-- /NAV LINKS -->
+							<!-- / IMAGE-->
+							<img class="img-responsive" src="http://lorempixel.com/560/420/fashion/10" alt="">
+							<!-- / IMAGE-->
+							<div class="caption">
+								<!-- TITLE-->
+								<h3 class="single-title"><a href="#" title="">{{event.name}}</a></h3>
+								<!-- END TITLE-->
+						<!-- META-->
+						<span class="meta">
+							<i class="fa-icon-calendar"></i> {{event.start_date}}
+						</span>
+						<!-- END META-->
+						<!-- PARAGRAPH -->
+							<p>{{ event.description | lower | truncatewords:"10" }} 
+							</p>
+							<p><a class="btn btn-default" href="/get/{{event.id}}">View details »</a>
+							</p>
+						<!-- /PARAGRAPH -->
+						
+						</div><!-- /caption-->
+					</div> 
+				</div>
+	{% endfor %}
 	{% else %}
 		<p>None to show!</p>
 	{% endif %}
@@ -112,6 +166,30 @@
 	</div>
 </div>
 
+<!--
+<div id="container-folio" style="position:relative">
+		
+		
+</div>-->
+<!-- END portfolio item -->
+<hr>
+	  <div class="row">
+	    <!-- PAGINATION-->
+	  <div class="col-12 col-lg-12 text-center">
+
+        <ul class="pagination text-center">
+          <li class="disabled"><a href="#">Previous</a></li>
+          <li class="active" id="page_nav"><a href="#">1</a></li>
+          <li id="page_nav"><a href="#">2</a></li>
+          <li id="page_nav"><a href="#">3</a></li>
+          <li id="page_nav"><a href="#">4</a></li>
+          <li id="page_nav"><a href="#">5</a></li>
+          <li id="page_nav"><a href="#">Next</a></li>
+        </ul>
+      </div>
+	  <!-- END PAGINATION-->
+	  </div>
+	  <hr>
 {% endblock %}
 <!--
 	</body>

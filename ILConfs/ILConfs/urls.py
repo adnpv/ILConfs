@@ -1,14 +1,14 @@
 from django.conf.urls import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = patterns('',
 	(r'^', include('event.urls')),
 	(r'^/$', include('event.urls')),
 	(r'^events/$', include('event.urls')),
-    (r'^home/$', include('cms.urls')),
+    (r'^home/', include('cms.urls')),
     # Examples:
     # url(r'^$', 'ILConfs.views.home', name='home'),
     # url(r'^ILConfs/', include('ILConfs.foo.urls')),
@@ -17,5 +17,5 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^secret/admin/', include(admin.site.urls)),
 )

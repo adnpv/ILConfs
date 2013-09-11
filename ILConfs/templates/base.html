@@ -47,17 +47,24 @@
 						  	<span class="icon-bar"></span>
 						  	<span class="icon-bar"></span>
 						</button>
+
 						<a class="navbar-brand" href="/home">PIETReal.COM</a>
 					</div>
 
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse navbar-ex1-collapse">
+						
+
+						<form class="navbar-form navbar-left" role="search">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Search">
+							</div>
+						  	<button type="submit" class="btn btn-primary">Buscar</button>
+						</form>
+
 						<ul class="nav navbar-nav">
-							{% block login %}
-						   		<li><a href="#">Login</a></li>
-						   	{% endblock %}
-						  	<li><a href="#">Servicios</a></li>
-						  	<li><a href="#">Contactenos</a></li>
+							
+						  	
 
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Eventos <b class="caret"></b></a>
@@ -68,14 +75,16 @@
 								{% endblock %}
 								
 							</li>
+							<li><a href="/home/serv/">Servicios</a></li>
+						  	<li><a href="/home/contact/">Contactenos</a></li>
 						</ul>
-
-						<form class="navbar-form navbar-right" role="search">
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Search">
-							</div>
-						  	<button type="submit" class="btn btn-primary">Buscar</button>
-						</form>
+						<div class="nav navbar-nav navbar-right">
+								{% block login %}
+							   	<a class="btn btn-danger navbar-btn" style="margin-left:10px;">Sign up</a> 
+							   
+						   		<a class="btn btn-success navbar-btn">Sign in</a> 
+							   {% endblock %}
+						</div>
 
 					</div><!-- /.navbar-collapse --> 
 				</div>	
@@ -98,7 +107,9 @@
 
 <div class="container">
  <!-- related projects -->
-		
+			{% block middle%}
+
+			{% endblock %}
 			<div id="content">
 
 				{% block contenido %}
