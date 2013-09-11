@@ -57,6 +57,7 @@
                 <p>Bienvenido moderador: Adrián Peralta</p>
                 <!--<a class="logout_user" href="#" title="Logout">Logout</a>-->
             </div>
+            
             <div class="breadcrumbs_container">
                 <article class="breadcrumbs">
                     <a href="index.html">Panel de moderador</a>
@@ -71,70 +72,53 @@
                 <input type="text" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
             </form>-->
             <hr/>
-          <h3>Eventos</h3>            
+            <h3>Eventos</h3>            
             <ul class="toggle">  
                 <li class="icn_settings"><a href="index.html">Tiempo real</a></li>
                 <li class="icn_categories"><a href="reportedeevento.html">Ver reporte de evento</a></li>    
-                <li class="icn_categories"><a href="participantes.html">Participantes</a></li>               
+                <li class="icn_categories"><a href="participantes.html">Participantes</a></li>                               
             </ul>
             
-             <h3>Preguntas</h3>
-            <ul class="toggle">                
-                <li class="icn_new_article"><a href="crearpregunta.html">Crear pregunta</a></li>
-                <li class="icn_categories"><a href="listarpreguntas.html">Listar preguntas</a></li>
-                <li class="icn_new_article"><a href="crearalternativa.html">Crear alternativa</a></li>                
-                <li class="icn_categories"><a href="listaralternativas.html">Listar alternativas</a></li>
+           <h3>Preguntas</h3>
+            <ul class="toggle">             
+                <li class="icn_categories"><a href="listarpreguntasparticipantes.html">Ver preguntas de participantes</a></li>                
+                <li class="icn_categories"><a href="listarpreguntasexpositor.html">Ver preguntas del expositor</a></li>
             </ul> 
-           
+            
+            <h3>Encuestas</h3>
+            <ul class="toggle">
+                <li class="icn_new_article"><a href="verencuesta.html">Ver encuesta</a></li>
+            </ul>
+
             <h3>Cuenta</h3>
             <ul class="toggle">
-                <li class="icn_profile"><a href="actualizarusuario.html">Actualizar usuario</a></li>
+                <li class="icn_profile"><a href="actualizarusuario.html">Actualizar perfil</a></li>
                 <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
             </ul>
 
         </aside><!-- end of sidebar -->
 
         <section id="main" class="column">
-
-    <article class="module width_3_quarter">
-            <header>
-                <h3>Eventos</h3>
-            </header>
-            <div class="module_content">
-                <br/>
-                <fieldset style="width:48%; float:left; margin-right: 3%; margin-top: 8px;"> <!-- to make two field float next to one another, adjust values accordingly -->
-                    <label>Evento</label>
-                    <select style="width:92%;">                       
-                        <option>HTML5 y CSS3</option>
-                        <option>Cómo vender a un escéptico</option>
-                    </select>                    
-                </fieldset>                   
-                <fieldset style="text-align: center; height: 65%; padding: 3% 0 2% 0;">
-                    <input type="submit" value="Activar" class="alt_btn" />  
-                    <br />
-                </fieldset>
-                <div class="clear"></div>
-                <br/>
-                <fieldset style="width:48%; float:left; margin-right: 3%; margin-top: 8px;"> <!-- to make two field float next to one another, adjust values accordingly -->
-                    <label>Evento</label>
-                    <select style="width:92%;">                       
-                        <option>HTML5 y CSS3</option>
-                        <option>Cómo vender a un escéptico</option>
-                    </select>                    
-                </fieldset>                   
-                <fieldset style="text-align: center; height: 65%; padding: 3% 0 2% 0;">
-                    <input type="submit" value="Generar aleatorios" class="alt_btn" />
-                    <br />
-                </fieldset> 
-                <br /><br/><br /><br/>
-            </div>
-    </article>         
-    
-    <article class="module width_quarter">
+            
+            <article class="module width_3_quarter">
+                <header><h3>Datos de evento</h3></header>
+                    <div class="module_content">  
+                        <fieldset style="width:48%; float:left;"> <!-- to make two field float next to one another, adjust values accordingly -->
+                            <label>Nombre</label>
+                            <input type="text" style="width:90%;">
+                        </fieldset>                                         
+                       <fieldset style="width:48%; float:right; margin-right: 1%; height: 50px; text-align: center;"> <!-- to make two field float next to one another, adjust values accordingly -->
+                           <br />
+                           <input type="submit" value="Buscar" class="alt_btn">
+                       </fieldset>       
+                      <div class="clear"></div>                                                                                   
+                    </div>
+            </article><!-- end of post new article -->          
+    <article class="module width_quarter" >
         <header>
             <h3>Conectados (28)</h3>
         </header>
-        <div class="message_list">
+        <div class="message_list" style="height: 100px;">
             <div class="module_content">
                 <div class="message">
                     <p>Angela Muñoz</p>                    
@@ -169,12 +153,13 @@
 	   </form>
         </footer>
     </article><!-- end of messages article -->
-    <div class="clear"></div> 
+     <div class="clear"></div> 
     <article class="module width_3_quarter">
-        <header>
-            <h3 class="tabs_involved">Preguntas</h3>
-        </header>           
-        <div class="tab_container" style="margin: 0 auto;">
+            <header>
+                <h3>Eventos</h3>
+            </header>
+        
+        <div class="tab_container" style="margin: 0 auto;" style="display: block;">
             <div id="tab1" class="tab_content">
                 <table class="tablesorter" cellspacing="0"> 
                     <thead> 
@@ -188,33 +173,38 @@
                         <tr>  
                             <td>3543</td> 
                             <td>Lorem Ipsum </td>  
-                            <td><input type="image" src="../static/images/icn_edit.png" title="Actualizar"/><input type="image" src="../static/images/icn_trash.png" title="Eliminar"><input type="image" src="../static/images/icono-estadísticas.jpg" title="Estadísticas"/></td> 
+                            <td><input type="image" src="../static/images/iconoactivar.png" title="Activar"/><input type="image" src="../static/images/iconopreguntas.jpg" title="Ver preguntas"/><input type="image" src="../static/images/icono-estadísticas.jpg" title="Estadísticas"/></td> 
                         </tr> 
                         <tr>                             
                             <td>3544</td> 
                             <td>Bla bla bla</td>                                                                               
-                            <td><input type="image" src="../static/images/icn_edit.png" title="Actualizar"/><input type="image" src="../static/images/icn_trash.png" title="Eliminar"><input type="image" src="../static/images/icono-estadísticas.jpg" title="Estadísticas"/></td> 
+                            <td><input type="image" src="../static/images/iconoactivar.png" title="Activar"/><input type="image" src="../static/images/iconopreguntas.jpg" title="Ver preguntas"/><input type="image" src="../static/images/icono-estadísticas.jpg" title="Estadísticas"/></td> 
                         </tr>
                         <tr>                             
                             <td>3545</td> 
                             <td>Moran Roman</td>                                                                                  
-                            <td><input type="image" src="../static/images/icn_edit.png" title="Actualizar"/><input type="image" src="../static/images/icn_trash.png" title="Eliminar"><input type="image" src="../static/images/icono-estadísticas.jpg" title="Estadísticas"/></td> 
+                            <td><input type="image" src="../static/images/iconoactivar.png" title="Activar"/><input type="image" src="../static/images/iconopreguntas.jpg" title="Ver preguntas"/><input type="image" src="../static/images/icono-estadísticas.jpg" title="Estadísticas"/></td> 
                         </tr> 
                         <tr>                             
                             <td>3546</td> 
                             <td>¿Esta de acuerdo con la convocatoria de Vargas?</td>                                                                                    
-                            <td><input type="image" src="../static/images/icn_edit.png" title="Actualizar"/><input type="image" src="../static/images/icn_trash.png" title="Eliminar"><input type="image" src="../static/images/icono-estadísticas.jpg" title="Estadísticas"/></td> 
+                            <td><input type="image" src="../static/images/iconoactivar.png" title="Activar"/><input type="image" src="../static/images/iconopreguntas.jpg" title="Ver preguntas"/><input type="image" src="../static/images/icono-estadísticas.jpg" title="Estadísticas"/></td> 
                         </tr> 
                         <tr>                             
                             <td>3547</td> 
                             <td>¿Cree que se puede ganar a Uruguay?</td>                                                                                     
-                            <td><input type="image" src="../static/images/icn_edit.png" title="Actualizar"/><input type="image" src="../static/images/icn_trash.png" title="Eliminar"><input type="image" src="../static/images/icono-estadísticas.jpg" title="Estadísticas"/></td>  
+                            <td><input type="image" src="../static/images/iconoactivar.png" title="Activar"/><input type="image" src="../static/images/iconopreguntas.jpg" title="Ver preguntas"/><input type="image" src="../static/images/icono-estadísticas.jpg" title="Estadísticas"/></td> 
                         </tr> 
                     </tbody> 
                 </table>
             </div><!-- end of #tab1 -->	
-        </div><!-- end of .tab_container -->		
-    </article><!-- end of content manager article -->
+        </div><!-- end of .tab_container -->	
+            
+    </article>         
+    
+    
+    <div class="clear"></div> 
+    
         <div class="spacer"></div>
         </section>   
     </body>

@@ -71,24 +71,27 @@
                 <input type="text" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
             </form>-->
             <hr/>
-           <h3>Eventos</h3>            
+                        <h3>Eventos</h3>            
             <ul class="toggle">  
                 <li class="icn_settings"><a href="index.html">Tiempo real</a></li>
                 <li class="icn_categories"><a href="reportedeevento.html">Ver reporte de evento</a></li>    
-                <li class="icn_categories"><a href="participantes.html">Participantes</a></li>               
+                <li class="icn_categories"><a href="participantes.html">Participantes</a></li>                               
             </ul>
             
-             <h3>Preguntas</h3>
-            <ul class="toggle">                
-                <li class="icn_new_article"><a href="crearpregunta.html">Crear pregunta</a></li>
-                <li class="icn_categories"><a href="listarpreguntas.html">Listar preguntas</a></li>
-                <li class="icn_new_article"><a href="crearalternativa.html">Crear alternativa</a></li>                
-                <li class="icn_categories"><a href="listaralternativas.html">Listar alternativas</a></li>
+            <h3>Preguntas</h3>
+            <ul class="toggle">             
+                <li class="icn_categories"><a href="listarpreguntasparticipantes.html">Ver preguntas de participantes</a></li>                
+                <li class="icn_categories"><a href="listarpreguntasexpositor.html">Ver preguntas del expositor</a></li>
             </ul> 
             
+            <h3>Encuestas</h3>
+            <ul class="toggle">
+                <li class="icn_new_article"><a href="verencuesta.html">Ver encuesta</a></li>
+            </ul>
+
             <h3>Cuenta</h3>
             <ul class="toggle">
-                <li class="icn_profile"><a href="actualizarusuario.html">Actualizar usuario</a></li>
+                <li class="icn_profile"><a href="actualizarusuario.html">Actualizar perfil</a></li>
                 <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
             </ul>
 
@@ -96,15 +99,12 @@
         <section id="main" class="column">
             <article class="module width_full">
             <header>
-                <h3>Datos</h3>
+                <h3>Datos de evento</h3>
             </header>
             <div class="module_content">
                 <fieldset style="width:48%; float:left; margin-right: 3%; margin-top: 2px;"> <!-- to make two field float next to one another, adjust values accordingly -->
-                    <label>Evento</label>
-                    <select style="width:92%;">                       
-                        <option>HTML5 y CSS3</option>
-                        <option>Cómo vender a un escéptico</option>
-                    </select>                    
+                    <label>Nombre</label>
+                    <input type="text" style="width:90%;">                  
                 </fieldset>                   
                 <fieldset style="text-align: center; height: 55%; padding: 3% 0 2% 0 ">
                     <input type="submit" value="Ver Reporte" class="alt_btn" />  
