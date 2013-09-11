@@ -17,7 +17,10 @@ def home(request):
 	return render_to_response('home.html',
 								{'events':Event.objects.all(),})#Filtrar los eventos destacados!!
 def crear_cuenta(request):
-	return render_to_response('create_account.html',
+	return redirect('uhome/')
+
+def uhome(request):
+	return render_to_response('local.html',
 								{'events':Event.objects.all(),})#Filtrar los eventos destacados!!
 # def event(request,event_id=1):
 # 	return render_to_response('event.html',
