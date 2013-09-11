@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-Class Usuario (models.Model):
+class Usuario (models.Model):
 	idusuario = models.AutoField(primary_key=True)
 	apepat = models.CharField(max_length=30) 
 	apemat = models.CharField(max_length=30) 
