@@ -8,14 +8,14 @@ urlpatterns= patterns('',
 	url(r'^newev/$','cms.views.crear_evento'),
 	url(r'^contact/$','cms.views.contact'),
 
-	url(r'^interact/$','cms.views.interacc'),
+	url(r'^interact/(?P<event_id>\d+)/$','cms.views.interacc'),
 	url(r'^eventosh/$','cms.views.mis_eventos'),
 	url(r'^serv/$','cms.views.servicio'),
 	
 	url(r'^login/$','cms.views.login'),
 	url(r'^entradas/$','cms.views.mis_entradas'),
 	url(r'^comprar/$','cms.views.comprar'),
-	url(r'^get/(?P<event_ido>\d+)/$','cms.views.event'),
+	url(r'^get/(?P<event_id>\d+)/$','cms.views.event'),
 
 	#url(r'^language/(?P<language>[a-z\-]+)/$','event.views.language'),
 )

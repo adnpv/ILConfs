@@ -17,6 +17,7 @@ def home(request):
 	return render_to_response('home.html',
 								{'events':Event.objects.all(),})#Filtrar los eventos destacados!!
 def crear_cuenta(request):
+
 	return redirect('/home/uhome')
 
 
@@ -37,9 +38,11 @@ def contact(request):
 	return render_to_response('contact.html',
 								{'events':Event.objects.all(),})#logica para el funcionamiento, ingreso y obtencion de datos
 
-def interacc(request):
+def interacc(request,event_id=1):
 	return render_to_response('Interactiv_module.html',
-								{'events':Event.objects.all(),})#logica para el funcionamiento, ingreso y obtencion de datos
+								{'event':Event.objects.get(id=event_id),})#logica para el funcionamiento, ingreso y obtencion de datos
+
+
 
 def mis_eventos(request):
 	return render_to_response('mis_eventos.html',
