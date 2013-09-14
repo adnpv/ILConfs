@@ -773,6 +773,10 @@ float: right;
 margin-right: 3%;
 padding: 5px 0;
 }
+.submit_link2 {
+float: right;
+margin-right: 3%;
+}
 
 .submit_link select {
 width: 150px;
