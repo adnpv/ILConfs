@@ -116,7 +116,8 @@ WSGI_APPLICATION = 'ILConfs.wsgi.application'
 
 TEMPLATE_DIRS = (
     os.path.join(SITE_ROOT, 'templates'),
-    os.path.join(SITE_ROOT, 'event')+'/templates',
+    os.path.join(SITE_ROOT, 'templates')+'/event',
+    os.path.join(SITE_ROOT, 'templates')+'/cms',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -133,8 +134,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',#mo1admin
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',#mo1admin
-    'event',
-    'cms',
+    'djangoapps.event',
+    'djangoapps.cms',
 )
 
 # A sample logging configuration. The only tangible logging
