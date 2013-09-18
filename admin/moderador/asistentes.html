@@ -48,7 +48,7 @@
         <header id="header">
             <hgroup>
                 <h1 class="site_title"><a href="index.html">Moderador</a></h1>
-                <h2 class="section_title">Participantes</h2>
+                <h2 class="section_title">Asistentes</h2>
             </hgroup>
         </header> <!-- end of header bar -->
 
@@ -74,7 +74,7 @@
         <h3>Eventos</h3>            
             <ul class="toggle">  
                 <li class="icn_categories"><a href="index.html">Lista de eventos</a></li> 
-                <li class="icn_categories"><a href="participantes.html">Participantes</a></li> 
+                <li class="icn_categories"><a href="participantes.html">Asistentes</a></li> 
             </ul>
             
              <h3>Preguntas</h3>
@@ -100,10 +100,10 @@
             <header><br />
            <h3 class="tabs_involved">HTML5 y CSS3</h3>  
             </header>
-        <article class="module width_3_quarter">
+        <article class="module width_full">
         <header>
         <div class="submit_link" style="float: left; padding: 2px auto;">
-            <h3 class="tabs_involved">Participantes</h3>
+            <h3 class="tabs_involved">Asistentes</h3>
         </div>              
          <div class="submit_link2">
             <form class="post_message"> 
@@ -120,9 +120,10 @@
                 <table class="tablesorter" cellspacing="0"> 
                     <thead> 
                         <tr>  
-                            <th>Codigo</th>  
+                            <th>Código</th>  
                             <th>Apellidos</th> 
-                            <th>Nombres</th>                            
+                            <th>Nombres</th>  
+                            <th>Estado</th>  
                             <th>Acciones</th>
                         </tr> 
                     </thead> 
@@ -130,31 +131,36 @@
                         <tr>  
                             <td>3543</td> 
                             <td>Lorem Ipsum </td>                             
-                            <td>Dolor Sit Amet</td>                           
+                            <td>Dolor Sit Amet</td>
+                            <td>Habilitado</td>  
                             <td><input type="image" src="../static/images/prohibido.jpg" title="Bloquear" width="17" height="17"/></td>
                         </tr> 
                         <tr>                             
                             <td>3544</td> 
                             <td>Delgado Rosas</td>                             
-                            <td>Maria Silva</td>                         
+                            <td>Maria Silva</td>  
+                            <td>Deshabilitado</td>  
                             <td><input type="image" src="../static/images/activar.gif" title="Activar"/></td> 
                         </tr>
                         <tr>                             
                             <td>3545</td> 
                             <td>Moran Roman</td>                             
-                            <td>Sandro Dario</td>                             
+                            <td>Sandro Dario</td>     
+                            <td>Habilitado</td>  
                             <td><input type="image" src="../static/images/prohibido.jpg" title="Bloquear" width="17" height="17"/></td>
                         </tr> 
                         <tr>                             
                             <td>3546</td> 
                             <td>Campos Coronado</td>                             
-                            <td>Fernando Arturo</td>                            
+                            <td>Fernando Arturo</td>    
+                            <td>Desabilitado</td>  
                             <td><input type="image" src="../static/images/activar.gif" title="Activar"/></td> 
                         </tr> 
                         <tr>                             
                             <td>3547</td> 
                             <td>Alva Moreno</td>                             
-                            <td>Gina Valeria</td>                             
+                            <td>Gina Valeria</td>       
+                            <td>Habilitado</td>  
                             <td><input type="image" src="../static/images/prohibido.jpg" title="Bloquear" width="17" height="17"/></td>
                         </tr> 
                     </tbody> 
@@ -245,47 +251,7 @@
             </div><!-- end of #tab2 -->			
         </div><!-- end of .tab_container -->		
     </article><!-- end of content manager article -->
-    
-    <article class="module width_quarter">
-        <header>
-            <h3>Conectados (28)</h3>
-        </header>
-        <div class="message_list">
-            <div class="module_content">
-                <div class="message">
-                    <p>Angela Muñoz</p>                    
-                </div>
-                <div class="message">
-                    <p>Patricia Aldana</p>                    
-                </div>
-                <div class="message">
-                    <p>Enrique Arias</p>                    
-                </div>    
-                <div class="message">
-                    <p>Nombre Apellido</p>                    
-                </div>
-                <div class="message">
-                    <p>Rolf Cortes</p>                    
-                </div>
-                <div class="message">
-                    <p>Adrian Peralta</p>                    
-                </div>    
-                <div class="message">
-                    <p>Nombre2 Apellido2</p>                    
-                </div>
-                <div class="message">
-                    <p>Nombre2 Apellido2</p>                    
-                </div>
-            </div>
-        </div>
-        <footer>
-           <form class="post_message">
-                <input type="text" value="Message" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
-                <input type="submit" class="btn_post_message" value="Buscar"/>
-	   </form>
-        </footer>
-    </article><!-- end of messages article -->
-        <div class="spacer"></div>
+    <div class="spacer"></div>
         </section>   
     </body>
 </html>
