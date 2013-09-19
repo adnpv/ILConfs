@@ -71,29 +71,31 @@
             </form>-->
             <hr/>
             
-            <h3>Eventos</h3>            
+           <h3>Eventos</h3>            
             <ul class="toggle">  
-                <li class="icn_categories"><a href="index.html">Lista de eventos</a></li> 
+                <li class="icn_categories"><a href="index.html">Lista de eventos</a></li>         
                 <li class="icn_categories"><a href="asistentes.html">Asistentes</a></li> 
             </ul>
-      
-             <h3>Preguntas</h3>
-            <ul class="toggle">                
+          
+           <h3>Preguntas</h3>
+            <ul class="toggle">                   
+                <li class="icn_new_article"><a href="crearpregunta.html">Crear preguntas</a></li>                       
+                <li class="icn_new_article"><a href="activarpregunta.html">Activar ronda de preguntas</a></li>     
                 <li class="icn_categories"><a href="listarpreguntas.html">Preguntas del expositor</a></li>               
                 <li class="icn_categories"><a href="listarpreguntasdelpublico.html">Preguntas del público</a></li>               
-            </ul> 
+            </ul>          
                        
-            <h3>Encuesta</h3>            
+          <h3>Encuesta</h3>            
             <ul class="toggle">  
                 <li class="icn_new_article"><a href="encuesta.html">Encuesta</a></li>        
             </ul>
-                  
+          
             <h3>Cuenta</h3>
             <ul class="toggle">
                 <li class="icn_profile"><a href="actualizarusuario.html">Actualizar usuario</a></li>
                 <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
             </ul>
-
+            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </aside><!-- end of sidebar -->
 
         <section id="main" class="column">
@@ -101,7 +103,7 @@
                  <h3 class="tabs_involved">HTML5 y CSS3</h3>  
             </header>
 	 
-        <article class="module width_3_quarter">
+        <article class="module width_full">
         <header>
             <div class="submit_link" style="float: left; padding: 2px auto;">
             <h3 class="tabs_involved">Preguntas</h3>
@@ -122,7 +124,9 @@
                     <thead> 
                         <tr>  
                             <th>Código</th>  
-                            <th>Nombre</th>  
+                            <th>Pregunta</th> 
+                            <th>Autor</th>
+                            <th>Estado</th>
                             <th>Acciones</th>  
                         </tr> 
                     </thead> 
@@ -130,73 +134,46 @@
                         <tr>  
                             <td>3543</td> 
                             <td>Lorem Ipsum </td>  
+                            <td>Rodrigo Rodriguez</td>  
+                            <td>No respondida</td>
                             <td><input type="image" src="../static/images/activar.gif" title="Enviar al expositor"/></td> 
                         </tr> 
                         <tr>                             
                             <td>3544</td> 
-                            <td>Bla bla bla</td>                                                                               
+                            <td>Bla bla bla</td> 
+                            <td>Ruben Hurtado</td> 
+                            <td>No respondida</td>
                             <td><input type="image" src="../static/images/activar.gif" title="Enviar al expositor"/></td> 
                         </tr>
                         <tr>                             
                             <td>3545</td> 
-                            <td>Moran Roman</td>                                                                                  
+                            <td>Moran Roman</td>      
+                            <td>Humberto Lopez</td>  
+                            <td>No respondida</td>
                             <td><input type="image" src="../static/images/activar.gif" title="Enviar al expositor"/></td> 
                         </tr> 
                         <tr>                             
                             <td>3546</td> 
-                            <td>¿Esta de acuerdo con la convocatoria de Vargas?</td>                                                                                    
+                            <td>¿Esta de acuerdo con la convocatoria de Vargas?</td> 
+                            <td>Juan Perez</td>  
+                            <td>No respondida</td>
                             <td><input type="image" src="../static/images/activar.gif" title="Enviar al expositor"/></td> 
                         </tr> 
                         <tr>                             
                             <td>3547</td> 
-                            <td>¿Cree que se puede ganar a Uruguay?</td>                                                                                     
+                            <td>¿Cree que se puede ganar a Uruguay?</td>  
+                            <td>Hernan Hernandez</td>  
+                            <td>No respondida</td>
                             <td><input type="image" src="../static/images/activar.gif" title="Enviar al expositor"/></td> 
                         </tr> 
                     </tbody> 
                 </table>
             </div><!-- end of #tab1 -->	
-        </div><!-- end of .tab_container -->		
-    </article><!-- end of content manager article -->
-    
-    <article class="module width_quarter">
-        <header>
-            <h3>Conectados (28)</h3>
-        </header>
-        <div class="message_list">
-            <div class="module_content">
-                <div class="message">
-                    <p>Angela Muñoz</p>                    
-                </div>
-                <div class="message">
-                    <p>Patricia Aldana</p>                    
-                </div>
-                <div class="message">
-                    <p>Enrique Arias</p>                    
-                </div>    
-                <div class="message">
-                    <p>Nombre Apellido</p>                    
-                </div>
-                <div class="message">
-                    <p>Rolf Cortes</p>                    
-                </div>
-                <div class="message">
-                    <p>Adrian Peralta</p>                    
-                </div>    
-                <div class="message">
-                    <p>Nombre2 Apellido2</p>                    
-                </div>
-                <div class="message">
-                    <p>Nombre2 Apellido2</p>                    
-                </div>
-            </div>
-        </div>
+        </div><!-- end of .tab_container -->	
         <footer>
-           <form class="post_message">
-                <input type="text" value="Message" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
-                <input type="submit" class="btn_post_message" value="Buscar"/>
-	   </form>
+            
         </footer>
-    </article><!-- end of messages article -->
+    </article><!-- end of content manager article -->   
         <div class="spacer"></div>
         </section>   
     </body>
