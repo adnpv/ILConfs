@@ -10,7 +10,7 @@ from django.shortcuts import render_to_response
 #from django.views.generic.base import TemplateView # sabe como mostrar un template.
 
 
-from djangoapps.event.models import Event
+from djangoapps.event.models import Event, Topic
 from django.shortcuts import redirect
 
 def home(request):

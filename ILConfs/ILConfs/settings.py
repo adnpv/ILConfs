@@ -118,6 +118,9 @@ TEMPLATE_DIRS = (
     os.path.join(SITE_ROOT, 'templates'),
     os.path.join(SITE_ROOT, 'templates')+'/event',
     os.path.join(SITE_ROOT, 'templates')+'/cms',
+    os.path.join(SITE_ROOT, 'templates')+'/admn',
+    os.path.join(SITE_ROOT, 'templates')+'/modera',
+    os.path.join(SITE_ROOT, 'templates')+'/inev',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -136,6 +139,10 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',#mo1admin
     'djangoapps.event',
     'djangoapps.cms',
+    'djangoapps.admn',
+    'djangoapps.moderat',
+    'djangoapps.inev',
+    'south',
 )
 
 # A sample logging configuration. The only tangible logging
