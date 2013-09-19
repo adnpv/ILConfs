@@ -39,14 +39,14 @@
 				<div class="panel-body">
 				<!-- TABS CONTROLS -->
 					<ul id="myTab" class="nav nav-tabs nav-justified">
-						<li class="active"><a href="#home" data-toggle="tab"><i class="icon-info-sign"></i> DESCRIPTION TAB 1</a></li>
-						<li ><a href="#profile" data-toggle="tab"><i class="icon-info-sign"></i> DESCRIPTION TAB 2</a></li>
+						<li class="active"><a href="#home" data-toggle="tab"><i class="icon-info-sign"></i>Información del evento</a></li>
+						<!--<li ><a href="#profile" data-toggle="tab"><i class="icon-info-sign"></i> DESCRIPTION TAB 2</a></li>-->
 					</ul>
 					<!-- /TABS CONTROLS -->
 						<!-- PANES -->
 						<div id="myTabContent" class="tab-content">
 							<div class="tab-pane fade in active" id="home">
-								<p>{{event.description}}. Some text description lorem ipsum dolor sit amet. Some text description lorem ipsum dolor sit amet. Some text description lorem ipsum dolor sit amet. Some text description lorem ipsum dolor sit amet. Some text description lorem ipsum dolor sit amet. Some text description lorem ipsum dolor sit amet. </p>
+								<p>{{event.description}}. Este evento se llevó a cabo en las instalaciones del Swiss Hotel , el 15 de Agosto del 2013</p>
 							</div>
 							<div class="tab-pane fade widget-tags " id="profile">
 								<p>{{event.description}}. Some text description lorem ipsum dolor sit amet. Some text description lorem ipsum dolor sit amet. Some text description lorem ipsum dolor sit amet. Some text description lorem ipsum dolor sit amet. Some text description lorem ipsum dolor sit amet. Some text description lorem ipsum dolor sit amet.  </p>
@@ -66,24 +66,27 @@
 	<div class="col-sm-12 col-lg-5">
         <h2>Entrada</h2>
 		<hr>
-		  
-		<p class="lead">La entrada Posee un costo de n Soles</p>
-		
-		<p class="">Cantidad:
-			<select>
-  				<option value="0">0</option>
-  				<option value="1">1</option>
-  				<option value="2">2</option>
-  				<option value="3">3</option>
-  				<option value="4">4</option>
-  				<option value="5">5</option>
-  				<option value="6">6</option>
-  				<option value="7">7</option>
-  				<option value="8">8</option>
-  				<option value="9">9</option>
-  				<option value="10">10</option>
- 			</select>
-		</p>
+		<form role="form"> 
+			<p class="lead">La entrada Posee un costo de n Soles</p>
+			
+			<div class="form-group">
+				<p class="">Cantidad:
+					<select class="form-control">
+		  				<option value="0">0</option>
+		  				<option value="1">1</option>
+		  				<option value="2">2</option>
+		  				<option value="3">3</option>
+		  				<option value="4">4</option>
+		  				<option value="5">5</option>
+		  				<option value="6">6</option>
+		  				<option value="7">7</option>
+		  				<option value="8">8</option>
+		  				<option value="9">9</option>
+		  				<option value="10">10</option>
+		 			</select>
+				</p>
+			</div>
+		</form>
 		<hr>
 		<p class=""><a class="btn btn-block btn-lg btn-warning" href="modal_content_name" data-toggle="modal"> Comprar! </a></p>
 		  
@@ -115,7 +118,7 @@
 				</ul>
 			</li>
 			
-		    <li class="active"><a href="#top-section">Temas</a></li>
+		    <!--<li class="active"><a href="#top-section">Temas</a></li>-->
 			<li><a href="#Section-1">Horario</a></li>
 			<li><a href="#Section-2">Busqueda</a></li> 
 		</ul>
@@ -128,8 +131,8 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">Tema 1 <span class="text-muted">It'll blow your mind.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <h2 class="featurette-heading">Tema 1 <span class="text-muted">Criptografía</span></h2>
+          <p class="lead">La aparición de la Informática y el uso masivo de las comunicaciones digitales han producido un número creciente de problemas de seguridad. Las transacciones que se realizan a través de la red pueden ser interceptadas. La seguridad de esta información debe garantizarse.</p>
         </div>
         <div class="col-md-5">
           <!--<img class="featurette-image img-responsive" src="data:image/png;base64," data-src="holder.js/500x500/auto" alt="Generic placeholder image">-->
@@ -145,8 +148,8 @@
           <img class="featurette-image img-responsive" src="data:image/png;base64," data-src="holder.js/500x500/auto" alt="Generic placeholder image">
         </div>
         <div class="col-md-7">
-          <h2 class="featurette-heading">Expositor <span class="text-muted">See for yourself.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <h2 class="featurette-heading">Expositor <span class="text-muted">Juan Pérez</span></h2>
+          <p class="lead">Expositor reconocido donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
         </div>
       </div>
 

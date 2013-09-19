@@ -75,4 +75,3 @@ def event(request,event_id=1):
 	return render_to_response('event.html',
 								{'event':Event.objects.get(id=event_id),})
 
-
