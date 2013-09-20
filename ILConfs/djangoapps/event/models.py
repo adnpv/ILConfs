@@ -16,7 +16,8 @@ class Event(models.Model):
 
 	def json(self):
 		return {
-			'name':self.name
+			'name':self.name,
+			'desc':self.description
 		}
 
 	'''class Meta:
