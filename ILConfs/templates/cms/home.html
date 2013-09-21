@@ -68,7 +68,8 @@
 
 <div class="container sub">
 	<!-- Example row of columns -->
-	<div class="row">
+
+	<div class="col-xs-6 col-md-9">
 	{% if events.count > 0 %}
 		{% for event in events %}
 		
@@ -84,8 +85,6 @@
 						</p>
 				  </div>
 
-<div class="fb-like-box " data-href="https://www.facebook.com/pietreal" data-width="292" data-show-faces="false" data-header="false" data-stream="true" data-show-border="true"></div>
-
 		        </div>
 			
 		<!-- CONTAINER-->
@@ -95,7 +94,11 @@
 	{% endif %}
 
 	</div>
-	
+
+	<div class="col-xs-6 col-md-3 ">
+	<div class="fb-like-box" data-href="https://www.facebook.com/pietreal" data-width="292" data-show-faces="false" data-header="false" data-stream="true" data-show-border="true"></div>
+
+	</div>
 </div>
 
 {% endblock %}

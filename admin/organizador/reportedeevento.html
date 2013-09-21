@@ -47,7 +47,7 @@
     <body>
         <header id="header">
             <hgroup>
-                <h1 class="site_title"><a href="index.html">Organizador</a></h1>
+                <h1 class="site_title"><a href="index.html">PIT Real</a></h1>
                 <h2 class="section_title">Reporte de eventos</h2>
             </hgroup>
         </header> <!-- end of header bar -->
@@ -71,37 +71,28 @@
                 <input type="text" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
             </form>-->
             <hr/>
-            <h3>Eventos</h3>
+             <h3>Eventos</h3>
             <ul class="toggle">
-                <li class="icn_new_article"><a href="#">Finanzas</a></li>               	
-                <li class="icn_categories"><a href="reportedeevento.html">Ver reporte de eventos</a></li>
-            </ul>    
-
+                <li class="icn_new_article"><a href="crearevento.html">Crear evento</a></li>                
+                <li class="icn_categories"><a href="index.html">Eventos próximos</a></li>
+                <li class="icn_categories"><a href="listareventos.html">Eventos pasados</a></li>
+            </ul> 
+           
             <h3>Cuenta</h3>
             <ul class="toggle">
                 <li class="icn_profile"><a href="actualizarperfil.html">Actualizar perfil</a></li>
                 <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
             </ul>
-
+            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </aside><!-- end of sidebar -->
         <section id="main" class="column">
+            <br />
+            <header><h3>HTML5 y CSS3</h3></header>
             <article class="module width_full">
             <header>
-                <h3>Datos</h3>
+                <h3>Reporte</h3>
             </header>
-            <div class="module_content">
-                <fieldset style="width:48%; float:left; margin-right: 3%; margin-top: 2px;"> <!-- to make two field float next to one another, adjust values accordingly -->
-                    <label>Evento</label>
-                    <select style="width:92%;">                       
-                        <option>HTML5 y CSS3</option>
-                        <option>Cómo vender a un escéptico</option>
-                    </select>                    
-                </fieldset>                   
-                <fieldset style="text-align: center; height: 55%; padding: 3% 0 2% 0 ">
-                    <input type="submit" value="Ver Reporte" class="alt_btn" />  
-                </fieldset>
-                <div class="clear"></div>
-              
+            <div class="module_content">             
                 <fieldset>
                     <label>Reporte</label>
                     <div id="graficos">
@@ -120,149 +111,98 @@
                 <div class="clear"></div>
             </div>
             <footer>
-               
+               <div class="submit_link" style="height:52px; padding: 3px 410px;">
+                 <a class="regresar" href="listareventos.html"></a>  
+               </div>
             </footer>
             </article><!-- end of post new article -->
             
-        <article class="module width_3_quarter">
-        <header>
-            <h3 class="tabs_involved">Contenidos</h3>
-            <ul class="tabs">
-                <li><a href="#tab1">Preguntas</a></li>
-                <li><a href="#tab2">Comentarios</a></li>
-            </ul>
-        </header>
-
-        <div class="tab_container">
-            <div id="tab1" class="tab_content">
-                <table class="tablesorter" cellspacing="0"> 
-                    <thead> 
-                        <tr> 
-                        <th></th> 
-                        <th>Pregunta</th> 
-                        <th>Evento</th> 
-                        <th>Fecha</th> 
-                        <th>Acciones</th> 
-                        </tr> 
-                    </thead> 
-                    <tbody> 
-                        <tr> 
-                            <td><input type="checkbox"></td> 
-                            <td>Lorem Ipsum Dolor Sit Amet</td> 
-                            <td>Articles</td> 
-                            <td>5th April 2011</td> 
-                            <td><input type="image" src="../static/images/icn_edit.png" title="Edit"/><input type="image" src="../static/images/icn_trash.png" title="Trash"/></td> 
-                        </tr> 
-                        <tr> 
-                            <td><input type="checkbox"></td> 
-                            <td>Ipsum Lorem Dolor Sit Amet</td> 
-                            <td>Freebies</td> 
-                            <td>6th April 2011</td> 
-                            <td><input type="image" src="../static/images/icn_edit.png" title="Edit"><input type="image" src="../static/images/icn_trash.png" title="Trash"></td> 
-                        </tr>
-                        <tr> 
-                            <td><input type="checkbox"></td> 
-                            <td>Sit Amet Dolor Ipsum</td> 
-                            <td>Tutorials</td> 
-                            <td>10th April 2011</td> 
-                            <td><input type="image" src="../static/images/icn_edit.png" title="Edit"><input type="image" src="../static/images/icn_trash.png" title="Trash"></td> 
-                        </tr> 
-                        <tr> 
-                            <td><input type="checkbox"></td> 
-                            <td>Dolor Lorem Amet</td> 
-                            <td>Articles</td> 
-                            <td>16th April 2011</td> 
-                            <td><input type="image" src="../static/images/icn_edit.png" title="Edit"><input type="image" src="../static/images/icn_trash.png" title="Trash"></td> 
-                        </tr>
-                        <tr> 
-                            <td><input type="checkbox"></td> 
-                            <td>Dolor Lorem Amet</td> 
-                            <td>Articles</td> 
-                            <td>16th April 2011</td> 
-                            <td><input type="image" src="../static/images/icn_edit.png" title="Edit"><input type="image" src="../static/images/icn_trash.png" title="Trash"></td> 
-                        </tr>  
-                    </tbody> 
-                </table>
-            </div><!-- end of #tab1 -->
-
-            <div id="tab2" class="tab_content">
-                <table class="tablesorter" cellspacing="0"> 
-                    <thead> 
-                        <tr> 
-                            <th></th> 
-                            <th>Comentario</th> 
-                            <th>Autor</th> 
-                            <th>Fecha</th> 
-                            <th>Acciones</th> 
-                        </tr> 
-                    </thead> 
-                    <tbody> 
-                        <tr> 
-                            <td><input type="checkbox"></td> 
-                            <td>Lorem Ipsum Dolor Sit Amet</td> 
-                            <td>Mark Corrigan</td> 
-                            <td>5th April 2011</td> 
-                            <td><input type="image" src="images/icn_trash.png" title="Trash" /></td> 
-                        </tr> 
-                        <tr> 
-                            <td><input type="checkbox"></td> 
-                            <td>Ipsum Lorem Dolor Sit Amet</td> 
-                            <td>Jeremy Usbourne</td> 
-                            <td>6th April 2011</td> 
-                            <td><input type="image" src="images/icn_trash.png" title="Trash" /></td> 
-                        </tr>
-                        <tr> 
-                            <td><input type="checkbox"></td> 
-                            <td>Sit Amet Dolor Ipsum</td> 
-                            <td>Super Hans</td> 
-                            <td>10th April 2011</td> 
-                            <td><input type="image" src="images/icn_trash.png" title="Trash" /></td> 
-                        </tr> 
-                        <tr> 
-                            <td><input type="checkbox"></td> 
-                            <td>Dolor Lorem Amet</td> 
-                            <td>Alan Johnson</td> 
-                            <td>16th April 2011</td> 
-                            <td><input type="image" src="images/icn_trash.png" title="Trash"/></td> 
-                        </tr> 
-                        <tr> 
-                            <td><input type="checkbox"></td> 
-                            <td>Dolor Lorem Amet</td> 
-                            <td>Dobby</td> 
-                            <td>16th April 2011</td> 
-                            <td><input type="image" src="images/icn_trash.png" title="Trash"/></td> 
-                        </tr> 
-                    </tbody> 
-                </table>
-            </div><!-- end of #tab2 -->			
-        </div><!-- end of .tab_container -->		
-    </article><!-- end of content manager article -->
-
-    <article class="module width_quarter">
-        <header>
-            <h3>Cifras</h3>
-        </header>
-        <div class="message_list">
-            <div class="module_content">
-                <div class="message">
-                    <p><strong>Nro. de asistentes</strong></p>
-                    <p>94</p>                    
-                </div>
-                <div class="message">
-                    <p><strong>Nro. de entradas vendidas</strong></p>
-                    <p>100</p>                    
-                </div>
-                <div class="message">
-                    <p><strong>Recaudación</strong></p>
-                    <p>S/. 1932.00</p>                    
-                </div>                
-            </div>
-        </div>
-        <footer>
-           
-        </footer>
-    </article><!-- end of messages article -->
-    <div class="clear"></div>        
+            <article class="module width_full">
+                <header>                      
+                    <h3>Preguntas de los participantes</h3>                   
+                </header>
+                <div class="tab_container" style="margin: 0 auto;">
+                    <div id="tab1" class="tab_content">
+                        <table class="tablesorter" cellspacing="0"> 
+                            <thead> 
+                                <tr>  
+                                    <th>Código</th>  
+                                    <th>Pregunta</th> 
+                                    <th>Autor</th>
+                                    <th>Acciones</th>  
+                                </tr> 
+                            </thead> 
+                            <tbody> 
+                                <tr>  
+                                    <td>3543</td> 
+                                    <td>¿Qué navegador utiliza?</td>  
+                                    <td>Rodrigo Rodríguez</td>                                    
+                                    <td><form action="estadisticasdepregunta.html"><input type="image" src="../static/images/icono-estadísticas.jpg" title="Estadísticas"/></form></td> 
+                                </tr> 
+                                <tr>                             
+                                    <td>3544</td> 
+                                    <td>Bla bla bla</td> 
+                                    <td>Rubén Hurtado</td>                                     
+                                    <td><form action="estadisticasdepregunta.html"><input type="image" src="../static/images/icono-estadísticas.jpg" title="Estadísticas"/></form></td> 
+                                </tr>
+                                <tr>                             
+                                    <td>3545</td> 
+                                    <td>Moran Roman</td>      
+                                    <td>Humberto López</td>                                     
+                                    <td><form action="estadisticasdepregunta.html"><input type="image" src="../static/images/icono-estadísticas.jpg" title="Estadísticas"/></form></td> 
+                                </tr> 
+                                <tr>                             
+                                    <td>3546</td> 
+                                    <td>¿Esta de acuerdo con la convocatoria de Vargas?</td> 
+                                    <td>Juan Pérez</td>                                     
+                                    <td><form action="estadisticasdepregunta.html"><input type="image" src="../static/images/icono-estadísticas.jpg" title="Estadísticas"/></form></td> 
+                                </tr> 
+                                <tr>                             
+                                    <td>3547</td> 
+                                    <td>¿Cree que se puede ganar a Uruguay?</td>  
+                                    <td>Hernan Hernández</td>                                      
+                                    <td><form action="estadisticasdepregunta.html"><input type="image" src="../static/images/icono-estadísticas.jpg" title="Estadísticas"/></form></td> 
+                                </tr> 
+                            </tbody> 
+                        </table>
+                    </div><!-- end of #tab1 -->	
+                </div><!-- end of .tab_container -->	
+                <footer>
+                    <div class="submit_link" style="height:52px; padding: 3px 410px;">
+                        <a class="regresar" href="listareventos.html"></a>  
+                      </div>
+                </footer>
+            </article><!-- end of content manager article -->      
+            <article class="module width_full">
+                <header>                        
+                    <h3>Encuesta</h3>                     
+                </header>
+                <div class="tab_container" style="margin: 0 auto;">
+                    <div id="tab1">
+                        <table class="tablesorter" cellspacing="0"> 
+                            <thead> 
+                                <tr>  
+                                    <th>Código</th>  
+                                    <th>Encuesta</th>                               
+                                    <th>Acciones</th>  
+                                </tr> 
+                            </thead> 
+                            <tbody> 
+                                <tr>  
+                                    <td>3543</td> 
+                                    <td>¿Qué tal le pareció el evento?</td>                                                                        
+                                    <td><form action="estadisticasdeencuesta.html"><input type="image" src="../static/images/icono-estadísticas.jpg" title="Estadísticas"/></form></td> 
+                                </tr>                                 
+                            </tbody> 
+                        </table>
+                    </div><!-- end of #tab1 -->	
+                </div><!-- end of .tab_container -->	
+                <footer>
+                    <div class="submit_link" style="height:52px; padding: 3px 410px;">
+                        <a class="regresar" href="listareventos.html"></a>  
+                      </div>
+                </footer>
+            </article><!-- end of content manager article -->      
             
             <div class="spacer"></div>
         </section>
