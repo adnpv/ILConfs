@@ -48,7 +48,7 @@
         <header id="header">
             <hgroup>
                 <h1 class="site_title"><a href="index.html">PIT Real</a></h1>
-                <h2 class="section_title">Preguntas del público</h2>
+                <h2 class="section_title">Alternativas</h2>
             </hgroup>
         </header> <!-- end of header bar -->
 
@@ -61,7 +61,7 @@
                 <article class="breadcrumbs">
                     <a href="index.html">PIT Real</a>
                     <div class="breadcrumb_divider"></div> 
-                    <a class="current">Lista de preguntas</a>
+                    <a class="current">Alternativas</a>
                 </article>
             </div>
         </section><!-- end of secondary bar -->
@@ -70,8 +70,7 @@
                 <input type="text" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
             </form>-->
             <hr/>
-            
-           <h3>Eventos</h3>            
+            <h3>Eventos</h3>            
             <ul class="toggle">  
                 <li class="icn_categories"><a href="index.html">Lista de eventos</a></li>         
                 <li class="icn_categories"><a href="asistentes.html">Asistentes</a></li> 
@@ -83,7 +82,7 @@
                 <li class="icn_new_article"><a href="activarpregunta.html">Activar ronda de preguntas</a></li>     
                 <li class="icn_categories"><a href="listarpreguntas.html">Preguntas del expositor</a></li>               
                 <li class="icn_categories"><a href="listarpreguntasdelpublico.html">Preguntas del público</a></li>               
-            </ul>          
+            </ul>       
                        
           <h3>Encuesta</h3>            
             <ul class="toggle">  
@@ -95,83 +94,58 @@
                 <li class="icn_profile"><a href="actualizarusuario.html">Actualizar usuario</a></li>
                 <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
             </ul>
-            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+               <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </aside><!-- end of sidebar -->
 
         <section id="main" class="column">
             <header><br>
-                 <h3 class="tabs_involved">HTML5 y CSS3</h3>  
+                 <h3 class="tabs_involved">HTML5 y CSS3 - ¿Le interesa crear paginas con HTML5?</h3>  
             </header>
 	 
         <article class="module width_full">
         <header>
             <div class="submit_link" style="float: left; padding: 2px auto;">
-            <h3 class="tabs_involved">Preguntas</h3>
-        </div>              
-         <div class="submit_link2">
-            <form class="post_message"> 
-                <ul id="ulrdbtn">                        
-                   <li><input type="text" style="width:90%;"></li>               
-                   <li><input type="submit" value="Buscar" class="alt_btn">  </li> 
-                </ul>  
-            </form>
-         </div>
-        </header>
-
+                <h3 class="tabs_involved">Alternativas</h3>
+            </div>  
+        </header> 
+        <div class="tab_container" style="margin: 0 auto;">
+            <div id="tab1" class="tab_content">
                 <table class="tablesorter" cellspacing="0"> 
                     <thead> 
                         <tr>  
                             <th>Código</th>  
-                            <th>Pregunta</th> 
-                            <th>Autor</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>  
+                            <th>Nombre</th>                    
                         </tr> 
                     </thead> 
                     <tbody> 
                         <tr>  
-                            <td>3543</td> 
-                            <td>Lorem Ipsum </td>  
-                            <td>Rodrigo Rodriguez</td>  
-                            <td>No respondida</td>
-                            <td><input type="image" src="../static/images/activar.gif" title="Enviar al expositor"/></td> 
+                            <td>1</td> 
+                            <td>Me interesa de sobremanera</td>                             
+                        </tr>                         
+                        <tr>                             
+                            <td>2</td> 
+                            <td>Moran Roman</td>                                             
                         </tr> 
                         <tr>                             
-                            <td>3544</td> 
-                            <td>Bla bla bla</td> 
-                            <td>Ruben Hurtado</td> 
-                            <td>No respondida</td>
-                            <td><input type="image" src="../static/images/activar.gif" title="Enviar al expositor"/></td> 
-                        </tr>
-                        <tr>                             
-                            <td>3545</td> 
-                            <td>Moran Roman</td>      
-                            <td>Humberto Lopez</td>  
-                            <td>No respondida</td>
-                            <td><input type="image" src="../static/images/activar.gif" title="Enviar al expositor"/></td> 
+                            <td>3</td> 
+                            <td>No</td>            
                         </tr> 
                         <tr>                             
-                            <td>3546</td> 
-                            <td>¿Esta de acuerdo con la convocatoria de Vargas?</td> 
-                            <td>Juan Perez</td>  
-                            <td>No respondida</td>
-                            <td><input type="image" src="../static/images/activar.gif" title="Enviar al expositor"/></td> 
-                        </tr> 
-                        <tr>                             
-                            <td>3547</td> 
-                            <td>¿Cree que se puede ganar a Uruguay?</td>  
-                            <td>Hernan Hernandez</td>  
-                            <td>No respondida</td>
-                            <td><input type="image" src="../static/images/activar.gif" title="Enviar al expositor"/></td> 
+                            <td>4</td> 
+                            <td>Quizás a futuro</td>              
                         </tr> 
                     </tbody> 
                 </table>
             </div><!-- end of #tab1 -->	
-        </div><!-- end of .tab_container -->	
+        </div><!-- end of .tab_container -->
         <footer>
-            
+           <div class="submit_link" style="padding: 3px 380px;">
+                <a class="regresar" href="listarpreguntas.html"></a>
+            </div>
         </footer>
-    </article><!-- end of content manager article -->   
+    </article><!-- end of content manager article -->
+    
+
         <div class="spacer"></div>
         </section>   
     </body>

@@ -2,7 +2,7 @@
 <html lang="es">
     <head>
         <meta charset="utf-8"/>
-        <title>Moderador</title>	
+        <title>Organizador</title>	
         <link rel="stylesheet" href="../static/css/layout.css" type="text/css" media="screen" />
         <!--[if lt IE 9]>
         <link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
@@ -48,20 +48,20 @@
         <header id="header">
             <hgroup>
                 <h1 class="site_title"><a href="index.html">PIT Real</a></h1>
-                <h2 class="section_title">Encuesta</h2>
+                <h2 class="section_title">Estadísticas de preguntas</h2>
             </hgroup>
         </header> <!-- end of header bar -->
 
         <section id="secondary_bar">
             <div class="user">
-                <p>Bienvenido moderador Adrián Peralta</p>
+                <p>Bienvenido organizador Adrián Peralta</p>
                 <!--<a class="logout_user" href="#" title="Logout">Logout</a>-->
             </div>
             <div class="breadcrumbs_container">
                 <article class="breadcrumbs">
-                    <a href="index.html">PIT Real</a>
+                    <a href="index.html">Panel de organizador</a>
                     <div class="breadcrumb_divider"></div> 
-                    <a class="current">Reporte de evento</a>
+                    <a class="current">Estadísticas de preguntas</a>
                 </article>
             </div>
         </section><!-- end of secondary bar -->
@@ -71,62 +71,62 @@
                 <input type="text" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
             </form>-->
             <hr/>
-          <h3>Eventos</h3>            
-            <ul class="toggle">  
-                <li class="icn_categories"><a href="index.html">Lista de eventos</a></li>         
-                <li class="icn_categories"><a href="asistentes.html">Asistentes</a></li> 
-            </ul>
-          
-           <h3>Preguntas</h3>
-            <ul class="toggle">                   
-                <li class="icn_new_article"><a href="crearpregunta.html">Crear preguntas</a></li>                       
-                <li class="icn_new_article"><a href="activarpregunta.html">Activar ronda de preguntas</a></li>     
-                <li class="icn_categories"><a href="listarpreguntas.html">Preguntas del expositor</a></li>               
-                <li class="icn_categories"><a href="listarpreguntasdelpublico.html">Preguntas del público</a></li>               
-            </ul>         
-                       
-          <h3>Encuesta</h3>            
-            <ul class="toggle">  
-                <li class="icn_new_article"><a href="encuesta.html">Encuesta</a></li>        
-            </ul>
-          
+             <h3>Eventos</h3>
+            <ul class="toggle">
+                <li class="icn_new_article"><a href="crearevento.html">Crear evento</a></li>                
+                <li class="icn_categories"><a href="index.html">Eventos próximos</a></li>
+                <li class="icn_categories"><a href="listareventos.html">Eventos pasados</a></li>
+            </ul> 
+           
             <h3>Cuenta</h3>
             <ul class="toggle">
-                <li class="icn_profile"><a href="actualizarusuario.html">Actualizar usuario</a></li>
+                <li class="icn_profile"><a href="actualizarperfil.html">Actualizar perfil</a></li>
                 <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
             </ul>
-            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
         </aside><!-- end of sidebar -->
         <section id="main" class="column">
-             <header><br />
-                <h3 class="tabs_involved">HTML5 y CSS3</h3>  
-            </header>
-            <article class="module width_full">
-            <header>
-                <h3>Encuesta</h3>
-            </header>
-            <div class="module_content">              
-                <h2>¿Cuál es su opinión del evento?</h2>
-                <ol>
-                    <li style="font-size: 16px">Excelente</li>
-                    <li style="font-size: 16px">Bueno</li>
-                    <li style="font-size: 16px">Regular</li>
-                    <li style="font-size: 16px">Malo</li>
-                    <li style="font-size: 16px">Pésimo</li>
-                </ol>            
-                <div class="clear"></div>
+            <br />
+            <header><h3>HTML5 y CSS3</h3></header>
+              <article class="module width_full">
+                    <header>
+                        <h3>&nbsp;&nbsp;&nbsp;Pregunta</h3>
+                    </header>
+                    <div class="module_content">             
+                        <article class="module width_half">
+                            <header>
+                                <h3>&nbsp;&nbsp;&nbsp;Resultado</h3>
+                            </header>
+                            <div class="module_content">                                                   
+                                <img src="../static/images/piechart1.png" width="400" height="210"/>
+                            </div>                    
+                        </article><!-- end of post new article -->
+                        <article class="module width_half">
+                            <header>
+                                <h3>&nbsp;&nbsp;&nbsp;Pregunta</h3>
+                            </header>
+                            <div class="module_content">             
+                                <fieldset>
+                                    <h1>¿Qué navegador utiliza?</h1>                                             
+                                          <h4>&nbsp;&nbsp; 1. Mobile</h4>   
+                                          <h4>&nbsp;&nbsp; 2. Internet Explorer</h4>
+                                          <h4>&nbsp;&nbsp; 3. Opera</h4>   
+                                          <h4>&nbsp;&nbsp; 4. Safari</h4>   
+                                          <h4>&nbsp;&nbsp; 5. Firefox</h4>
+                                          <h4>&nbsp;&nbsp; 6. Chrome</h4>        
+                                          <br />
+                                </fieldset>            
+                                <div class="clear"></div>
+                            </div>                    
+                        </article><!-- end of post new article -->
+                        <div class="clear"></div>
             </div>
-            <footer>                  
-               <div class="submit_link" style="padding: 5px 340px;">
-                   <ul id="ulrdbtn">                     
-                       <li><input type="submit" value="Activar" class="alt_btn"></li>
-                       <li>&nbsp;</li>                      
-                   </ul>                                  
-		</div>
+            <footer>
+               <div class="submit_link" style="height:52px; padding: 3px 410px;">
+                      <a class="regresar" href="reportedeevento.html"></a>  
+                    </div>
             </footer>
-            </article><!-- end of post new article -->
-            <div class="clear"></div>        
-            
+            </article><!-- end of post new article -->            
             <div class="spacer"></div>
         </section>
     </body>
