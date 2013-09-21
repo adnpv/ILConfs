@@ -62,3 +62,16 @@ def jsonevent(request):
 def jsonevent2(request):
     data = serializers.serialize("json", Event.objects.all().order_by('name'))
     return HttpResponse(data, mimetype='application/json')
+
+
+def crear_evento_pago(request):
+    return redirect('/events/pagar_creacion')
+
+
+def pagar_creacion(request):
+    return render_to_response('pago_evento.html',
+                                {'events':Event.objects.all(),})
+
+def evento_creado(request,event_id=1):
+    return render_to_response('evento_creado.html',
+                                {'events':Event.objects.get(id=event_id),})

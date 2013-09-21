@@ -1,28 +1,19 @@
 {% extends "base.html" %}
 {% load static %}
-<!--
-{# <html>
-<body>
-	<h1>Articles</h1> #}
--->
-
-{% block sidebar %}
+{%block sidebar%} 
 	<ul class="dropdown-menu">
 	  <li><a href="/all">Explorar</a></li>
 	  <li><a href="#">Evento Activo I.</a></li>
 	  <li><a href="#">Mis Entradas</a></li>
-	  <li><a href="#">Separated link</a></li>
-	  <li><a href="#">One more separated link</a></li>
 	</ul>
-{% endblock %}
-
+{% endblock%} 
 
 {% block topinfo %}
 <div class="jumbotron">
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<h1>Pago</h1>
+				<h1>Pago de evento</h1>
 			</div>
 		</div>
 	</div>
@@ -35,10 +26,10 @@
 			<div class="col-sm-12 col-lg-12">
 				<div class="panel">
 					<div class="panel-heading">
-						<h3><i class="icon-map-marker main-color"></i>Pago de ticket</h3>
+						<h3><i class="icon-map-marker main-color"></i>Datos de la tarjeta</h3>
 					</div>
 					<div class="panel-body">
-					 	<form class="">
+					 	<form class="" action="/events/evento_creado">
 							<fieldset>
 								<legend><!--<div class="form-group">-->
 								   	<label class="col-lg-2 control-label">Total a pagar</label>
@@ -47,6 +38,7 @@
 								    </div>
 								 <!--</div>--></legend>
 						 		<hr>
+						 
 								<div class="form-group">
 									<label class="control-label">Titular de la tarjeta</label>
 									<div class="controls">

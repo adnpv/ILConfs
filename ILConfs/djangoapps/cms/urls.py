@@ -18,4 +18,7 @@ urlpatterns= patterns('djangoapps.cms.views',
 	url(r'^get/(?P<event_id>\d+)/$','event'),
 
 	#url(r'^language/(?P<language>[a-z\-]+)/$','event.views.language'),
+
+	url(r'^evento_creado/(?P<event_id>\d+)/$','evento_creado'),
+
 )

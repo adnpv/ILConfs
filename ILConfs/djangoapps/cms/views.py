@@ -74,4 +74,7 @@ def events(request):
 def event(request,event_id=1):
 	return render_to_response('event.html',
 								{'event':Event.objects.get(id=event_id),})
+def evento_creado(request,event_id=1):
+	return render_to_response('evento_creado.html',
+								{'event':Event.objects.get(id=event_id),})
 

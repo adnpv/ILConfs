@@ -7,7 +7,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
 	(r'^', include('djangoapps.event.urls')),
 	(r'^/$', include('djangoapps.event.urls')),
-	(r'^events/$', include('djangoapps.event.urls')),
+	(r'^events/', include('djangoapps.event.urls')),
     (r'^home/', include('djangoapps.cms.urls')),
     (r'^json/', include('djangoapps.event.urls')),
     (r'^adm/', include('djangoapps.admn.urls')),
