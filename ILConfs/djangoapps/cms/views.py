@@ -64,8 +64,8 @@ def mis_entradas(request):
 	return render_to_response('mis_entradas.html',
 								{'events':Event.objects.all(),})#logica para el funcionamiento, ingreso y obtencion de datos
 def login(request):
-	return render_to_response('local.html',
-								{'events':Event.objects.all(),})#logica para el funcionamiento, ingreso y obtencion de datos
+	return render_to_response('login.html',
+								{})#logica para el funcionamiento, ingreso y obtencion de datos
 
 def events(request):
 	return render_to_response('events.html',

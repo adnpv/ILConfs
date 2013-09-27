@@ -5,8 +5,6 @@
 	  <li><a href="/all">Explorar</a></li>
 	  <li><a href="#">Evento Activo I.</a></li>
 	  <li><a href="#">Mis Entradas</a></li>
-	  <li><a href="#">Separated link</a></li>
-	  <li><a href="#">One more separated link</a></li>
 	</ul>
 {% endblock%} 
 
@@ -46,7 +44,7 @@
 						<!-- PANES -->
 						<div id="myTabContent" class="tab-content">
 							<div class="tab-pane fade in active" id="home">
-								<p>{{event.description}}.</p>
+								<p>{{event.description}}.La aparición de la Informática y el uso masivo de las comunicaciones digitales han producido un número creciente de problemas de seguridad. Las transacciones que se realizan a través de la red pueden ser interceptadas. La seguridad de esta información debe garantizarse</p>
 							</div>
 							<div class="tab-pane fade widget-tags " id="profile">
 								<p>{{event.description}}. Some text description lorem ipsum dolor sit amet. Some text description lorem ipsum dolor sit amet. Some text description lorem ipsum dolor sit amet. Some text description lorem ipsum dolor sit amet. Some text description lorem ipsum dolor sit amet. Some text description lorem ipsum dolor sit amet.  </p>
@@ -67,32 +65,24 @@
         <h2>Agregar usuarios</h2>
 		<hr>
 		<form role="form"> 
-			<p class="lead">Agregar expositor</p>
-			
 			<div class="form-group">
 				<p class="">
-					<label for="email">Nombre:</label><input class="form-control" type="text" name="email" value=""><br>
+					<label for="email">Usuario:</label><input class="form-control" type="text" name="email" value=""><br>
+					<label for="email">Mail:</label><input class="form-control" type="text" name="email" value=""><br>
+					<label for="email">Contraseña:</label><input class="form-control" type="text" name="email" value=""><br>
+					<label for="tipo" class="control-label">Tipo</label>
+									<div class="">
+										<select name="tipo" class="form-control">
+											<option value="">Seleccionar</option>
+									  		<option value="1">Expositor</option>
+									  		<option value="2">Moderador</option>
+										</select><br>
 				</p>
 			</div>
-			<p class=""><a class="btn btn-block btn-lg btn-warning" href="modal_content_name" data-toggle="modal"> Crear</a></p>
+			<p class=""><a class="btn btn-block btn-lg btn-warning" href="modal_content_name" data-toggle="modal">Agregar</a></p>
 		</form>
 		<hr>
-		<hr>
-		<form role="form"> 
-			<p class="lead">Agregar moderador</p>
-			
-			<div class="form-group">
-				<p class="">
-					<label for="email">Nombre:</label><input class="form-control" type="text" name="email" value=""><br>
-				</p>
-			</div>
-
-			<p class=""><a class="btn btn-block btn-lg btn-warning" href="modal_content_name" data-toggle="modal"> Crear</a></p>
-		</form>
 		
-		  
-		
-         
     </div>
 <!-- /RIGHT SIDE--> 
 <!-- .pager --><!--
