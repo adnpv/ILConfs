@@ -52,15 +52,19 @@
    
 <!-- RIGHT SIDE-->   
 	<div class="col-sm-12 col-lg-5">
-        <h2>Descarga de materiales</h2>
+        <h2>Subir materiales</h2>
 		<hr>
-		  	<div class="list-group">
-				<!--<a href="#" class="list-group-item active"><span class="badge">134</span></a>-->
-				<a href="#" class="list-group-item">Tema1.ppt</a>
-				<a href="#" class="list-group-item">Tema2.ppt</a>
-				<a href="#" class="list-group-item">Tema3.ppt</span></a>
-				<a href="#" class="list-group-item">Tema4.ppt</a>
-			</div>
+		  
+		<form id="ajax-contacts" action="/events/pagocrea/" class="">
+							<fieldset>
+								<div class="form-group">
+									<label for="name">Archivo</label><input class="form-control" type="file" name="name" value="">
+								</div>
+								<div class="form-group">
+									<label for="submit">&nbsp;</label><input class="btn btn-lg btn-info" type="submit" name="submit" value="Guardar">
+								</div>
+							<fieldset>
+						</form>
 		<hr>
 		  
 		

@@ -63,9 +63,9 @@ def comprar(request):
 def mis_entradas(request):
 	return render_to_response('mis_entradas.html',
 								{'events':Event.objects.all(),})#logica para el funcionamiento, ingreso y obtencion de datos
-def login(request):
+def login_(request):
 	return render_to_response('login.html',
-								{})#logica para el funcionamiento, ingreso y obtencion de datos
+								{'events':Event.objects.all(),})#logica para el funcionamiento, ingreso y obtencion de datos
 
 def events(request):
 	return render_to_response('events.html',
@@ -78,3 +78,6 @@ def evento_creado(request,event_id=1):
 	return render_to_response('evento_creado.html',
 								{'event':Event.objects.get(id=event_id),})
 
+def mi_cuenta_(request):
+	return render_to_response('mi_cuenta.html',
+								{'events':Event.objects.all(),})#logica para el funcionamiento, ingreso y obtencion de datos

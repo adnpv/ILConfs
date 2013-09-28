@@ -13,7 +13,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<h1>Contáctanos</h1>
+				<h1>Mi cuenta</h1>
 			</div>
 		</div>
 	</div>
@@ -26,21 +26,153 @@
 			<div class="col-sm-12 col-lg-12">
 				<div class="panel">
 					<div class="panel-heading">
-						<h3><i class="icon-map-marker main-color"></i> Ubicación</h3>
+						<h3><i class="icon-map-marker main-color"></i>Mis datos de contacto</h3>
 					</div>
 					<div class="panel-body">
-					  <!-- gMap script container !Do not remove!! -->
-							  <div id="map">
-							  	<a href="http://maps.google.com/maps?f=q&hl=en&q=-12.086146,-76.975767" target="_blank">
-									<img src="http://maps.google.com/maps/api/staticmap?center=-12.086146,-76.975767&zoom=15&size=610x250&maptype=roadmap&markers=color:red|color:red|label:C|-12.086146,-76.975767&sensor=false">
-								</a>
-							  </div>	 
-					  <!-- gMap script container !Do not remove!! -->
+						<form id="ajax-contacts" action="/events/pagocrea/" class="">
+							<fieldset>
+								<div class="form-group">
+									<label for="name">Nombres</label><input class="form-control" type="text" name="name" value="Patricia Vanessa">
+								</div>
+								<div class="form-group">
+									<label for="lugar">Apellido Paterno</label><input class="form-control" type="text" name="lugar" value="Aldana"><br>
+								</div>
+								<div class="form-group">
+									<label for="email">Apellido Materno</label><input class="form-control" type="text" name="email" value="Solano"><br>
+								</div>
+								<div class="form-group">
+									<label for="subject">DNI</label><input class="form-control" type="text" name="subject" value="46245467"><br>
+								</div>
+								<div class="form-group">
+									<label for="subject">Correo</label><input class="form-control" type="text" name="subject" value="patty@mail.com"><br>
+								</div>
+								<div class="form-group">
+									<label for="message">Dirección</label><input class="form-control" type="text" name="subject" value="Av. Las frutas 245"><br>
+								</div>
+								<div class="form-group">
+									<label for="message">Contraseña</label><input class="form-control" type="password" name="subject" value="12345"><br>
+								</div>
+								<div class="form-group">
+									<label for="submit">&nbsp;</label><input class="btn btn-lg btn-info" type="submit" name="submit" value="Guardar cambios">
+								</div>
+							<fieldset>
+						</form>
 					</div>
+					<!--<div class="panel-heading">
+						<h3><i class="icon-map-marker main-color"></i>Mi tarjeta</h3>
+					</div>
+					<div class="panel-body">
+						<form id="ajax-contacts" action="/events/pagocrea/" class="">
+							<fieldset>					 
+								<div class="form-group">
+									<label class="control-label">Titular de la tarjeta</label>
+									<div class="controls">
+										<input type="text" class="form-control" pattern="\w+ \w+.*" title="Fill your first and last name" required>
+									</div>
+								</div>
+						 
+								<div class="form-group row">
+									<label class="control-label col-lg-2">Número de tarjeta</label>
+											<div class="col-lg-2">
+												<input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="First four digits" required>
+											</div>
+											<div class="col-lg-2">
+												<input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Second four digits" required>
+											</div>
+											<div class="col-lg-2">
+												<input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Third four digits" required>
+											</div>
+											<div class="col-lg-2">
+												<input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Fourth four digits" required>
+											</div>
+								</div>
+						 
+								<div class="form-group row">
+		
+									<label for="dia_inicio" class="col-lg-2 control-label">Fecha de expiración</label>
+									<div class="col-lg-2">
+										<select name="dia_inicio" class="form-control">
+											<option value="">Día</option>
+									  		<option value="1">1</option>
+									  		<option value="2">2</option>
+									  		<option value="3">3</option>
+									  		<option value="4">4</option>
+									  		<option value="5">5</option>
+									  		<option value="6">6</option>
+									  		<option value="7">7</option>
+									  		<option value="8">8</option>
+									  		<option value="9">9</option>
+									  		<option value="10">10</option>
+									  		<option value="11">11</option>
+									  		<option>12</option>
+									  		<option>13</option>
+									  		<option>14</option>
+									  		<option>15</option>
+									  		<option>16</option>
+									  		<option>17</option>
+									  		<option>18</option>
+									  		<option>19</option>
+									  		<option>20</option>
+									  		<option>21</option>
+									  		<option>22</option>
+									  		<option>23</option>
+									  		<option>24</option>
+											<option>25</option>
+								  			<option>26</option>
+								  			<option>27</option>
+								  			<option>28</option>
+								  			<option>29</option>
+								  			<option>30</option>
+								  			<option>31</option>
+										</select>
+									</div>
+									<div class="col-lg-2">
+										<select class="form-control">
+											<option>Mes</option>
+					  						<option>Enero</option>
+					  						<option>Febrero</option>
+											<option>Marzo</option>
+				  							<option>Abril</option>
+				  							<option>Mayo</option>
+				  							<option>Junio</option>
+							  				<option>Julio</option>								  			 <option>Agosto</option>
+								  			<option>Setiembre</option>
+								  			<option>Octubre</option>
+								  			<option>Noviembre</option>
+								  			<option>Diciembre</option>
+										</select>
+									</div>
+									<div class="col-lg-2">
+										<select class="form-control">
+											<option>Año</option>
+							  				<option>2013</option>
+							  				<option>2014</option>
+							  				<option>2015</option>								  		     <option>2016</option>
+										</select>
+									</div>
+								</div>
+						 
+								<div class="from-group">
+									<label class="control-label">Card CVV</label>
+											<div class="form-group">
+												<input type="text" class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required>
+											</div>
+											<div class="span8">
+
+											</div>
+								</div>
+						 
+								<div class="form-actions">
+									<button type="submit" class="btn btn-primary">Enviar</button>
+									<button type="button" class="btn">Cancelar</button>
+								</div>
+							</fieldset>
+						</form>
+					</div>-->
 				  </div>
 			</div>
 		</div>
-	<hr>
+	<!--<hr>
 	<div class="row">
 			<div class="col-sm-4 col-lg-4">
 				<div class="panel">
@@ -119,7 +251,7 @@
 			</h3>
 			</div>
 			<div class="panel-body">
-			<!-- CONTACT FORM -->
+	
 			<form id="ajax-contacts" class="">
 				<fieldset>
 					<div class="form-group">
@@ -139,9 +271,9 @@
 					</div>
 				<fieldset>
 			</form>
-			<!-- END CONTACT FORM -->
+
 			</div>
-			</div>			
+			</div>-->			
 		</div>
       </div>
 
