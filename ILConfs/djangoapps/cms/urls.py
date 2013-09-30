@@ -12,7 +12,7 @@ urlpatterns= patterns('djangoapps.cms.views',
 	url(r'^eventosh/$','mis_eventos'),
 	url(r'^serv/$','servicio'),
 	
-	url(r'^login/$','login_'),
+	url(r'^login/$','login_o'),
 	url(r'^entradas/$','mis_entradas'),
 	url(r'^comprar/$','comprar'),
 	url(r'^get/(?P<event_id>\d+)/$','event'),
