@@ -21,4 +21,32 @@ class Tema_model extends CI_Model{
             and idevento = ". $idevento ." order by t.idtema");
         return $tema_expo->result();   
     }
+    
+    function ver_estado_consultas($idtema)
+    {
+        /*$this->db->select('rondaconsultas')->from('tema')->where('idtema', $idtema);
+        $edorondacons = $this->db->get();
+        return $edorondacons;   */
+        $sql = $this->db->query("select rondaconsultas from tema where idtema = " . $idtema);
+        $edc = $sql->row(0);
+        return $edc->rondaconsultas;               
+    }
+    
+    function cerrar_ronda_consultas($idtema)
+    {
+        $datostema =  array(
+            'rondaconsultas' => 0                 
+        );  
+        $this->db->where('idtema', $idtema);
+        $this->db->update('tema', $datostema);
+    }
+    
+    function abrir_ronda_consultas($idtema)
+    {
+        $datostema =  array(
+            'rondaconsultas' => 1                 
+        );  
+        $this->db->where('idtema', $idtema);
+        $this->db->update('tema', $datostema);
+    }
 }

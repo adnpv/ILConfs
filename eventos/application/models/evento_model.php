@@ -24,12 +24,12 @@ class Evento_model extends CI_Model{
     {
         $sql = "select idevento from evento where nombre = " . $nombreevento . " limit 1";
         $idevto = $sql->row(0);
+        $idevento = $idevto->idevento;
+        return $idevento;
         /*$this->db->select('idevento');
         $this->db->from('evento');
         $this->db->where('nombre', $nombre);
-        $idevto = $this->db->get();    */   
-        $idevento = $idevto->idevento;
-        return $idevento;
+        $idevto = $this->db->get();    */          
     }
 }
 

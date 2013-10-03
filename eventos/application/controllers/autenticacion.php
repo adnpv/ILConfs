@@ -6,17 +6,18 @@ class Autenticacion extends CI_Controller {
        parent::__construct(); //llamada al constructor de Model.
        $this->load->model('autenticacion_model');
        $this->load->model('evento_model');
+       $this->load->helper('url');
+       //$this->load->library('session');
     }
     
     public function index()            
     {
-        $datos['url'] = 'http://localhost/eventos';
         $this->load->view('/admin/login_view', $datos);
     }
     
     public function expositor()            
     {
-        $datos['url'] = 'http://localhost/eventos';
+        //$datos['url'] = 'http://localhost/eventos';
         $datos['datosevento']  = $this->evento_model->mostrar_eventos_proximos();        
         $this->load->view('/expositor/eventos_view', $datos);
     }

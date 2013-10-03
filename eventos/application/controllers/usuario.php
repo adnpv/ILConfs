@@ -6,6 +6,8 @@ class Usuario extends CI_Controller {
        parent::__construct(); //llamada al constructor de Model.
        $this->load->model('autenticacion_model');
        $this->load->model('evento_model');
+       $this->load->helper('url');
+       $this->load->library('session');
     }
     
     public function index()

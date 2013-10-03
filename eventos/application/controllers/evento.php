@@ -7,11 +7,12 @@ class Evento extends CI_Controller {
        $this->load->model('usuario_model');
        $this->load->model('evento_model');
        $this->load->model('tema_model');
+       $this->load->helper('url');
+       $this->load->library('encrypt');
     }
     
     public function index()
-    {
-        $datos['url'] = 'http://localhost/eventos';
+    {        
         $datos['datosmoderador'] = $this->usuario_model->mostrar_moderadores();
         $this->load->view('/admin/organizador/crearevento_view', $datos);
     }
@@ -50,8 +51,7 @@ class Evento extends CI_Controller {
     }
     
     function agregar_tema_expositor($nombreevento)
-    {
-        $datos['url'] = 'http://localhost/eventos';
+    {        
         $idevento = 22;//$this->evento_model->obtener_id_evento($nombreevento);         
         $datos['idevento'] = $idevento ;
         $datos['nombreevento'] = $nombreevento;        
@@ -61,8 +61,7 @@ class Evento extends CI_Controller {
     }    
     
     function mostrar_eventos_proximos()
-    {
-       $datos['url'] = 'http://localhost/eventos';
+    {       
        $datos['datosevento']  = $this->evento_model->mostrar_eventos_proximos();         
        $this->load->view('/admin/organizador/inicio', $datos);
     }

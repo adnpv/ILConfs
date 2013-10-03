@@ -14,7 +14,8 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '';
+$dominio = $_SERVER['HTTP_HOST'];//$_SERVER['REMOTE_ADDR'];
+$config['base_url'] = 'http://' . $dominio . '/eventos';
 
 /*
 |--------------------------------------------------------------------------
@@ -254,6 +255,7 @@ $config['sess_match_ip']		= FALSE;
 $config['sess_match_useragent']	= TRUE;
 $config['sess_time_to_update']	= 300;
 
+
 /*
 |--------------------------------------------------------------------------
 | Cookie Related Variables
@@ -360,3 +362,4 @@ $config['proxy_ips'] = '';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
+$config['encryption_key'] = "grupo1pitreal";

@@ -33,9 +33,16 @@ class Pregunta_model extends CI_Model{
         $this->db->update('pregunta', $datospreg);
     }
     
+    function obtener_cantidad_inactivas()
+    {
+        $sql = $this->db->query("select idpregunta from pregunta where activa = 0");
+        $inactivas = $sql->num_rows(); 
+        return $inactivas;        
+    }
+    
     function mostrar_preguntas_alpublico($idpregunta)
     {
-        $this->db->select('idpregunta, nombre, activa');
+        $this->db->select('idpregunta, nombre');
         $this->db->from('pregunta');
         $this->db->where('idpregunta', $idpregunta);        
         $datospregtema = $this->db->get();
@@ -50,4 +57,11 @@ class Pregunta_model extends CI_Model{
         and p.idpregunta = '$idpregunta'");
         return $alternts->result();
     }  
+    
+    function constestar_alternativa($idalternativa, $marcaciones)
+    {
+        $this->db->set('nromarcaciones', "nromarcaciones+'$marcaciones'", FALSE);
+        $this->db->where('idalternativa', $idalternativa);
+        $this->db->update('alternativa');
+    }
 }

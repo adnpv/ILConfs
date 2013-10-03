@@ -43,11 +43,20 @@
 |
 | The $active_record variables lets you determine whether or not to load
 | the active record class
+ * 
+ * $mysql_host = "mysql10.000webhost.com";
+$mysql_database = "a2968841_pitreal";
+$mysql_user = "a2968841_pitreal";
+$mysql_password = "a2968841_pitreal";
 */
 
 $active_group = 'default';
 $active_record = TRUE;
-
+/*
+$db['default']['hostname'] = 'mysql10.000webhost.com';
+$db['default']['username'] = 'a2968841_pitreal';
+$db['default']['password'] = 'a2968841_pitreal';
+$db['default']['database'] = 'a2968841_pitreal';*/
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
 $db['default']['password'] = 'toortoor';

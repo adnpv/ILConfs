@@ -19,20 +19,38 @@ class Consulta_model extends CI_Model{
     function responder_pregunta_en_evento($idconsulta)
     {
         $datoscons =  array(
-            'estado' => 'Respondida'                 
+            'estado' => 'Respondida en evento'                 
         );  
         $this->db->where('idconsulta', $idconsulta);
         $this->db->update('consulta', $datoscons);
-    }
+    }   
     
-    function obtener_cantidad_respondidas()
+    function obtener_cantidad_respondidas($idtema)
     {
-        $sql = $this->db->query("select idconsulta from consulta where estado = 'Respondida'");
+        $sql = $this->db->query("select c.idconsulta 
+            from consulta c, participante p, participante_evento a, evento e, tema t
+            where c.idusuario = p.idusuario and p.idusuario = a.idusuario 
+            and a.idevento = e.idevento and e.idevento = t.idevento and t.idtema = '$idtema'
+            and c.estado = 'Respondida en evento' 
+            order by 1 asc");
         $respondidas = $sql->num_rows(); 
         return $respondidas;        
     }
     
+    function contar_consultas_tema($idtema)
+    {
+        $sql = $this->db->query("select c.idconsulta
+            from consulta c, participante p, participante_evento a, evento e, tema t
+            where c.idusuario = p.idusuario and p.idusuario = a.idusuario 
+            and a.idevento = e.idevento and e.idevento = t.idevento and t.idtema = '$idtema'");
+        $total = $sql->num_rows(); 
+        return $total;   
+    }
     
+     function insertar_consulta($consultas)
+     {
+         $this->db->insert_batch('consulta', $consultas); 
+     }   
 }
     //put your code here
 
