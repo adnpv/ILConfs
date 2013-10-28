@@ -11,8 +11,29 @@ class Evento_model extends CI_Model{
     {
         $this->db->select('idevento, nombre, fechainicio, horaregistro, horainicio, horafin, estado');
         $this->db->from('evento');
+        $this->db->where('estado', 'Activo');
         $datosevento = $this->db->get();
         return $datosevento->result();
+    }
+    
+    public function mostrar_eventos_pasados()
+    {
+        $this->db->select('idevento, nombre, fechainicio, horaregistro, horainicio, horafin, estado');
+        $this->db->from('evento');
+        $this->db->where('estado', 'Finalizado');
+        $datosevento = $this->db->get();
+        return $datosevento->result();
+    }
+    
+    function mostrar_temas_evento($idevento)
+    {
+        $temas_evto = $this->db->query("select t.idtema as nro, t.nombre as nombre, t.horainicio as hinicio,
+            t.horafin as hfin, concat(u.nombres, ' ',u.apepat, ' ', u.apemat) as expositor
+            from tema t, expositor e, usuario u
+            where t.idusuario = e.idusuario 
+            and e.idusuario = u.idusuario 
+            and idevento = " . $idevento . " order by t.idtema");
+        return $temas_evto->result();   
     }
     
     function insertar_evento($datosnvoevento)
@@ -22,14 +43,78 @@ class Evento_model extends CI_Model{
     
     function obtener_id_evento($nombreevento)
     {
-        $sql = "select idevento from evento where nombre = " . $nombreevento . " limit 1";
-        $idevto = $sql->row(0);
-        $idevento = $idevto->idevento;
-        return $idevento;
-        /*$this->db->select('idevento');
-        $this->db->from('evento');
-        $this->db->where('nombre', $nombre);
-        $idevto = $this->db->get();    */          
+        $sql = $this->db->query("select idevento from evento where nombre = '$nombreevento'");
+        $idevento = $sql->row(0);
+        return $idevento->idevento;    
+    }
+    
+    function asignar_partic_evento($idparticipante, $idevento)
+    {
+        $datos = array(
+            array(
+                'idevento' => $idevento,
+                'idusuario' => $idparticipante
+            )
+        );
+        $this->db->insert_batch('participante_evento', $datos); 
+    } 
+    
+    function actualizar_edo_partic_evento($idusuario)
+    {
+        $datosnvoestado = array(                           
+                'estado' => 'Habilitado'
+         );
+        $this->db->where('idusuario', $idusuario);
+        $this->db->update('participante', $datosnvoestado); 
+    }
+    
+    function mostrar_participantes_evento($idevento)
+    {
+        $particip_evto = $this->db->query("select u.idusuario as idusuario, u.apepat as apepat, u.apemat as apemat, 
+            u.nombres as nombres, p.estado as estado, asistencia
+            from usuario u, participante_evento a, participante p, evento e
+            where e.idevento = a.idevento 
+            and a.idusuario = p.idusuario
+            and p.idusuario = u.idusuario
+            and e.idevento = " . $idevento);
+        return $particip_evto->result();
+    }
+    
+    function mostrar_venta_entradas($idevento)
+    {
+        $datosventas = $this->db->query("select idevento, nroentradas, nroentradas-entradasvendidas as porvender, entradasvendidas,
+            preciounit, entradasvendidas*preciounit as ganancia, 
+            DATE_FORMAT(fechalimite,'%d/%m/%Y') as flimite
+            from evento where idevento = '$idevento'");
+        return $datosventas->result();
+    }
+    
+    function contar_asistentes_evento($idevento)
+    {
+        $sql = $this->db->query("select u.idusuario as idusuario, u.apepat as apepat, u.apemat as apemat, 
+            u.nombres as nombres, p.estado as estado, asistencia
+            from usuario u, participante_evento a, participante p, evento e
+            where e.idevento = a.idevento 
+            and a.idusuario = p.idusuario
+            and p.idusuario = u.idusuario
+            and asistencia = 'Sí'
+            and e.idevento = '$idevento'");
+        $asist_evto = $sql->num_rows(); 
+        return $asist_evto;  
+    }
+    
+    function contar_inasistentes_evento($idevento)
+    {
+        $sql = $this->db->query("select u.idusuario as idusuario, u.apepat as apepat, u.apemat as apemat, 
+            u.nombres as nombres, p.estado as estado, asistencia
+            from usuario u, participante_evento a, participante p, evento e
+            where e.idevento = a.idevento 
+            and a.idusuario = p.idusuario
+            and p.idusuario = u.idusuario
+            and asistencia = 'No'
+            and e.idevento = '$idevento'");
+        $inasist_evto = $sql->num_rows(); 
+        return $inasist_evto;
     }
 }
 

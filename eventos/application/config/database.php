@@ -52,6 +52,7 @@ $mysql_password = "a2968841_pitreal";
 
 $active_group = 'default';
 $active_record = TRUE;
+
 /*
 $db['default']['hostname'] = 'mysql10.000webhost.com';
 $db['default']['username'] = 'a2968841_pitreal';

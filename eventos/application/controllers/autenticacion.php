@@ -7,12 +7,12 @@ class Autenticacion extends CI_Controller {
        $this->load->model('autenticacion_model');
        $this->load->model('evento_model');
        $this->load->helper('url');
-       //$this->load->library('session');
+       $this->load->library('session');
     }
     
     public function index()            
     {
-        $this->load->view('/admin/login_view', $datos);
+        $this->load->view('/login_view');
     }
     
     public function expositor()            
@@ -22,8 +22,8 @@ class Autenticacion extends CI_Controller {
         $this->load->view('/expositor/eventos_view', $datos);
     }
 
-    function autenticar() {
-        
+    function autenticar() 
+    {        
      $usuario =  $this->input->post('usuario');
      $contrasena = $this->input->post('contrasena');     
      $contrasenasha1 = sha1($contrasena);
@@ -47,9 +47,8 @@ class Autenticacion extends CI_Controller {
          }  
             var_dump($datosus);
             var_dump($datosus["3"]); */ 
-         $datos['url'] = 'http://localhost/eventos';
-         $datos['datosevento']  = $this->evento_model->mostrar_eventos_proximos();         
-         $this->load->view('/admin/organizador/inicio', $datos);
+         $datos['datosevento'] = $this->evento_model->mostrar_eventos_proximos();         
+         $this->load->view('organizador/eventosproximos_view', $datos);
      }
      else
      {

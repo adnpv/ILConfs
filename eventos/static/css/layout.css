@@ -36,7 +36,7 @@ text-decoration: underline;
 header#header {
 height: 55px;
 width: 100%;
-background: #222222 url(http://localhost/eventos/static/images/header_bg.png) repeat-x;
+background: #222222 url(../../static/images/header_bg.png) repeat-x;
 }
 
 header#header h1.site_title, header#header h2.section_title {
@@ -63,7 +63,7 @@ header#header h2.section_title {
 text-align: center;
 text-indent: 4.5%;
 width: 68%;
-background: url(http://localhost/eventos/static/images/header_shadow.png) no-repeat left top;
+background: url(../../static/images/header_shadow.png) no-repeat left top;
 }
 
 .btn_view_site {
@@ -76,7 +76,7 @@ display: block;
 margin-top: 12px;
 width: 91px;
 height: 27px;
-background: url(http://localhost/eventos/static/images/btn_view_site.png) no-repeat;
+background: url(../../static/images/btn_view_site.png) no-repeat;
 text-align: center;
 line-height: 29px;
 color: #fff;
@@ -92,7 +92,7 @@ background-position: 0 -27px;
 section#secondary_bar {
 height: 38px;
 width: 100%;
-background: #F1F1F4 url(http://localhost/eventos/static/images/secondary_bar.png) repeat-x;
+background: #F1F1F4 url(../../static/images/secondary_bar.png) repeat-x;
 }
 
 section#secondary_bar .user {
@@ -113,7 +113,7 @@ height: 35px;
 line-height: 35px;
 text-indent: 25px;
 text-shadow: 0 1px 0 #fff;
-background: url(http://localhost/eventos/static/images/icn_user.png) no-repeat center left;
+background: url(../../static/images/icn_user.png) no-repeat center left;
 margin-left: 6%;
 }
 
@@ -131,7 +131,7 @@ display: block;
 width: 16px;
 height: 35px;
 text-indent: -5000px;
-background: url(http://localhost/eventos/static/images/icn_logout.png) center no-repeat;
+background: url(../../static/images/icn_logout.png) center no-repeat;
 }
 
 /* Breadcrumbs */
@@ -139,7 +139,7 @@ background: url(http://localhost/eventos/static/images/icn_logout.png) center no
 section#secondary_bar .breadcrumbs_container {
 float: left;
 width: 77%;
-background: url(http://localhost/eventos/static/images/secondary_bar_shadow.png) no-repeat left top;
+background: url(../../static/images/secondary_bar_shadow.png) no-repeat left top;
 height: 38px;
 }
 
@@ -185,7 +185,7 @@ color: #222222;
 display: inline-block;
 width: 12px;
 height: 24px;
-background: url(http://localhost/eventos/static/images/breadcrumb_divider.png) no-repeat;
+background: url(../../static/images/breadcrumb_divider.png) no-repeat;
 float: left;
 margin: 0 5px;
 }
@@ -194,7 +194,7 @@ margin: 0 5px;
 
 aside#sidebar {
 width: 23%;
-background: #E0E0E3 url(http://localhost/eventos/static/images/sidebar.png) repeat;
+background: #E0E0E3 url(../../static/images/sidebar.png) repeat;
 float: left;
 min-height: 500px;
 margin-top: -4px;
@@ -203,7 +203,7 @@ margin-top: -4px;
 #sidebar hr {
 border: none;
 outline: none;
-background: url(http://localhost/eventos/static/images/sidebar_divider.png) repeat-x;
+background: url(../../static/images/sidebar_divider.png) repeat-x;
 display: block;
 width: 100%;
 height: 2px;}
@@ -228,7 +228,7 @@ color: #ccc;
 -moz-box-shadow: inset 0 2px 2px #ccc, 0 1px 0 #fff;
 box-shadow: inset 0 2px 2px #ccc, 0 1px 0 #fff;
 text-indent: 30px;
-background: #fff url(http://localhost/eventos/static/images/icn_search.png) no-repeat;
+background: #fff url(../../static/images/icn_search.png) no-repeat;
 background-position: 10px 6px;
 }
 
@@ -296,46 +296,46 @@ color: #444444;
 /* Sidebar Icons */
 
 #sidebar li.icn_new_article a {
-background: url(http://localhost/eventos/static/images/icn_new_article.png) no-repeat center left;
+background: url(../../static/images/icn_new_article.png) no-repeat center left;
 }
 #sidebar li.icn_edit_article a {
-background: url(http://localhost/eventos/static/images/icn_edit_article.png) no-repeat center left;
+background: url(../../static/images/icn_edit_article.png) no-repeat center left;
 }
 #sidebar li.icn_categories a {
-background: url(http://localhost/eventos/static/images/icn_categories.png) no-repeat center left;
+background: url(../../static/images/icn_categories.png) no-repeat center left;
 }
 #sidebar li.icn_tags a {
-background: url(http://localhost/eventos/static/images/icn_tags.png) no-repeat center left;
+background: url(../../static/images/icn_tags.png) no-repeat center left;
 }
 #sidebar li.icn_add_user a {
-background: url(http://localhost/eventos/static/images/icn_add_user.png) no-repeat center left;
+background: url(../../static/images/icn_add_user.png) no-repeat center left;
 }
 #sidebar li.icn_view_users a {
-background: url(http://localhost/eventos/static/images/icn_view_users.png) no-repeat center left;
+background: url(../../static/images/icn_view_users.png) no-repeat center left;
 }
 #sidebar li.icn_profile a {
-background: url(http://localhost/eventos/static/images/icn_profile.png) no-repeat center left;
+background: url(../../static/images/icn_profile.png) no-repeat center left;
 }
 #sidebar li.icn_folder a {
-background: url(http://localhost/eventos/static/images/icn_folder.png) no-repeat center left;
+background: url(../../static/images/icn_folder.png) no-repeat center left;
 }
 #sidebar li.icn_photo a {
-background: url(http://localhost/eventos/static/images/icn_photo.png) no-repeat center left;
+background: url(../../static/images/icn_photo.png) no-repeat center left;
 }
 #sidebar li.icn_audio a {
-background: url(http://localhost/eventos/static/images/icn_audio.png) no-repeat center left;
+background: url(../../static/images/icn_audio.png) no-repeat center left;
 }
 #sidebar li.icn_video a {
-background: url(http://localhost/eventos/static/images/icn_video.png) no-repeat center left;
+background: url(../../static/images/icn_video.png) no-repeat center left;
 }
 #sidebar li.icn_settings a {
-background: url(http://localhost/eventos/static/images/icn_settings.png) no-repeat center left;
+background: url(../../static/images/icn_settings.png) no-repeat center left;
 }
 #sidebar li.icn_security a {
-background: url(http://localhost/eventos/static/images/icn_security.png) no-repeat center left;
+background: url(../../static/images/icn_security.png) no-repeat center left;
 }
 #sidebar li.icn_jump_back a {
-background: url(http://localhost/eventos/static/images/icn_jump_back.png) no-repeat center left;
+background: url(../../static/images/icn_jump_back.png) no-repeat center left;
 }
 
 #sidebar p {
@@ -364,7 +364,7 @@ margin-top: 20%;
 section#main {
 width: 77%;
 min-height: 500px;
-background: url(http://localhost/eventos/static/images/sidebar_shadow.png) repeat-y left top;
+background: url(../../static/images/sidebar_shadow.png) repeat-y left top;
 float: left;
 margin-top: -2px;
 }
@@ -399,7 +399,7 @@ float: left;
 .module header {
 height: 38px;
 width: 100%;
-background: #F1F1F4 url(http://localhost/eventos/static/images/secondary_bar.png) repeat-x;
+background: #F1F1F4 url(../../static/images/secondary_bar.png) repeat-x;
 -webkit-border-top-left-radius: 5px; -webkit-border-top-right-radius: 5px;
 -moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px;
 border-top-left-radius: 5px; border-top-right-radius: 5px;
@@ -410,7 +410,7 @@ height: 32px;
 width: 100%;
 border-top: 1px solid #9CA1B0;
 text-align: center;
-background: #F1F1F4 url(http://localhost/eventos/static/images/module_footer_bg.png) repeat-x;
+background: #F1F1F4 url(../../static/images/module_footer_bg.png) repeat-x;
 -webkit-border-bottom-left-radius: 5px; -webkit-border-bottom-right-radius: 5px;
 -moz-border-radius-bottomleft: 5px; -moz-border-radius-bottomright: 5px;
 -webkit-border-bottom-left-radius: 5px; -webkit-border-bottom-right-radius: 5px;
@@ -503,7 +503,7 @@ border-bottom: 1px dotted #ccc;
 
 .tablesorter thead tr {
 height: 34px;
-background: url(http://localhost/eventos/static/images/table_sorter_header.png) repeat-x;
+background: url(../../static/images/table_sorter_header.png) repeat-x;
 text-align: left;
 text-indent: 10px;
 cursor: pointer;
@@ -586,7 +586,7 @@ border-bottom: 1px dotted #cccccc;
 }
 
 input[type=submit] {
-background: #D0D1D4 url(http://localhost/eventos/static/images/btn_submit.png) repeat-x;
+background: #D0D1D4 url(../../static/images/btn_submit.png) repeat-x;
 border: 1px solid #A8A9A8;
 -webkit-box-shadow: 0 1px 0 #fff;
 -moz-box-shadow: 0 1px 0 #fff;
@@ -607,7 +607,7 @@ color: #333333;
 }
 
 input[type=submit].alt_btn {
-background: #D0D1D4 url(http://localhost/eventos/static/images/btn_submit_2.png) repeat-x;
+background: #D0D1D4 url(../../static/images/btn_submit_2.png) repeat-x;
 border: 1px solid#30B0C8;
 -webkit-box-shadow: 0 1px 0 #fff;
 -moz-box-shadow: 0 1px 0 #fff;
@@ -621,6 +621,7 @@ padding: 0 10px;
 color: #003E49;
 text-shadow: 0 1px 0 #6CDCF9;
 cursor: pointer;
+margin-top: 1px;
 }
 
 input[type=submit].alt_btn:hover {
@@ -628,7 +629,7 @@ color: #001217;
 }
 
 input[type=submit].btn_post_message {
-background: #D0D1D4 url(../static/images/icn_search.png) no-repeat;
+background: #D0D1D4 url(../../static/images/icn_search.png) no-repeat;
 display: block;
 width: 37px;
 border: none;
@@ -726,7 +727,61 @@ width: 96%;
 margin: 0 10px;
 }
 
+fieldset input[type=password] {
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+border: 1px solid #BBBBBB;
+height: 20px;
+color: #666666;
+-webkit-box-shadow: inset 0 2px 2px #ccc, 0 1px 0 #fff;
+-moz-box-shadow: inset 0 2px 2px #ccc, 0 1px 0 #fff;
+box-shadow: inset 0 2px 2px #ccc, 0 1px 0 #fff;
+padding-left: 10px;
+background-position: 10px 6px;
+margin: 0;
+display: block;
+float: left;
+width: 96%;
+margin: 0 10px;
+}
+
+fieldset input[type=email] {
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+border: 1px solid #BBBBBB;
+height: 20px;
+color: #666666;
+-webkit-box-shadow: inset 0 2px 2px #ccc, 0 1px 0 #fff;
+-moz-box-shadow: inset 0 2px 2px #ccc, 0 1px 0 #fff;
+box-shadow: inset 0 2px 2px #ccc, 0 1px 0 #fff;
+padding-left: 10px;
+background-position: 10px 6px;
+margin: 0;
+display: block;
+float: left;
+width: 96%;
+margin: 0 10px;
+}
+
 fieldset input[type=text]:focus {
+outline: none;
+border: 1px solid #77BACE;
+-webkit-box-shadow: inset 0 2px 2px #ccc, 0 0 10px #ADDCE6;
+-moz-box-shadow: inset 0 2px 2px #ccc, 0 0 10px #ADDCE6;
+box-shadow: inset 0 2px 2px #ccc, 0 0 10px #ADDCE6;
+}
+
+fieldset input[type=password]:focus {
+outline: none;
+border: 1px solid #77BACE;
+-webkit-box-shadow: inset 0 2px 2px #ccc, 0 0 10px #ADDCE6;
+-moz-box-shadow: inset 0 2px 2px #ccc, 0 0 10px #ADDCE6;
+box-shadow: inset 0 2px 2px #ccc, 0 0 10px #ADDCE6;
+}
+
+fieldset input[type=email]:focus {
 outline: none;
 border: 1px solid #77BACE;
 -webkit-box-shadow: inset 0 2px 2px #ccc, 0 0 10px #ADDCE6;
@@ -827,7 +882,7 @@ margin-top: 20px;
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
 border-radius: 5px;
-background: #B5E5EF url(http://localhost/eventos/static/images/icn_alert_info.png) no-repeat;
+background: #B5E5EF url(../../static/images/icn_alert_info.png) no-repeat;
 background-position: 10px 10px;
 border: 1px solid #77BACE;
 color: #082B33;
@@ -843,7 +898,7 @@ margin-top: 20px;
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
 border-radius: 5px;
-background: #F5F3BA url(http://localhost/eventos/static/images/icn_alert_warning.png) no-repeat;
+background: #F5F3BA url(../../static/images/icn_alert_warning.png) no-repeat;
 background-position: 10px 10px;
 border: 1px solid #C7A20D;
 color: #796616;
@@ -859,13 +914,29 @@ margin-top: 20px;
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
 border-radius: 5px;
-background: #F3D9D9 url(http://localhost/eventos/static/images/icn_alert_error.png) no-repeat;
+background: #F3D9D9 url('/static/images/icn_alert_error.png') no-repeat;
 background-position: 10px 10px;
 border: 1px solid #D20009;
 color: #7B040F;
 padding: 10px 0;
 text-indent: 40px;
 font-size: 14px;}
+
+#main span.alert_error {
+display: block;
+width: 92%;
+margin: 20px 3% 10px 3%;
+margin-top: 20px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+background: #F3D9D9 url('../../static/images/icn_alert_error.png') no-repeat;
+background-position: 10px 10px;
+border: 1px solid #D20009;
+color: #7B040F;
+padding: 10px 0;
+text-indent: 40px;
+font-size: 12px;}
 
 #main h4.alert_success {
 display: block;
@@ -875,7 +946,7 @@ margin-top: 20px;
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
 border-radius: 5px;
-background: #E2F6C5 url(http://localhost/eventos/static/images/icn_alert_success.png) no-repeat;
+background: #E2F6C5 url(../../static/images/icn_alert_success.png) no-repeat;
 background-position: 10px 10px;
 border: 1px solid #79C20D;
 color: #32510F;
@@ -902,4 +973,80 @@ list-style-type: none;
 
 #ulrdbtn li{
 float: left;
+}
+
+.regresar{
+    background-image: url(../../static/images/regresar.png);
+    background-repeat: no-repeat;
+    display: block;
+    width: 105px;
+    height: 50px;
+}
+
+.marcar{
+    background: #003E49 url(../../static/images/btn_submit_2.png) repeat-x;
+    border: 1px solid#30B0C8;
+    -webkit-box-shadow: 0 1px 0 #fff;
+    -moz-box-shadow: 0 1px 0 #fff;
+    box-shadow: 0 1px 0 #fff;
+    font-weight: bold;
+    height: 20px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 0 10px;
+    color: #001217;
+    text-shadow: 0 1px 0 #6CDCF9;
+    cursor: pointer;
+    margin-top: 1px;
+    display: block;
+    width: 105px;
+}
+
+.imgbuttonparticipantes{
+    background-image: url(../../static/images/icn_user.png);
+    height: 17px;
+    width: 17px;
+    margin: 0px 5px;
+    padding: 0px;
+    border: 0px;
+}
+
+.imgbuttonentradas{
+    background-image: url(../../static/images/iconoentrada.jpg);    
+    height: 17px;
+    width: 17px;
+    margin: 0px 5px;
+    padding: 0px;
+    border: 0px;
+}
+
+.imgbuttontemas{
+    background-image: url(../../static/images/icono-libro.png);    
+    height: 17px;
+    width: 17px;
+    margin: 0px 5px;
+    padding: 0px;
+    border: 0px;
+}
+
+.imgbuttonactualizar{
+    background-image: url(../../static/images/icn_edit_article.png);    
+    height: 17px;
+    width: 17px;
+    margin: 0px 5px;
+    padding: 0px;
+    border: 0px;
+}
+
+.imgbuttonarchivos{
+    background-image: url(../../static/images/icn_folder.png);    
+    height: 17px;
+    width: 17px;
+    margin: 0px 5px;
+    padding: 0px;
+    border: 0px;
+}
+.alineacioncentral{
+    text-align: center;
 }

@@ -8,13 +8,13 @@ class Consulta_model extends CI_Model{
     
     function mostrar_consultas_tema($idevento)
     {
-        $consulta = $this->db->query("select c.idconsulta, concat(u.nombres, ' ', u.apepat)as autor, c.nombre as consulta, c.estado
+        $consulta = $this->db->query("select c.idconsulta, concat(u.nombres, ' ', u.apepat) as autor, c.nombre as consulta, c.estado
             from consulta c, participante p, usuario u, participante_evento a, 
             evento e, tema t where c.idusuario = p.idusuario and p.idusuario = a.idusuario
             and a.idusuario = u.idusuario and a.idevento = e.idevento and e.idevento = t.idevento
-            and t.idtema = '$idevento' and c.estado = 'No respondida' order by rand() limit 1");
+            and t.idevento = '$idevento' and c.estado = 'No respondida' order by rand() limit 1");
         return $consulta->result();
-    }
+    }    
     
     function responder_pregunta_en_evento($idconsulta)
     {
@@ -47,8 +47,9 @@ class Consulta_model extends CI_Model{
         return $total;   
     }
     
-     function insertar_consulta($consultas)
+     function insertar_consulta($consultas)    
      {
+         //var_dump($consultas);
          $this->db->insert_batch('consulta', $consultas); 
      }   
 }

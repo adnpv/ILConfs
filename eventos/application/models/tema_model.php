@@ -6,10 +6,10 @@ class Tema_model extends CI_Model{
        parent::__construct(); //llamada al constructor de Model.
     }
         
-    function insertar_tema_expositor()
+    function insertar_tema_expositor($datosnvotema)
     {
-        
-    }
+        $this->db->insert_batch('tema', $datosnvotema); 
+    }    
     
     function mostrar_tema_expositor_evento($idevento)
     {

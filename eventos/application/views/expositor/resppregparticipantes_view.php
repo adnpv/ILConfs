@@ -64,7 +64,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="index.html"> <img alt="Charisma Logo" src="<?php echo base_url(); ?>static/img/logo20.png" /> <span>Expositor</span></a>
+				<a class="brand" href="<?php echo base_url(); ?>index.php/autenticacion/expositor"> <img alt="Charisma Logo" src="<?php echo base_url(); ?>static/img/logo20.png" /> <span>Expositor</span></a>
 				
 				<!-- theme selector starts -->
 				<div class="btn-group pull-right theme-container" >
@@ -120,7 +120,7 @@
                         <div class="well nav-collapse sidebar-nav">
                             <ul class="nav nav-tabs nav-stacked main-menu">
                                 <!--<li class="nav-header hidden-tablet">Main</li>
-                                <li><a class="ajax-link" href="index.html"><i class="icon-home"></i><span class="hidden-tablet"> Dashboard</span></a></li>
+                                <li><a class="ajax-link" href="<?php echo base_url(); ?>index.php/autenticacion/expositor"><i class="icon-home"></i><span class="hidden-tablet"> Dashboard</span></a></li>
                                 <li><a class="ajax-link" href="ui.html"><i class="icon-eye-open"></i><span class="hidden-tablet"> UI Features</span></a></li>
                                 <li><a class="ajax-link" href="form.html"><i class="icon-edit"></i><span class="hidden-tablet"> Forms</span></a></li>
                                 <li><a class="ajax-link" href="chart.html"><i class="icon-list-alt"></i><span class="hidden-tablet"> Charts</span></a></li>
@@ -129,8 +129,8 @@
                                 <li class="nav-header hidden-tablet">Eventos</li>
                                 <li><a class="ajax-link" href="<?php echo base_url(); ?>index.php/autenticacion/expositor"><i class="icon-align-justify"></i><span class="hidden-tablet">Mis eventos</span></a></li>
                                 <li class="nav-header hidden-tablet">Preguntas</li>
-                                <li><a class="ajax-link" href="pregparticipantes.html"><i class="icon-align-justify"></i><span class="hidden-tablet">De participantes </span></a></li>
-                                <li><a class="ajax-link" href="pregevento.html"><i class="icon-align-justify"></i><span class="hidden-tablet">Del expositor</span></a></li>                                                
+                                <li><a class="ajax-link" href="<?php echo base_url(); ?>index.php/consulta/mostrar_consultas_tema"><i class="icon-align-justify"></i><span class="hidden-tablet">De participantes </span></a></li>
+                                <li><a class="ajax-link" href="<?php echo base_url(); ?>index.php/pregunta/mostrar_preguntas_tema"><i class="icon-align-justify"></i><span class="hidden-tablet">Del evento</span></a></li>
                                 <li><a class="ajax-link" href="resppregparticipantes.html"><i class="icon-align-justify"></i><span class="hidden-tablet">Responder</span></a></li>                                                
                                 <!--<li><a class="ajax-link" href="calendar.html"><i class="icon-calendar"></i><span class="hidden-tablet"> Calendar</span></a></li>
                                 <li><a class="ajax-link" href="grid.html"><i class="icon-th"></i><span class="hidden-tablet"> Grid</span></a></li>

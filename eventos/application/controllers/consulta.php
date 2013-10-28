@@ -10,31 +10,54 @@ class Consulta extends CI_Controller {
        $this->load->library('session');
     }
     
-    function mostrar_consultas_tema()
-    {       
-        //$this->insertar_consulta();
+    public function mostrar_consultas_tema()
+    {     
+        $this->insertar_consultas();
         $idtema = $this->input->post('idtema');  
-        $datos['idtema'] = $idtema; 
-        $edorondacons = $this->tema_model->ver_estado_consultas($idtema);
-        $datos['edorondacons'] = $edorondacons; 
-        $total = $this->consulta_model->contar_consultas_tema($idtema); 
-        $datos['total'] = $total;
-        $respondidas = $this->consulta_model->obtener_cantidad_respondidas($idtema);             
-        $datos['respondidas'] = $respondidas;  
+        $idevento = $this->input->post('idevento'); 
+        $nombreevento = $this->input->post('nombreevento'); 
+        $datos['nombreevento'] = $nombreevento;
+        $datos['idtema'] = $idtema;        
+        $datos['idevento'] = $idevento;     
+        $nrocons = $this->consulta_model->contar_consultas_tema($idtema);
+        $datos['nrocons'] = $nrocons;
+        $datos['edorondacons'] = $this->tema_model->ver_estado_consultas($idtema);
+        $datos['total'] = $this->consulta_model->contar_consultas_tema($idtema);          
+        $datos['respondidas'] = $this->consulta_model->obtener_cantidad_respondidas($idtema);                     
         $datos['consultas_tema'] = $this->consulta_model->mostrar_consultas_tema($idtema);
         $this->load->view('/expositor/pregparticipantes_view', $datos);      
-    }
+    }    
     
-    function actualizar_consulta()
-    {        
-        $idtema = $this->input->post('idtema');
+    public function mostrar_consultas_detema()
+    {     
+        //$this->insertar_consultas();
+        $idtema = $this->input->get('idtema');  
+        $idevento = $this->input->get('idevento');  
+        $datos['nombreevento'] = $this->input->get('nombreevento'); 
+        $datos['idtema'] = $idtema;     
+        $datos['idevento'] = $idevento; 
+        $nrocons = $this->consulta_model->contar_consultas_tema($idtema);
+        $datos['nrocons'] = $nrocons;
+        $datos['edorondacons'] = $this->tema_model->ver_estado_consultas($idtema);
+        $datos['total'] = $this->consulta_model->contar_consultas_tema($idtema);          
+        $datos['respondidas'] = $this->consulta_model->obtener_cantidad_respondidas($idtema);                     
+        $datos['consultas_tema'] = $this->consulta_model->mostrar_consultas_tema($idtema);
+        $this->load->view('/expositor/pregparticipantes_view', $datos);      
+    }    
+    
+    public function actualizar_consulta()
+    {  
+        $idtema = $this->input->post('idtema'); 
+        $idevento = $this->input->post('idevento');  
+        $nombreevento = $this->input->post('nombreevento'); 
+        $datos['nombreevento'] = $nombreevento;
         $datos['idtema'] = $idtema;
-        $edorondacons = $this->tema_model->ver_estado_consultas($idtema);
-        $datos['edorondacons'] = $edorondacons; 
-        $respondidas = $this->consulta_model->obtener_cantidad_respondidas($idtema);        
+        $datos['idevento'] = $idevento; 
+        $datos['edorondacons'] = $this->tema_model->ver_estado_consultas($idtema);
+        $respondidas = $this->consulta_model->obtener_cantidad_respondidas($idtema);   
+        $datos['respondidas'] = $respondidas;
         $total = $this->consulta_model->contar_consultas_tema($idtema);        
-        $datos['respondidas'] =  $respondidas;          
-        
+      
         if ($respondidas < $total)        
         {                           
             $idconsulta = $this->input->post('idconsulta');            
@@ -70,23 +93,32 @@ class Consulta extends CI_Controller {
      * http://codular.com/curl-with-php  
     }*/
     
-    function insertar_consultas()
-    { 
-        header("Content-Type: text/html; charset=UTF-8");//Se lee el json escrito por el front-end
-        $ruta =  base_url() . 'jsondesdeelpublico/consultasdlpubl.json';
-        $consultas = json_decode(@file_get_contents($ruta), true);  
-        $datoscons = array(array('idusuario' => null, 'nombre' => null, 'estado' => null, 'respuesta' => null));
+    public function insertar_consultas()
+    {        
+        header("Content-Type: text/html; charset=UTF-8");
+        $consultaspubl = @file_get_contents('http://pietreal.herokuapp.com/interactiv/jsonquestion/?id=1');
+        $consultas = json_decode(($consultaspubl), true);
+        //$datoscons = array('idusuario' => null, 'nombre' => null, 'estado' => null, 'respuesta' => null);
         for($i = 0; $i < count($consultas); $i++)
         {
-            $datoscons[$i] = array(
-                array (
-                    'idusuario' => $consultas[$i]["idusuario"],
-                    'nombre' => $consultas[$i]["nombre"],
-                    'estado' => $consultas[$i]["estado"],
-                    'respuesta' => null
-                )
-            );
-        }        
-        $this->consulta_model->insertar_consulta($consultas);
-    }     
+             $datoscons[$i] = 
+                 array (
+                     'idusuario' => intval($consultas[$i]['usuarioid']),
+                     'nombre' => $consultas[$i]["nombre"] . '. ' . $consultas[$i]["detalle"],
+                     'estado' => 'No respondida',
+                     'respuesta' => null
+                 );                          
+         }   
+         //var_dump($datoscons);
+         $this->consulta_model->insertar_consulta($datoscons);
+    } 
+    
+    public function contar_consultas_tema($idtema)
+    {
+        $nrocons = $this->consulta_model->contar_consultas_tema($idtema);
+        echo $nrocons;
+    }
 }
+/*cada vez que el moerador habilite la ronda de consultas, se debe enviar un aviso 
+ * a adrian por curl
+ */

@@ -16,6 +16,15 @@ class Pregunta_model extends CI_Model{
         return $datospregtema->result();
     }
     
+    function mostrar_preguntas_tema_estad($idtema)
+    {
+        $this->db->select('idpregunta, nombre');
+        $this->db->from('pregunta');
+        $this->db->where('idtema', $idtema);
+        $datospregtema = $this->db->get();
+        return $datospregtema->result();
+    }
+    
     function activar_pregunta($idpregunta)
     {
         $datospreg =  array(

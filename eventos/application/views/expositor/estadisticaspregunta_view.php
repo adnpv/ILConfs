@@ -64,7 +64,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="index.html"> <img alt="Charisma Logo" src="<?php echo base_url(); ?>static/img/logo20.png" /> <span>Expositor</span></a>
+				<a class="brand" href="<?php echo base_url(); ?>index.php/autenticacion/expositor"> <img alt="Charisma Logo" src="<?php echo base_url(); ?>static/img/logo20.png" /> <span>Expositor</span></a>
 				
 				<!-- theme selector starts -->
 				<div class="btn-group pull-right theme-container" >
@@ -122,7 +122,7 @@
 				<div class="well nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<!--<li class="nav-header hidden-tablet">Main</li>
-						<li><a class="ajax-link" href="index.html"><i class="icon-home"></i><span class="hidden-tablet"> Dashboard</span></a></li>
+						<li><a class="ajax-link" href="<?php echo base_url(); ?>index.php/autenticacion/expositor"><i class="icon-home"></i><span class="hidden-tablet"> Dashboard</span></a></li>
 						<li><a class="ajax-link" href="ui.html"><i class="icon-eye-open"></i><span class="hidden-tablet"> UI Features</span></a></li>
 						<li><a class="ajax-link" href="form.html"><i class="icon-edit"></i><span class="hidden-tablet"> Forms</span></a></li>
 						<li><a class="ajax-link" href="chart.html"><i class="icon-list-alt"></i><span class="hidden-tablet"> Charts</span></a></li>
@@ -131,8 +131,8 @@
                                                 <li class="nav-header hidden-tablet">Eventos</li>
 						<li><a class="ajax-link" href="<?php echo base_url(); ?>index.php/autenticacion/expositor"><i class="icon-align-justify"></i><span class="hidden-tablet">Mis eventos</span></a></li>
 						<li class="nav-header hidden-tablet">Preguntas</li>
-						<li><a class="ajax-link" href="pregparticipantes.html"><i class="icon-align-justify"></i><span class="hidden-tablet">De participantes </span></a></li>
-                                                <li><a class="ajax-link" href="pregevento.html"><i class="icon-align-justify"></i><span class="hidden-tablet">Del expositor</span></a></li>
+						<li><a class="ajax-link" href="<?php echo base_url(); ?>index.php/consulta/mostrar_consultas_tema"><i class="icon-align-justify"></i><span class="hidden-tablet">De participantes </span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url(); ?>index.php/pregunta/mostrar_preguntas_tema"><i class="icon-align-justify"></i><span class="hidden-tablet">Del evento</span></a></li>
                                                 <li><a class="ajax-link" href="resppregparticipantes.html"><i class="icon-align-justify"></i><span class="hidden-tablet">Responder</span></a></li>                                                
 						<!--<li><a class="ajax-link" href="calendar.html"><i class="icon-calendar"></i><span class="hidden-tablet"> Calendar</span></a></li>
 						<li><a class="ajax-link" href="grid.html"><i class="icon-th"></i><span class="hidden-tablet"> Grid</span></a></li>
@@ -177,7 +177,7 @@
 							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
 						</div>
 					</div>
-					<div class="box span4">
+					<div class="box span5">
                                                 <div class="box-header well" data-original-title="">
                                                         <h2><i class="icon-list-alt"></i>Resultados</h2>
                                                         <div class="box-icon">
@@ -187,11 +187,10 @@
                                                         </div>
                                                 </div>
                                                 <div class="box-content">
-                                                        <div id="piechart" style="height: 300px; padding: 0px; position: relative;">                                                                                                        
-                                                        </div>                                                    
+                                                       <img src="<?php echo base_url(); ?>index.php/alternativa/mostrar_grafico_resultado/<?php echo $idpregunta; ?>" />
                                                 </div>
                                         </div>
-                                    <div class="box span7">
+                                    <div class="box span6">
 					<div class="box-header well" data-original-title="">
 						<h2><i class="icon-th"></i>Pregunta</h2>
 						<div class="box-icon">
@@ -202,21 +201,23 @@
 					</div>
 					<div class="box-content">
                                             <div class="well">
-                                              <h1>¿Qué navegador utiliza?</h1>                                             
-                                              <h3>&nbsp;&nbsp; 1. Mobile</h3>   
-                                              <h3>&nbsp;&nbsp; 2. Internet Explorer</h3>
-                                              <h3>&nbsp;&nbsp; 3. Opera</h3>   
-                                              <h3>&nbsp;&nbsp; 4. Safari</h3>   
-                                              <h3>&nbsp;&nbsp; 5. Firefox</h3>
-                                              <h3>&nbsp;&nbsp; 6. Chrome</h3>        
-                                              <br />                                              
+                                                  <?php foreach ($pregunta as $preg) 
+                                                        { ?>
+                                                        <h3><?php echo $preg->idpregunta . '. ' . $preg->nombre; ?></h3>
+                                                  <?php } ?>
+                                                        <ol>
+                                                  <?php for($i = 0; $i < count($alternativas); $i++)
+                                                        { ?>
+                                                            <li><?php echo $alternativas[$i]; ?></li>
+                                                  <?php } ?>                                         
+                                                        </ol>     
                                             </div>   
                                             <div class="row-fluid show-grid">                                               
-                                                <div class="span12"><span  style="text-align: center; font-size: 16px;">Total: 128 asistentes</span></div>
+                                                <div class="span12"><span  style="text-align: center; font-size: 16px;">Total: <?php echo $nroresps; ?> respuestas</span></div>
                                             </div>
                                         </div>                                        
                                         <p class="center">
-                                            <a href="pregevento.html" class="btn btn-large btn-primary" title="Ver estadísticas" ><i class="icon-chevron-left icon-white"></i> Regresar a preguntas del expositor</a> 							
+                                            <a href="javascript:history.back()" class="btn btn-large btn-primary" title="Ver estadísticas" ><i class="icon-chevron-left icon-white"></i>Regresar</a> 							
 					</p>                                        
                                  </div>
 				</div><!--/span-->			

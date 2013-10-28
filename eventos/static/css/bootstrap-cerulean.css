@@ -3019,7 +3019,7 @@ input[type="submit"].btn.btn-mini {
   display: block;
   padding: 8px 20px 12px;
   margin-left: -20px;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 200;
   line-height: 1;
   color: #f5f5f5;
@@ -4451,4 +4451,14 @@ i[class^="icon-"] {
 }
 .invisible {
   visibility: hidden;
+}
+
+.buttonestadisticas {
+      background-image: url('../../static/images/icono-estadísticas.jpg');
+      width: 22px;
+      height: 22px;
+      border: 0px;
+}
+ol {
+    list-style-type: lower-alpha;
 }
