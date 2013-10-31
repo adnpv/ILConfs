@@ -1,0 +1,20 @@
+[
+    {
+        "nombre": "¿Cómo se visualiza en navegadores antiguos?",
+        "idusuario": 7,
+        "estado": "No respondida",
+        "respuesta": null
+    },
+    {
+        "nombre": "¿Es muy complicado editarlo desde código?",
+        "idusuario": 8,
+        "estado": "No respondida",
+        "respuesta": null
+    },
+    {
+        "nombre": "¿Se pueden crear juegos y videos sin librerías de terceros?",
+        "idusuario": 6,
+        "estado": "No respondida",
+        "respuesta": null
+    }
+]
