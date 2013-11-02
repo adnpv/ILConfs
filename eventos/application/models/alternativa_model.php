@@ -14,6 +14,16 @@ class Alternativa_model extends CI_Model{
         $datosevento = $this->db->get();
         return $datosevento->result();
     }
+    
+    function listar_alternativas($idpregunta)
+    {
+        $this->db->select('idalternativa, nombre');
+        $this->db->from('alternativa');
+        $this->db->where('idpregunta', $idpregunta);
+        $alernts = $this->db->get();
+        return $alernts->result();
+    }
+    
     function constestar_alternativa($idalternativa, $marcaciones)
     {
         $this->db->set('nromarcaciones', "nromarcaciones+'$marcaciones'", FALSE);

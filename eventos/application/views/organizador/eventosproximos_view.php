@@ -42,6 +42,7 @@
             $(function(){
                 $('.column').equalHeight();
             });
+            
         </script>
     </head>
     <body>
@@ -142,21 +143,22 @@
                                         <form action="<?php echo base_url(); ?>index.php/evento/mostrar_participantes_evento" method="post">
                                             <input type="hidden" id="idevento" name="idevento" value="<?php echo $evento->idevento; ?>" />
                                             <input type="hidden" id="nombreevento" name="nombreevento" value="<?php echo $evento->nombre; ?>" />
-                                            <button type="submit" class="imgbuttonparticipantes"></button>
+                                            <button type="submit" class="imgbuttonparticipantes" title="Participantes registrados"></button>
                                         </form>
                                     </li>
                                     <li>
                                         <form action="<?php echo base_url(); ?>index.php/evento/mostrar_venta_entradas" method="post">
                                             <input type="hidden" id="idevento" name="idevento" value="<?php echo $evento->idevento; ?>" />
                                             <input type="hidden" id="nombreevento" name="nombreevento" value="<?php echo $evento->nombre; ?>" />
-                                            <button type="submit" class="imgbuttonentradas"></button>
+                                            <button type="submit" class="imgbuttonentradas" title="Reporte de ventas"></button>
                                         </form>
                                     </li> 
                                     <li>
                                         <form action="<?php echo base_url(); ?>index.php/evento/mostrar_temas_evento" method="post">
                                             <input type="hidden" id="idevento" name="idevento" value="<?php echo $evento->idevento; ?>" />
                                             <input type="hidden" id="nombreevento" name="nombreevento" value="<?php echo $evento->nombre; ?>" />
-                                            <button type="submit" class="imgbuttontemas"></button>
+                                            <input type="hidden" id="tipoevento" name="tipoevento" value="<?php echo $tipoevento; ?>" />
+                                            <button type="submit" class="imgbuttontemas"title="Temas"></button>
                                         </form>
                                     </li>    
                                     <li><form  action="mostrar_participantes_evento"><input type="image" src="<?php echo base_url(); ?>static/images/prohibido.jpg" title="Cancelar" width="17" height="17"/></form></li>

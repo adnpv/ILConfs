@@ -51,10 +51,10 @@ class Evento extends CI_Controller {
             $latitud = $this->input->post("latitud");
             $longitud = $this->input->post("longitud");
             $moderador = $this->input->post("moderador");       
-             $finicio = $this->input->post("finicio");
-        $nroentradas = $this->input->post("nroentradas");
-        $preciounit = $this->input->post("preciounit");
-        $flimite = $this->input->post("fechalimite");        
+            $finicio = $this->input->post("finicio");
+            $nroentradas = $this->input->post("nroentradas");
+            $preciounit = $this->input->post("preciounit");
+            $flimite = $this->input->post("fechalimite");        
             $datosnvoevento = array(
                 array(
                     'nombre' => $nombreevento,
@@ -75,8 +75,9 @@ class Evento extends CI_Controller {
                     'fechalimite' => $flimite
                 )
             );
-            $this->evento_model->insertar_evento($datosnvoevento);            
-            redirect( base_url() . 'index.php/evento/agregar_tema_expositor/?nombreevento='.$nombreevento);       
+            $this->evento_model->insertar_evento($datosnvoevento);   
+            //$this->enviar_nuevo_evento($nombreevento);         
+            redirect( base_url() . 'index.php/evento/agregar_tema_expositor/?nombreevento='.$nombreevento);            
         }
         else
         {             
@@ -100,10 +101,19 @@ class Evento extends CI_Controller {
     {
         $idevento = $this->input->post('idevento');
         $nombreevento = $this->input->post('nombreevento');
+        $tipoevento = $this->input->post('tipoevento');     
         $datos['idevento'] = $idevento;
+        $datos['tipoevento'] = $tipoevento;
         $datos['nombreevento'] = $nombreevento;        
         $datos['temas_evto'] = $this->evento_model->mostrar_temas_evento($idevento);
         $this->load->view('/organizador/temas_view', $datos);
+    }
+    
+    public function mostrar_eventos()//moderador
+    {       
+        $datos['tipoevento'] = 'próximos';
+        $datos['datosevento'] = $this->evento_model->mostrar_eventos_proximos();         
+        $this->load->view('/moderador/eventosproximos_view', $datos);
     }
     
     public function mostrar_eventos_proximos()
@@ -117,7 +127,7 @@ class Evento extends CI_Controller {
     {
         $datos['tipoevento'] = 'pasados';
         $datos['datosevento'] = $this->evento_model->mostrar_eventos_pasados();         
-        $this->load->view('/organizador/eventosproximos_view', $datos);
+        $this->load->view('/organizador/eventospasados_view', $datos);
     }
     
     public function mostrar_participantes_evento()
@@ -127,15 +137,47 @@ class Evento extends CI_Controller {
         $particdeevto = $this->evento_model->mostrar_participantes_evento($idevento);
         $asistentes = $this->evento_model->contar_asistentes_evento($idevento);
         $inasistentes = $this->evento_model->contar_inasistentes_evento($idevento);
+        $datos['idevento'] = $idevento;
         $datos['nombreevento'] = $nombreevento;
         $datos['particdeevto'] = $particdeevto;
         $datos['asistentes'] = $asistentes;
         $datos['inasistentes'] = $inasistentes;
         $this->load->view('/organizador/reporteregistrados_view', $datos);       
     }   
+    public function listar_participantes_evento()
+    {
+        $idevento = $this->input->post('idevento');
+        $nombreevento = $this->input->post('nombreevento');       
+        $particdeevto = $this->evento_model->mostrar_participantes_evento($idevento);
+        $asistentes = $this->evento_model->contar_asistentes_evento($idevento);
+        $inasistentes = $this->evento_model->contar_inasistentes_evento($idevento);
+        $datos['idevento'] = $idevento;
+        $datos['nombreevento'] = $nombreevento;
+        $datos['particdeevto'] = $particdeevto;
+        $datos['asistentes'] = $asistentes;
+        $datos['inasistentes'] = $inasistentes;
+        $this->load->view('/moderador/reporteregistrados_view', $datos);       
+    }   
     
+    public function enviar_nuevo_evento()//($nombreevento)
+    {   
+        header("Content-Type: text/html; charset=UTF-8");
+        $nombreevento = 'Cómo venderle a un escéptico';
+        $datosnvoevento = $this->evento_model->mostrar_evento($nombreevento);
+        $url = 'http://localhost/curl2/index.php';        
+        $ch = curl_init($url);
+        $data_string = urlencode(json_encode($datosnvoevento));
+        redirect ('http://localhost/curl2/index.php?nuevoevento='.$data_string);
+        /*curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+        curl_setopt($ch, CURLOPT_VERBOSE, TRUE);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, array('nuevoevento'=>$data_string));*/
+        $result = curl_exec($ch);
+        curl_close($ch);
+    }
     public function enviar_eventos_proximos()
     {   
+        header("Content-Type: text/html; charset=UTF-8");
         $datoseventosprox = $this->evento_model->mostrar_eventos_proximos();   
         $url = 'http://localhost/curl2/index.php';        
         $ch = curl_init($url);
@@ -143,7 +185,7 @@ class Evento extends CI_Controller {
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
         curl_setopt($ch, CURLOPT_VERBOSE, TRUE);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, array("eventosprox"=>$data_string));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, array('eventosprox'=>$data_string));
 
         $result = curl_exec($ch);
         curl_close($ch);

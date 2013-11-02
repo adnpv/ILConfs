@@ -11,6 +11,27 @@ class Tema_model extends CI_Model{
         $this->db->insert_batch('tema', $datosnvotema); 
     }    
     
+    public function mostrar_tema($nombretema, $idevento)
+    {
+        $this->db->select('idtema, nombre, horainicio, horafin, idevento, idusuario, rondapreguntas, rondaconsultas');
+        $this->db->from('tema');
+        $this->db->where('nombre', $nombretema);
+        $this->db->where('idevento', $idevento);
+        $datosevento = $this->db->get();
+        return $datosevento->result();
+    }
+    
+    function mostrar_temas_evento($idevento)
+    {
+        $tema_expo = $this->db->query("select t.idtema as nro, t.nombre as nombre, t.horainicio as hinicio,
+            t.horafin as hfin, concat(u.nombres, ' ',u.apepat, ' ', u.apemat) as expositor
+            from tema t, expositor e, usuario u
+            where t.idusuario = e.idusuario 
+            and e.idusuario = u.idusuario 
+            and idevento = '$idevento' order by t.idtema");
+        return $tema_expo->result();   
+    }
+    
     function mostrar_tema_expositor_evento($idevento)
     {
         $tema_expo = $this->db->query("select t.idtema as nro, t.nombre as nombre, t.horainicio as hinicio,

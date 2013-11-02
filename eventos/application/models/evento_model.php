@@ -16,6 +16,15 @@ class Evento_model extends CI_Model{
         return $datosevento->result();
     }
     
+    public function mostrar_evento($nombreevento)
+    {
+        $this->db->select('idevento, nombre, fechainicio, fechafin, horainicio, horafin, horaregistro, lugar, latitud, longitud, destacado, estado, idusuario, nroentradas, entradasvendidas, preciounit, fechalimite');
+        $this->db->from('evento');
+        $this->db->where('nombre', $nombreevento);
+        $datosevento = $this->db->get();
+        return $datosevento->result();
+    }
+    
     public function mostrar_eventos_pasados()
     {
         $this->db->select('idevento, nombre, fechainicio, horaregistro, horainicio, horafin, estado');

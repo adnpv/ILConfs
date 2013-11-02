@@ -23,6 +23,4 @@ class Encuesta_model extends CI_Model{
         $this->db->where('idusuario', $idusuario);
         $this->db->update('participante', $datosnvoestado); 
     }
-    
-    //update encuesta set estado = 'No respondida';
 }

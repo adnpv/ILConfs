@@ -98,7 +98,7 @@
             </header>
             <article class="module width_full">
                 <header><h3>Subir archivos</h3></header>
-                <form action="agregartemaexpo.html">
+                <form method="post" action="<?php echo base_url(); ?>index.php/tema/cargar_archivo" enctype="multipart/form-data">
                     <div class="module_content">             
                         <fieldset style="width:55%; float:left;"> <!-- to make two field float next to one another, adjust values accordingly -->
                             <label>Archivo</label>
@@ -135,35 +135,23 @@
                         </tr> 
                     </thead> 
                     <tbody> 
-                        <tr>  
-                            <td>1</td> 
-                            <td>Nuevos y mejores elementos</td> 
-                            <td><input type="image" src="<?php echo base_url(); ?>static/images/icn_edit.png" title="Actualizar"/><input type="image" src="<?php echo base_url(); ?>static/images/icn_trash.png" title="Eliminar"></td> 
-                        </tr> 
-                        <tr>                             
-                            <td>2</td> 
-                            <td>Nuevos elementos</td>                             
-                            <td>Aside, nav</td>                             
-                            <td><input type="image" src="<?php echo base_url(); ?>static/images/icn_edit.png" title="Actualizar"/><input type="image" src="<?php echo base_url(); ?>static/images/icn_trash.png" title="Eliminar"></td> 
-                        </tr>
-                        <tr>                             
-                            <td>3</td> 
-                            <td>Nuevos elementos</td>                             
-                            <td>Article, footer</td> 
-                            <td><input type="image" src="<?php echo base_url(); ?>static/images/icn_edit.png" title="Actualizar"/><input type="image" src="<?php echo base_url(); ?>static/images/icn_trash.png" title="Eliminar"></td> 
-                        </tr> 
-                        <tr>                             
-                            <td>4</td> 
-                            <td>Reconocimiento de voz</td>                             
-                            <td>Reconocimiento de voz</td> 
-                            <td><input type="image" src="<?php echo base_url(); ?>static/images/icn_edit.png" title="Actualizar"/><input type="image" src="<?php echo base_url(); ?>static/images/icn_trash.png" title="Eliminar"></td> 
-                        </tr> 
-                        <tr>                             
-                            <td>5</td> 
-                            <td>Audio y video con HTML5</td>                             
-                            <td>Audio y video</td>                            
-                            <td><input type="image" src="<?php echo base_url(); ?>static/images/icn_edit.png" title="Actualizar"/><input type="image" src="<?php echo base_url(); ?>static/images/icn_trash.png" title="Eliminar"></td> 
-                        </tr> 
+                        
+                        <?php
+                            for ($i = 0; $i < count($lista); $i++)
+                            { 
+                                if($i < 2)
+                                {
+                                    continue;
+                                }
+                                else
+                                {    ?>
+                                    <tr> 
+                                        <td><?php echo $i + 1 ; ?></td>
+                                        <td><a href = "<?php echo 'http://pitreal.hostei.com/eventos/archivos/' .$lista[$i]; ?>" target="_blank" ><?php echo $lista[$i]; ?></a></td>
+                                        <td><input type="image" src="<?php echo base_url(); ?>static/images/icn_edit.png" title="Actualizar"/><input type="image" src="<?php echo base_url(); ?>static/images/icn_trash.png" title="Eliminar"></td> 
+                                    </tr>
+                        <?php   }
+                            }?>                                
                     </tbody> 
                 </table>
             </div><!-- end of #tab1 -->           		

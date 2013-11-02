@@ -134,7 +134,7 @@
         <article class="module width_full">         
             <header>
                 <div class="submit_link" style="float: left; padding: 2px auto;">
-                    <h3>Eventos próximos</h3>
+                    <h3>Participantes</h3>
                 </div>                          
             </header>  
         

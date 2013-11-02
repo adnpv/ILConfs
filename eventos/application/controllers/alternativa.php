@@ -9,11 +9,9 @@ class Alternativa extends CI_Controller {
        $this->load->model('pregunta_model');
        $this->load->helper('url');
        $this->load->library('session');
-    }    
+    }         
     
-        
-    
-    public function mostrar_resultado_alternativa()//para mostrar los datos de la bd en la vista
+     public function mostrar_resultado_alternativa()//para mostrar los datos de la bd en la vista
     {
         $idpregunta = $this->input->post('idpregunta');        
         $datos['idpregunta'] = $idpregunta;        
@@ -28,6 +26,46 @@ class Alternativa extends CI_Controller {
         $nroresps = array_sum($marcaciones);
         $datos['nroresps'] = $nroresps;
         $this->load->view('/expositor/estadisticaspregunta_view', $datos);
+    }
+    
+    public function listar_alternativas()
+    {       
+        $idevento = $this->input->post('idevento');
+        $idpregunta = $this->input->post('idpregunta');
+        $nombrepregunta = $this->input->post('nombrepregunta');
+        $nombreevento = $this->input->post('nombreevento');
+        $nombretema = $this->input->post('nombretema');
+        $idtema = $this->input->post('idtema');    
+        $datos['idevento'] = $idevento;
+        $datos['nombreevento'] = $nombreevento;
+        $datos['nombretema'] = $nombretema;
+        $datos['nombrepregunta'] = $nombrepregunta;
+        $datos['idpregunta'] = $idpregunta;
+        $datos['idtema'] = $idtema;      
+        $datos['alternts'] = $this->alternativa_model->listar_alternativas($idpregunta);       
+        $this->load->view('/moderador/alternativaspreg_view', $datos);
+    }   
+    
+    public function actualizar_alternativa()
+    {
+        $idpregunta = $this->input->post('idpregunta');
+        $idevento = $this->input->post('idevento');
+        $nombreevento = $this->input->post('nombreevento');
+        $nombretema = $this->input->post('nombretema');
+        $idtema = $this->input->post('idtema');
+        $nombrepregunta = $this->input->post('nombrepregunta');
+        $nombrealternativa = $this->input->post('nombrealternativa');
+        $idalternaativa = $this->input->post('idalternaativa');        
+        //$pregunta = $this->pregunta_model->listar_pregunta($idpregunta);
+        $datos['idevento'] = $idevento;
+        $datos['nombreevento'] = $nombreevento;
+        $datos['nombretema'] = $nombretema;
+        $datos['nombrepregunta'] = $nombrepregunta;
+        $datos['idtema'] = $idtema;     
+        $datos['idpregunta'] = $idpregunta;
+        $datos['idalternaativa'] = $idalternaativa; 
+        $datos['nombrealternativa'] = $nombrealternativa; 
+        $this->load->view('/moderador/actualizaralternativa_view', $datos);
     }
     
     private function obtener_datos_alternativa($idpregunta)//obtiene datos de la bd para pasarlo a las demas funciones
@@ -61,6 +99,8 @@ class Alternativa extends CI_Controller {
         $txtalternativa = $datosalternt[1];
         $valores = $datosalternt[2];
         
+        //var_dump($pregunta);
+        
         foreach($pregunta as $pgta)
         {
             $txtpregunta = $pgta->nombre;
@@ -69,7 +109,7 @@ class Alternativa extends CI_Controller {
         $graph = new PieGraph(510,550);
         $graph->SetShadow();
 
-        $graph->title->Set($txtpregunta);
+        $graph->title->Set('');//($txtpregunta);
         $graph->subtitle->Set('');
         $p1 = new PiePlot3D($valores);
         $p1->SetLabelType(PIE_VALUE_ADJPERCENTAGE);
@@ -79,6 +119,6 @@ class Alternativa extends CI_Controller {
         $p1->SetAngle(45);        
         $p1->SetLegends($txtalternativa);
         $graph->Add($p1);
-        $graph->Stroke();         
+        $graph->Stroke(); 
     }
 }

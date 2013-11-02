@@ -139,13 +139,16 @@
                             <td><?php echo $pde->asistencia; ?></td>                            
                             <td>
                                 <ul id="ulrdbtn">
-                                    <li>
-                                        <form action="listarpreguntasdelasistente.html">
-                                            <input type="image" src="<?php echo base_url(); ?>/static/images/preguntas.jpg" title="Preguntas del asistente" width="17" height="17"/>
+                                    <li>                                        
+                                        <form action="<?php echo base_url(); ?>index.php/consulta/listar_consultas_partic" method="get">
+                                            <input type="hidden" id="idusuario" name="idusuario" value="<?php echo $pde->idusuario; ?>" />                                            
+                                            <input type="hidden" id="idevento" name="idevento" value="<?php echo $idevento; ?>" />
+                                            <input type="hidden" id="nombreevento" name="nombreevento" value="<?php echo $nombreevento; ?>" />
+                                            <button type="submit" class="imgpreguntasexpositor" title="Consultas del participante"></button>                                            
                                         </form>
                                     </li>
                                 </ul>
-                            </td>                                
+                            </td>                                    
                         </tr> 
                         <?php
                         }

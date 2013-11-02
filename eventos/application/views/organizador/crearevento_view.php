@@ -109,30 +109,30 @@
                         </fieldset>                        
                         <div class="clear"></div>                        
                         <fieldset style="width:48%; float:left;"> <!-- to make two field float next to one another, adjust values accordingly -->
-                            <label>Fecha de inicio</label>
+                            <label>Fecha de inicio</label><span>P. ej. 2013-11-01</span>
                             <?php echo form_error('finicio'); ?>
                             <input type="text" x-webkit-speech id="finicio" name="finicio" value="<?php echo set_value('finicio'); ?>" style="width:92%;">
                         </fieldset>                                         
                         <fieldset style="width:48%; float:right;"> <!-- to make two field float next to one another, adjust values accordingly -->
-                            <label>Fecha de fin</label>
+                            <label>Fecha de fin</label><span>P. ej. 2013-11-03</span>
                             <?php echo form_error('ffin'); ?>
                             <input type="text" x-webkit-speech id="ffin" name="ffin" value="<?php echo set_value('ffin'); ?>"  style="width:92%;">
                         </fieldset>
                         <div class="clear"></div>                        
                         <fieldset style="width:48%; float:left;"> <!-- to make two field float next to one another, adjust values accordingly -->
-                            <label>Hora de inicio</label>
+                            <label>Hora de inicio</label><span>P. ej. 09:00</span>
                             <?php echo form_error('hinicio'); ?>
                             <input type="text" x-webkit-speech id="hinicio" name="hinicio" value="<?php echo set_value('hinicio'); ?>"  style="width:92%;">
                         </fieldset>                                         
                         <fieldset style="width:48%; float:right;"> <!-- to make two field float next to one another, adjust values accordingly -->
-                            <label>Hora de fin</label>
+                            <label>Hora de fin</label><span>P. ej. 13:00</span>
                             <?php echo form_error('hfin'); ?>
                             <input type="text" x-webkit-speech id="hfin" name="hfin" value="<?php echo set_value('hfin'); ?>"  style="width:92%;">
                         </fieldset>
                         <div class="clear"></div>  
                         <fieldset style="width:48%; float:left;"> <!-- to make two field float next to one another, adjust values accordingly -->
                             <label>Hora de registro</label>
-                            <?php echo form_error('hregistro'); ?>
+                            <?php echo form_error('hregistro'); ?><span>P. ej. 08:00</span>
                             <input type="text" x-webkit-speech id="hregistro" name="hregistro" value="<?php echo set_value('hregistro'); ?>"  style="width:92%;">
                         </fieldset>                                         
                         <fieldset style="width:48%; float:right;"> <!-- to make two field float next to one another, adjust values accordingly -->
@@ -147,23 +147,23 @@
                         </fieldset>
                         <div class="clear"></div> 
                         <fieldset style="width:48%; float:left;"> <!-- to make two field float next to one another, adjust values accordingly -->
-                            <label>Latitud</label>
+                            <label>Latitud</label><span>P. ej. -12.4832, 10.3433</span>
                             <?php echo form_error('latitud'); ?>
                             <input type="text" x-webkit-speech id="latitud" name="latitud" value="<?php echo set_value('latitud'); ?>"   style="width:92%;">
                         </fieldset>                                         
                         <fieldset style="width:48%; float:right;"> <!-- to make two field float next to one another, adjust values accordingly -->
-                            <label>Longitud</label>
+                            <label>Longitud</label><span>P. ej. -12.4832, 10.3433</span>
                             <?php echo form_error('longitud'); ?>
                             <input type="text" x-webkit-speech id="longitud" name="longitud" value="<?php echo set_value('longitud'); ?>"   style="width:92%;">
                         </fieldset>
                         <div class="clear"></div>  
                         <fieldset style="width:48%; float:left;"> <!-- to make two field float next to one another, adjust values accordingly -->
-                            <label>Nro. de Entradas</label>
+                            <label>Nro. de Entradas</label><span>P. ej. 150</span>
                             <?php echo form_error('nroentradas'); ?>
                             <input type="text" id="nroentradas" name="nroentradas" value="<?php echo set_value('nroentradas'); ?>"   style="width:92%;">
                         </fieldset>                                         
                         <fieldset style="width:48%; float:right;"> <!-- to make two field float next to one another, adjust values accordingly -->
-                            <label>Precio unitario</label>
+                            <label>Precio unitario (S/.)</label><span>P. ej. 35.00</span>
                             <?php echo form_error('preciounit'); ?>
                             <input type="text" id="preciounit" name="preciounit" value="<?php echo set_value('preciounit'); ?>"   style="width:92%;">
                         </fieldset>
@@ -179,7 +179,7 @@
                             </select>
                         </fieldset>       
                         <fieldset style="width:48%; float:right;"> <!-- to make two field float next to one another, adjust values accordingly -->
-                            <label>Fin de ventas</label>
+                            <label>Fin de ventas</label><span>P. ej. 2013-11-01</span>
                             <?php echo form_error('flimite'); ?>
                             <input type="text" x-webkit-speech id="flimite" name="flimite" value="<?php echo set_value('flimite'); ?>"  style="width:92%;">
                         </fieldset>                                                                                 

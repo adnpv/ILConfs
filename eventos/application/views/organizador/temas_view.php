@@ -135,7 +135,6 @@
                             <td><?php echo $tema->hinicio; ?></td>                              
                             <td><?php echo $tema->hfin; ?></td>                              
                             <td><?php echo $tema->expositor; ?></td>                              
-                            <!--<td>Activo</td>-->
                             <td>
                                 <ul id="ulrdbtn">
                                     <li><form action="actualizarevento.html"><input type="image" src="<?php echo base_url(); ?>static/images/icn_edit_article.png" title="Actualizar"/></form></li>
@@ -144,7 +143,7 @@
                                             <input type="hidden" id="idtema" name="idtema" value="<?php echo $tema->nro; ?>" />  
                                             <input type="hidden" id="nombretema" name="nombretema" value="<?php echo $tema->nombre; ?>" />     
                                             <input type="hidden" id="nombreevento" name="nombreevento" value="<?php echo $nombreevento; ?>" />                                            
-                                            <button type="submit" class="imgbuttonarchivos"></button>
+                                            <button type="submit" class="imgbuttonarchivos" title="Archivos del tema"></button>
                                         </form>
                                     </li>                                                           
                                 </ul>
@@ -158,12 +157,15 @@
         <footer>
             <div class="submit_link" style="padding: 3px 310px;">
                 <ul id="ulrdbtn">
+                <?php if ($tipoevento == 'próximos')
+                      {?>
                     <li><form action="<?php echo base_url(); ?>index.php/evento/agregar_tema_expositor" method="get">
                             <input type="hidden" id="idevento" name="idevento" value="<?php echo $idevento; ?>" />
                             <input type="hidden" id="nombreevento" name="nombreevento" value="<?php echo $nombreevento; ?>" />
                             <input type="submit" class="alt_btn" value="Agregar Temas" />
                         </form>
-                    </li>   
+                    </li> 
+                 <?php } ?>
                     <li><a class="regresar" href="javascript:history.back()"></a></li>                 
                 </ul>                                         
             </div>

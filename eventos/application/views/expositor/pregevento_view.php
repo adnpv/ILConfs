@@ -198,6 +198,8 @@
                                                                  <td><?php echo $preg->nombre ;?></td>                                                                                                                                                                                              
                                                                  <td class="center">
                                                                      <form action="<?php echo base_url(); ?>index.php/pregunta/activar_pregunta" method="post">
+                                                                         <input type="hidden" id="idevento" name="idevento" value="<?php echo $idevento;?>" />
+                                                                         <input type="hidden" id="nombreevento" name="nombreevento" value="<?php echo $nombreevento;?>" />   
                                                                          <input type="hidden" id="idpregunta" name="idpregunta" value="<?php echo $preg->idpregunta;?>" />  
                                                                          <input type="hidden" id="idtema" name="idtema" value="<?php echo $idtema;?>" />  
                                                                          <!--<input type="hidden" id="valor" name="valor" value="1" />  -->
@@ -214,11 +216,12 @@
                                                        </div> 
                                                        <p style="text-align: center">                                                           
                                                             <form action="<?php echo base_url(); ?>index.php/pregunta/mostrar_estad_preguntas_tema" method="post">
-                                                                <input type="hidden" id="idtema" name="idtema" value="<?php echo $idtema;?>" />       
+                                                                <input type="hidden" id="idevento" name="idevento" value="<?php echo $idevento;?>" />
                                                                 <input type="hidden" id="nombreevento" name="nombreevento" value="<?php echo $nombreevento;?>" />   
+                                                                <input type="hidden" id="idtema" name="idtema" value="<?php echo $idtema;?>" />                                                           
                                                                 <button type="submit" class="btn btn-small btn-success">Ver resultados</button>                                                              
-                                                            </form> 
-                                                       <a href="javascript:history.back()" class="btn btn-small btn-success">< Regresar</a>       
+                                                            </form>                                                        
+                                                       <a href="<?php echo base_url(); ?>index.php/tema/mostrar_temas_expositor?idevento=<?php echo $idevento;?>&nombreevento=<?php echo $nombreevento;?>" class="btn btn-small btn-success">< Regresar</a>       
                                                        </p>
                                             <?php  } 
                                                    ?>     	

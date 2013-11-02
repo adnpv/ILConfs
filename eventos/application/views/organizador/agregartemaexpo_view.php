@@ -116,11 +116,11 @@
                         </fieldset>                       
                         <div class="clear"></div> 
                         <fieldset style="width:48%; float:left;"> <!-- to make two field float next to one another, adjust values accordingly -->
-                            <label>Hora de inicio</label>
+                            <label>Hora de inicio</label><span>P. ej. 08:00</span>
                             <input type="text" id="hinicio" name="hinicio" style="width:92%;">
                         </fieldset>                                         
                         <fieldset style="width:48%; float:right;"> <!-- to make two field float next to one another, adjust values accordingly -->
-                            <label>Hora de fin</label>
+                            <label>Hora de fin</label><span>P. ej. 10:00</span>
                             <input type="text" id="hfin" name="hfin" style="width:92%;">
                         </fieldset>
                         <div class="clear"></div>  

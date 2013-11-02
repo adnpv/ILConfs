@@ -1047,6 +1047,52 @@ float: left;
     padding: 0px;
     border: 0px;
 }
+
+.imgbuttonactualizar{
+    background-image: url(../../static/images/icn_edit_article.png);    
+    height: 17px;
+    width: 17px;
+    margin: 0px 5px;
+    padding: 0px;
+    border: 0px;
+}
+
+.imgpreguntasexpositor{
+    background-image: url(../../static/images/preguntas.jpg);    
+    height: 17px;
+    width: 17px;
+    margin: 0px 5px;
+    padding: 0px;
+    border: 0px;
+}
+
+.imgbuttonlistar{
+    background-image: url(../../static/images/icn_categories.png);    
+    height: 17px;
+    width: 17px;
+    margin: 0px 5px;
+    padding: 0px;
+    border: 0px;
+}
+
+.imgactivar{
+    background-image: url(../../static/images/activar.gif);    
+    height: 17px;
+    width: 17px;
+    margin: 0px 5px;
+    padding: 0px;
+    border: 0px;
+}
+
+.imgcensurar{
+    background-image: url(../../static/images/icono_prohibido.png);    
+    height: 17px;
+    width: 17px;
+    margin: 0px 5px;
+    padding: 0px;
+    border: 0px;
+}
+
 .alineacioncentral{
     text-align: center;
 }
