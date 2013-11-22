@@ -9,7 +9,7 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <script src="<?php echo base_url(); ?>static/js/jquery-1.5.2.min.js" type="text/javascript"></script>
-    <script src="<?php echo base_url(); ?>static/js/hideshow.js" type="text/javascript"></script>
+    <!--script src="<?php //echo base_url(); ?>static/js/hideshow.js" type="text/javascript"></script>-->
     <script src="<?php echo base_url(); ?>static/js/jquery.tablesorter.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>static/js/jquery.equalHeight.js"></script>
         <script type="text/javascript">
@@ -54,7 +54,7 @@
 
         <section id="secondary_bar">
             <div class="user">
-                <p>Bienvenido moderador: Adrián Peralta</p>
+                <p>Bienvenido <?php echo  $this->session->userdata('rol') . ': ' .$this->session->userdata('nombres') . ' ' .  $this->session->userdata('apepat') . ' ' .  $this->session->userdata('apemat'); ?></p>
                 <!--<a class="logout_user" href="#" title="Logout">Logout</a>-->
             </div>
             <div class="breadcrumbs_container">
@@ -93,7 +93,7 @@
             <h3>Cuenta</h3>
             <ul class="toggle">
                 <li class="icn_profile"><a href="actualizarusuario.html">Actualizar usuario</a></li>
-                <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
+                <li class="icn_jump_back"><a href="<?php echo base_url() . 'index.php/autenticacion/cerrar_sesion' ;?>">Cerrar sesión</a></li>
             </ul>
             <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </aside><!-- end of sidebar -->
@@ -143,19 +143,47 @@
                             <td>
                                 <ul id="ulrdbtn">
                                     <li>
-                                        <form action="<?php echo base_url(); ?>index.php/evento/listar_participantes_evento" method="post">
+                                        <form action="<?php echo base_url(); ?>index.php/evento/listar_participantes_evento" method="get">
                                             <input type="hidden" id="idevento" name="idevento" value="<?php echo $evento->idevento; ?>" />
                                             <input type="hidden" id="nombreevento" name="nombreevento" value="<?php echo $evento->nombre; ?>" />
+                                            <input type="hidden" id="edoevento" name="edoevento" value="<?php echo $evento->estado; ?>" />
                                             <button type="submit" class="imgbuttonparticipantes" title="Participantes"></button>                                            
                                         </form>
                                     </li> 
                                     <li>
-                                        <form action="<?php echo base_url(); ?>index.php/tema/mostrar_temas_evento" method="post">
+                                        <form action="<?php echo base_url(); ?>index.php/tema/mostrar_temas_evento" method="get">
                                             <input type="hidden" id="idevento" name="idevento" value="<?php echo $evento->idevento; ?>" />
                                             <input type="hidden" id="nombreevento" name="nombreevento" value="<?php echo $evento->nombre; ?>" />
                                             <button type="submit" class="imgbuttontemas" title="Temas"></button>                                            
                                         </form>
-                                    </li>                                   
+                                    </li>  
+                              <?php if ($evento->estado == 'Pendiente')
+                                    {  ?>
+                                    <li>
+                                        <form action="<?php echo base_url(); ?>index.php/evento/activar_evento" method="post">
+                                            <input type="hidden" id="idevento" name="idevento" value="<?php echo $evento->idevento; ?>" />                                           
+                                            <input type="hidden" id="accion" name="accion" value="Activo"/>
+                                            <button type="submit" class="imgactivar"title="Activar evento"></button>
+                                        </form>
+                                    </li> 
+                              <?php }
+                                    else                                   
+                                    { ?>
+                                      <li>
+                                        <form action="<?php echo base_url(); ?>index.php/evento/desactivar_evento" method="post">
+                                            <input type="hidden" id="idevento" name="idevento" value="<?php echo $evento->idevento; ?>" />                                           
+                                            <input type="hidden" id="accion" name="accion" value="Finalizado"/>
+                                            <button type="submit" class="imgcerrar"title="Cerrar evento"></button>                                            
+                                        </form>
+                                    </li> 
+                                    <li>
+                                        <form action="<?php echo base_url(); ?>index.php/evento/activar_encuesta" method="post">
+                                            <input type="hidden" id="idevento" name="idevento" value="<?php echo $evento->idevento; ?>" />                                                                                      
+                                            <button type="submit" class="imgencuesta"title="Activar encuesta"></button>
+                                        </form>
+                                    </li> 
+                                    <?php } ?>
+                                    
                                 </ul>
                             </td> 
                         </tr> 

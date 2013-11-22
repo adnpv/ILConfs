@@ -14,8 +14,15 @@ class Usuario extends CI_Controller {
     }
     
     public function index()
-    {
-        $this->load->view('/organizador/crearusuario_view');
+    {       
+        if ( $this->validar_sesion() == FALSE)
+        {
+            redirect ( base_url() . 'index.php/autenticacion?error=2');
+        }
+        else
+        {
+            $this->load->view('/organizador/crearusuario_view');
+        }
     }
     
     public function insertar_usuario()
@@ -144,6 +151,14 @@ class Usuario extends CI_Controller {
         curl_setopt($ch, CURLOPT_POSTFIELDS, array("nvousuario"=>$data_string));
         $result = curl_exec($ch);
         curl_close($ch);   
+    }
+    
+    private function validar_sesion()
+    {
+        if  ($this->session->userdata('rol') ==  '' || $this->session->userdata('nombres') ==  ''  || $this->session->userdata('apepat') ==  ''  || $this->session->userdata('apemat') == '')        
+            return FALSE;
+        else
+            return TRUE;
     }
     
 }

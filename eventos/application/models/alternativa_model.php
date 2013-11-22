@@ -6,6 +6,20 @@ class Alternativa_model extends CI_Model{
        parent::__construct(); //llamada al constructor de Model.
     }
     
+    function actualizar_alternativas($idalternativa, $nombrealternativa)
+    {
+        $datosalternt = array(
+            'nombre' => $nombrealternativa
+        );
+        $this->db->where('idalternativa', $idalternativa);
+        $this->db->update('alternativa', $datosalternt);        
+    }
+    
+    function insertar_alternativa($datosalternt)
+    {
+        $this->db->insert_batch('alternativa', $datosalternt); 
+    }
+    
     function obtener_resultado($idpregunta)
     {
         $this->db->select('idalternativa, nombre, nromarcaciones');

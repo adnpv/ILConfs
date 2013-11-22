@@ -54,7 +54,7 @@
 
         <section id="secondary_bar">
             <div class="user">
-                <p>Bienvenido organizador: Adrián Peralta</p>
+                <p>Bienvenido <?php echo  $this->session->userdata('rol') . ': ' .$this->session->userdata('nombres') . ' ' .  $this->session->userdata('apepat') . ' ' .  $this->session->userdata('apemat'); ?></p>
                 <!--<a class="logout_user" href="#" title="Logout">Logout</a>-->
             </div>
             <div class="breadcrumbs_container">
@@ -87,7 +87,7 @@
             <h3>Cuenta</h3>
             <ul class="toggle">
                 <li class="icn_profile"><a href="actualizarperfil.html">Actualizar perfil</a></li>
-                <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
+                <li class="icn_jump_back"><a href="<?php echo base_url() . 'index.php/autenticacion/cerrar_sesion' ;?>">Cerrar sesión</a></li>
             </ul>   
             <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </aside><!-- end of sidebar -->
@@ -122,7 +122,7 @@
                             <th>Hora de inicio</th>
                             <th>Hora de fin</th>                            
                             <th>Expositor</th>
-                            <!--<th>Estado</th>-->
+                            <th>Consultas</th>
                             <th>Acciones</th>  
                         </tr> 
                     </thead> 
@@ -134,27 +134,47 @@
                             <td><?php echo $tema->nombre; ?></td>  
                             <td><?php echo $tema->hinicio; ?></td>                              
                             <td><?php echo $tema->hfin; ?></td>                              
-                            <td><?php echo $tema->expositor; ?></td>                              
+                            <td><?php echo $tema->expositor; ?></td>    
+                            <td><?php   if($tema->rondaconsultas == 1)                                        
+                                            echo 'Activo';
+                                         else                                         
+                                             echo 'Inactivo';                                        
+                                ?>
+                            </td> 
                             <td>
                                 <ul id="ulrdbtn">
                                     <li><form action="actualizarevento.html"><input type="image" src="<?php echo base_url(); ?>static/images/icn_edit_article.png" title="Actualizar"/></form></li>                                   
                                     <li>
-                                        <form action="<?php echo base_url(); ?>index.php/pregunta/mostrar_preguntas_tema_moderador" method="post">
+                                        <form action="<?php echo base_url(); ?>index.php/pregunta/mostrar_preguntas_tema_moderador" method="get">
+                                            <input type="hidden" id="idtema" name="idtema" value="<?php echo $tema->nro; ?>" />
+                                            <input type="hidden" id="idevento" name="idevento" value="<?php echo $idevento; ?>" />
+                                            <input type="hidden" id="nombreevento" name="nombreevento" value="<?php echo $nombreevento; ?>" />
+                                            <input type="hidden" id="nombretema" name="nombretema" value="<?php echo $tema->nombre; ?>" />                                            
+                                            <button type="submit" class="imgpreguntasexpositor" title="Preguntas del tema"></button>                                            
+                                        </form>
+                                    </li>                             
+                                    <li>
+                              <?php if($tema->rondaconsultas == 1)
+                                    { ?>
+                                        <form action="<?php echo base_url(); ?>index.php/tema/cerrar_consultas" method="get">
                                             <input type="hidden" id="idtema" name="idtema" value="<?php echo $tema->nro; ?>" />
                                             <input type="hidden" id="idevento" name="idevento" value="<?php echo $idevento; ?>" />
                                             <input type="hidden" id="nombreevento" name="nombreevento" value="<?php echo $nombreevento; ?>" />
                                             <input type="hidden" id="nombretema" name="nombretema" value="<?php echo $tema->nombre; ?>" />
-                                            <button type="submit" class="imgpreguntasexpositor" title="Preguntas del tema"></button>                                            
-                                        </form>
-                                    </li>
-                                    <li>
-                                        <form action="<?php echo base_url(); ?>index.php/tema/abrir_consultas" method="get">
+                                            <button type="submit" class="imgcerrar" title="Cerrar consultas"></button>                                            
+                                        </form>                                        
+                                     <?php 
+                                    }
+                                    else
+                                    { ?>
+                                         <form action="<?php echo base_url(); ?>index.php/tema/abrir_consultas" method="get">
                                             <input type="hidden" id="idtema" name="idtema" value="<?php echo $tema->nro; ?>" />
                                             <input type="hidden" id="idevento" name="idevento" value="<?php echo $idevento; ?>" />
                                             <input type="hidden" id="nombreevento" name="nombreevento" value="<?php echo $nombreevento; ?>" />
                                             <input type="hidden" id="nombretema" name="nombretema" value="<?php echo $tema->nombre; ?>" />
                                             <button type="submit" class="imgactivar" title="Abrir consultas"></button>                                            
                                         </form>
+                              <?php } ?> 
                                     </li>
                                 </ul>
                             </td>
@@ -167,7 +187,7 @@
         <footer>
             <div class="submit_link" style="padding: 3px 350px;">
                 <ul id="ulrdbtn">                    
-                    <li><a class="regresar" href="javascript:history.back()"></a></li>                 
+                    <li><a class="regresar" href="<?php echo base_url() . 'index.php/evento/mostrar_eventos' ?>"></a></li>                 
                 </ul>                                         
             </div>
         </footer>

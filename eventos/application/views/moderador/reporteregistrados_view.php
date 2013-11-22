@@ -54,7 +54,7 @@
 
         <section id="secondary_bar">
             <div class="user">
-                <p>Bienvenido organizador: John Doe</p>
+                <p>Bienvenido <?php echo  $this->session->userdata('rol') . ': ' .$this->session->userdata('nombres') . ' ' .  $this->session->userdata('apepat') . ' ' .  $this->session->userdata('apemat'); ?></p>
                 <!--<a class="logout_user" href="#" title="Logout">Logout</a>-->
             </div>
             <div class="breadcrumbs_container">
@@ -87,7 +87,7 @@
             <h3>Cuenta</h3>
             <ul class="toggle">
                 <li class="icn_profile"><a href="actualizarperfil.html">Actualizar perfil</a></li>
-                <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
+                <li class="icn_jump_back"><a href="<?php echo base_url() . 'index.php/autenticacion/cerrar_sesion' ;?>">Cerrar sesión</a></li>
             </ul>   
                 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </aside><!-- end of sidebar -->
@@ -147,6 +147,35 @@
                                             <button type="submit" class="imgpreguntasexpositor" title="Consultas del participante"></button>                                            
                                         </form>
                                     </li>
+                                    <li>
+                            <?php                                                        
+                                if ($edoevento == 'Activo')
+                                {
+                                    if ($pde->estado == 'Habilitado')
+                                    { ?>                                                                            
+                                        <form action="<?php echo base_url(); ?>index.php/participante/cambiar_edo_participante" method="get">
+                                            <input type="hidden" id="idusuario" name="idusuario" value="<?php echo $pde->idusuario; ?>" />                                            
+                                            <input type="hidden" id="idevento" name="idevento" value="<?php echo $idevento; ?>" />
+                                            <input type="hidden" id="nombreevento" name="nombreevento" value="<?php echo $nombreevento; ?>" />
+                                            <input type="hidden" id="edoevento" name="edoevento" value="<?php echo $edoevento; ?>" />
+                                            <input type="hidden" id="estado" name="estado" value="Bloqueado" />
+                                            <button type="submit" class="imgcensurar" title="Bloquear"></button>                                            
+                                        </form>                                    
+                              <?php } 
+                                    elseif ($pde->estado == 'Bloqueado')
+                                    { ?>
+                                        <form action="<?php echo base_url(); ?>index.php/participante/cambiar_edo_participante" method="get">
+                                            <input type="hidden" id="idusuario" name="idusuario" value="<?php echo $pde->idusuario; ?>" />                                            
+                                            <input type="hidden" id="idevento" name="idevento" value="<?php echo $idevento; ?>" />
+                                            <input type="hidden" id="nombreevento" name="nombreevento" value="<?php echo $nombreevento; ?>" />
+                                            <input type="hidden" id="edoevento" name="edoevento" value="<?php echo $edoevento; ?>" />
+                                            <input type="hidden" id="estado" name="estado" value="Habilitado" />
+                                            <button type="submit" class="imgactivar" title="Activar"></button>                                            
+                                        </form>  
+                              <?php  }                              
+                                                            
+                                 }?>
+                                    </li>
                                 </ul>
                             </td>                                
                         </tr> 
@@ -157,7 +186,7 @@
                 </table>
                 <footer>     
                     <div class="submit_link" style="padding: 3px 390px;">                        
-                         <a class="regresar" href="javascript:history.back()"></a>                      
+                        <a class="regresar" href="<?php echo base_url() . 'index.php/evento/mostrar_eventos'; ?> "></a>                      
                     </div>
                 </footer>
             </div><!-- end of #tab1 -->           	

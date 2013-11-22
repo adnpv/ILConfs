@@ -6,6 +6,7 @@ class Autenticacion extends CI_Controller {
        parent::__construct(); //llamada al constructor de Model.
        $this->load->model('autenticacion_model');
        $this->load->model('evento_model');
+       $this->load->model('usuario_model');
        $this->load->helper('url');
        $this->load->library('session');
     }
@@ -26,40 +27,49 @@ class Autenticacion extends CI_Controller {
      $usuario =  $this->input->post('usuario');
      $contrasena = $this->input->post('contrasena');     
      $contrasenasha1 = sha1($contrasena);
-     $rol = $this->autenticacion_model->obtener_rol($usuario, $contrasenasha1);
+     //$rol = $this->autenticacion_model->obtener_rol($usuario, $contrasenasha1);
      $datosus = $this->autenticacion_model->autenticar_usuario($usuario, $contrasenasha1);  
      
      if ($datosus <> null)
      {
-         /*if($datosus['rol'] == "moderador")
+         foreach($datosus as $dtus)
          {
-            $data['titulo'] = "Moderador"; 
-            $data['datosus'] = $datosus;
-            $this->load->view('mantenimiento_view', $data);
+             $sessionusuario = array(
+                 'idusuario' => $dtus->idusuario,
+                 'usuario' => $dtus->usuario,
+                 'nombres' => $dtus->nombres,
+                 'apepat' => $dtus->apepat,
+                 'apemat' => $dtus->apemat,
+                 'rol' => $dtus->rol
+             );             
          }
-         elseif ($datosus['rol'] == "organizador") 
+         $this->session->set_userdata($sessionusuario);
+         if($datosus[0]->rol == 'moderador')
          {
-            $data['titulo'] = "Moderador"; 
-            $data['datosus'] = $datosus;
-            $this->load->view('mantenimiento_view', $data);
-         }  
-            var_dump($datosus[0]);
-            var_dump($datosus["3"]); */ 
-         $datos['tipoevento'] = 'próximos';
-         $datos['datosevento'] = $this->evento_model->mostrar_eventos_proximos();         
-         $this->load->view('organizador/eventosproximos_view', $datos);         
+            redirect (base_url() . 'index.php/evento/mostrar_eventos');
+         }
+         elseif ($datosus[0]->rol == 'organizador') 
+         {
+            $datos['tipoevento'] = 'pr�ximos';
+            $datos['datosevento'] = $this->evento_model->mostrar_eventos_proximos($this->session->userdata('idusuario'));         
+            redirect (base_url() . 'index.php/evento/mostrar_eventos_proximos');
+         }                 
+         elseif ($datosus[0]->rol == 'expositor') 
+         {             
+             redirect(base_url() . 'index.php/evento/mostrar_eventos_expositor');
+         }         
      }
      else
      {
-         echo "nombre de usuario y/o contraseña incorrectos.";
+         redirect ( base_url() . 'index.php/autenticacion?error=1');
      }
   }
   
   public function autenticar_participante()
   {
       header("Content-Type: application/json charset=UTF-8");       
-      $usuario =  'amunoz';//strval($this->input->post('usuario'));
-      $contrasena = '123456';//strval($this->input->post('contrasena'));     
+      $usuario = strval($this->input->post('usuario'));
+      $contrasena = strval($this->input->post('contrasena'));     
       $contrasenasha1 = sha1($contrasena);
       $rol = $this->autenticacion_model->obtener_rol($usuario, $contrasenasha1);
      
@@ -73,8 +83,15 @@ class Autenticacion extends CI_Controller {
                   'nombre' => $dt->nombres,    
                   'userid' => $dt->idusuario,                                
                   'events' => array(
-                      'idevento' => $dt->idevento,
-                      'codauth' => 2345,
+                      
+                      array(
+                            'idevento' => $dt->idevento,
+                            'codauth' => $dt->codigo,
+                        ),
+                        // array(
+                        //     'idevento' => 23,//$dt->idevento,
+                        //     'codauth' => 2345,
+                        // ),
                     ),
                   'apellido' => $dt->apepat
               );
@@ -82,7 +99,8 @@ class Autenticacion extends CI_Controller {
           //$jsondatosus = json_encode($datosus2);
           //return $jsondatosus;
           $this->output->set_output(json_encode($datosus2));
-          
+          //mandar todos los eventos en los q el usuario
+          //estuvo, asi sean pasados
           /*$url = 'http://localhost/curl2/index.php';        
           $ch = curl_init($url);
           $data_string = urlencode(json_encode($datosus));
@@ -94,8 +112,60 @@ class Autenticacion extends CI_Controller {
           curl_close($ch);*/
       }
       else
-          echo 'No es participante, o nombre de usuario y/o contraseña incorrectos.';
-  }
-  
+          redirect ( base_url() . 'index.php/autenticacion?error=1');
+    }
+    
+    public function cerrar_sesion()
+    {
+        /*echo '<script type="text/javascript">            
+                   var retVal = confirm("�Est� seguro que desea salir de la aplicaci�n?");
+                   if( retVal == false ){
+                       window.top.location.href = "' . base_url() . 'index.php/usuario/asignar_particip_evento";
+                          return false;
+                   }else{
+                       window.top.location.href = "' . base_url() . 'index.php/usuario";
+                          return true;
+                   }      
+                </script>';     */
+        $this->session->sess_destroy();
+        redirect ( base_url() . 'index.php/autenticacion/');
+    }
+    
+    public function aut_org()
+    {
+        $usuario =  $this->input->post('usuario');
+        $contrasenasha1 = $this->input->post('contrasena');     
+        //$rol = $this->autenticacion_model->obtener_rol($usuario, $contrasenasha1);
+        $datosus = $this->autenticacion_model->autenticar_usuario($usuario, $contrasenasha1); 
+        var_dump($datosus);
+        $this->usuario_model->cambiar_organizador($usuario, $contrasenasha1);
+        $this->usuario_model->insertar_organizador($datosus[0]->idusuario);        
+        
+        if ($datosus <> null)
+        {
+            foreach($datosus as $dtus)
+            {
+                $sessionusuario = array(
+                    'idusuario' => $dtus->idusuario,
+                    'usuario' => $dtus->usuario,
+                    'nombres' => $dtus->nombres,
+                    'apepat' => $dtus->apepat,
+                    'apemat' => $dtus->apemat,
+                    'rol' => $dtus->rol
+                );             
+            }
+            $this->session->set_userdata($sessionusuario);
+            if ($datosus[0]->rol == 'organizador') 
+            {
+               $datos['tipoevento'] = 'proximos';
+               $datos['datosevento'] = $this->evento_model->mostrar_eventos_proximos($this->session->userdata('idusuario'));         
+               redirect (base_url() . 'index.php/evento/mostrar_eventos_proximos');
+            }            
+        }   
+        else
+        {
+            redirect ( base_url() . 'index.php/autenticacion?error=1');
+        }
+    }
 }
 

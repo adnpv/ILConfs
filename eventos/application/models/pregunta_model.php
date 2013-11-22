@@ -24,6 +24,18 @@ class Pregunta_model extends CI_Model{
         $this->db->update('pregunta', $datospreg);
     }
     
+    function insertar_pregunta($datospregunta)
+    {        
+        $this->db->insert_batch('pregunta', $datospregunta); 
+    }
+    
+    function obtener_id_pregunta($nombrepregunta)
+    {
+        $sql = $this->db->query("select idpregunta from pregunta where nombre = '$nombrepregunta'");
+        $idpreg = $sql->row(0);
+        return $idpreg->idpregunta;    
+    }
+    
     function validar_pregunta($idpregunta, $accion)
     {
         $datospreg =  array(
@@ -88,10 +100,10 @@ class Pregunta_model extends CI_Model{
     
     function mostrar_preguntas_alpublico($idpregunta)
     {
-        $this->db->select('idpregunta, nombre');
+        $this->db->select('idtema, idpregunta, nombre, estado');
         $this->db->from('pregunta');
         $this->db->where('idpregunta', $idpregunta);       
-        $this->db->where('estado', $idpregunta);  
+        $this->db->where('estado', 'No respondida');  
         $datospregtema = $this->db->get();
         return $datospregtema->result();       
     }

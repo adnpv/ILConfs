@@ -13,7 +13,7 @@ class Tema_model extends CI_Model{
     
     public function mostrar_tema($nombretema, $idevento)
     {
-        $this->db->select('idtema, nombre, horainicio, horafin, idevento, idusuario, rondapreguntas, rondaconsultas');
+        $this->db->select('idevento, idtema, nombre, descripcion, idusuario, rondapreguntas, rondaconsultas');
         $this->db->from('tema');
         $this->db->where('nombre', $nombretema);
         $this->db->where('idevento', $idevento);
@@ -23,8 +23,8 @@ class Tema_model extends CI_Model{
     
     function mostrar_temas_evento($idevento)
     {
-        $tema_expo = $this->db->query("select t.idtema as nro, t.nombre as nombre, t.horainicio as hinicio,
-            t.horafin as hfin, concat(u.nombres, ' ',u.apepat, ' ', u.apemat) as expositor
+        $tema_expo = $this->db->query("select t.idtema as nro, t.nombre as nombre, t.descripcion as descripcion,
+            concat(u.nombres, ' ',u.apepat, ' ', u.apemat) as expositor, t.rondaconsultas as rondaconsultas
             from tema t, expositor e, usuario u
             where t.idusuario = e.idusuario 
             and e.idusuario = u.idusuario 
@@ -34,8 +34,8 @@ class Tema_model extends CI_Model{
     
     function mostrar_tema_expositor_evento($idevento)
     {
-        $tema_expo = $this->db->query("select t.idtema as nro, t.nombre as nombre, t.horainicio as hinicio,
-            t.horafin as hfin, concat(u.nombres, ' ',u.apepat, ' ', u.apemat) as expositor
+        $tema_expo = $this->db->query("select t.idtema as nro, t.nombre as nombre, t.descripcion as descripcion,
+            concat(u.nombres, ' ',u.apepat, ' ', u.apemat) as expositor
             from tema t, expositor e, usuario u
             where t.idusuario = e.idusuario 
             and e.idusuario = u.idusuario 

@@ -136,21 +136,19 @@ class Consulta extends CI_Controller {
     
     public function insertar_consultas()
     {        
-        header("Content-Type: text/html; charset=UTF-8");
         $consultaspubl = @file_get_contents('http://pietreal.herokuapp.com/interactiv/jsonquestion/?id=1');
         $consultas = json_decode(($consultaspubl), true);
-        //$datoscons = array();//('idusuario' => null, 'nombre' => null, 'estado' => null, 'respuesta' => null);
+        $datoscons = array();//('idusuario' => null, 'nombre' => null, 'estado' => null, 'respuesta' => null);
         for($i = 0; $i < count($consultas); $i++)
         {
-             $datoscons[$i] = 
-                 array (
-                     'idusuario' => intval($consultas[$i]['usuarioid']),
-                     'nombre' => $consultas[$i]["nombre"] . '. ' . $consultas[$i]["detalle"],
-                     'estado' => 'Recibida',
-                     'respuesta' => null
-                 );                          
-         }   
-         var_dump($datoscons);
+             $datoscons[$i] =                
+                array (
+                    'idusuario' => intval($consultas[$i]['usuarioid']),
+                    'nombre' => $consultas[$i]["nombre"] . '. ' . $consultas[$i]["detalle"],
+                    'estado' => 'Recibida',
+                    'respuesta' => ''
+                );                     
+         }            
          $this->consulta_model->insertar_consulta($datoscons);
     } 
     

@@ -50,12 +50,11 @@
 	<![endif]-->
 
 	<!-- The fav icon -->
-	<link rel="shortcut icon" href="<?php echo base_url(); ?>static/img/favicon.ico">
-		
+	<link rel="shortcut icon" href="<?php echo base_url(); ?>static/img/favicon.ico">		
 </head>
 
 <body>
-		<!-- topbar starts -->
+	<!-- topbar starts -->
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container-fluid">
@@ -64,7 +63,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="<?php echo base_url(); ?>index.php/autenticacion/expositor"> <img alt="Charisma Logo" src="<?php echo base_url(); ?>static/img/logo20.png" /> <span>Expositor</span></a>
+				<a class="brand" href="<?php echo base_url(); ?>index.php/evento/mostrar_eventos_expositor"> <img alt="Charisma Logo" src="<?php echo base_url(); ?>static/img/logo20.png" /> <span>Expositor</span></a>
 				
 				<!-- theme selector starts -->
 				<div class="btn-group pull-right theme-container" >
@@ -89,13 +88,18 @@
 				<!-- user dropdown starts -->
 				<div class="btn-group pull-right" >
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="icon-user"></i><span class="hidden-phone"> Expositor</span>
+						<i class="icon-user"></i>
+                                                <span class="hidden-phone"> 
+                                                <?php                                                          
+                                                        echo $this->session->userdata('nombres') . ' ' .  $this->session->userdata('apepat') . ' ' .  $this->session->userdata('apemat');
+                                                ?>
+                                                </span>
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="#">Perfil</a></li>
 						<li class="divider"></li>
-						<li><a href="login.html">Cerrar sesion</a></li>
+						<li><a href="<?php echo base_url() . 'index.php/autenticacion/cerrar_sesion' ;?>">Cerrar sesión</a></li>
 					</ul>
 				</div>
 				<!-- user dropdown ends -->
@@ -122,14 +126,14 @@
 				<div class="well nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<!--<li class="nav-header hidden-tablet">Main</li>
-						<li><a class="ajax-link" href="<?php echo base_url(); ?>index.php/autenticacion/expositor"><i class="icon-home"></i><span class="hidden-tablet"> Dashboard</span></a></li>
+						<li><a class="ajax-link" href="<?php echo base_url(); ?>index.php/evento/mostrar_eventos_expositor"><i class="icon-home"></i><span class="hidden-tablet"> Dashboard</span></a></li>
 						<li><a class="ajax-link" href="ui.html"><i class="icon-eye-open"></i><span class="hidden-tablet"> UI Features</span></a></li>
 						<li><a class="ajax-link" href="form.html"><i class="icon-edit"></i><span class="hidden-tablet"> Forms</span></a></li>
 						<li><a class="ajax-link" href="chart.html"><i class="icon-list-alt"></i><span class="hidden-tablet"> Charts</span></a></li>
 						<li><a class="ajax-link" href="typography.html"><i class="icon-font"></i><span class="hidden-tablet"> Typography</span></a></li>
 						<li><a class="ajax-link" href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Gallery</span></a></li>-->
                                                 <li class="nav-header hidden-tablet">Eventos</li>
-						<li><a class="ajax-link" href="<?php echo base_url(); ?>index.php/autenticacion/expositor"><i class="icon-align-justify"></i><span class="hidden-tablet">Mis eventos</span></a></li>
+						<li><a class="ajax-link" href="<?php echo base_url(); ?>index.php/evento/mostrar_eventos_expositor"><i class="icon-align-justify"></i><span class="hidden-tablet">Mis eventos</span></a></li>
 						<li class="nav-header hidden-tablet">Preguntas</li>
 						<li><a class="ajax-link" href="<?php echo base_url(); ?>index.php/consulta/mostrar_consultas_tema"><i class="icon-align-justify"></i><span class="hidden-tablet">De participantes </span></a></li>
                                                 <li><a class="ajax-link" href="<?php echo base_url(); ?>index.php/pregunta/mostrar_preguntas_tema"><i class="icon-align-justify"></i><span class="hidden-tablet">Del evento</span></a></li>

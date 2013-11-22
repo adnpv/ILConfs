@@ -10,6 +10,16 @@ class Encuesta extends CI_Controller {
        $this->load->helper('url');
        $this->load->library('session');
     }
+    
+    public function mostrar_preguntas_encuesta()
+    {
+        $idevento = $this->input->post('idevento');
+        $nombreevento = $this->input->post('nombreevento'); 
+        $datos['idevento'] = $idevento;
+        $datos['nombreevento'] = $nombreevento;
+        $datos['preguntas_encta'] = null;        
+        $this->load->view('organizador/preguntasencuesta_view', $datos);
+    }
 
     public function mostrar_encuesta()
     {
@@ -23,7 +33,7 @@ class Encuesta extends CI_Controller {
         $nroresps = array_sum($datosenc[2]);
         $datos['nroresps'] = $nroresps;
         $datos['idencuesta'] = $datosenc[3];
-        $this->load->view('expositor/estadisticasencuesta_view', $datos);
+        $this->load->view('organizador/estadisticasencuesta_view', $datos);
     }
     
     function obtener_datos_encuesta($idevento)

@@ -14,7 +14,7 @@ class Autenticacion_model extends CI_Model{
         $this->db->where('contrasena', $contrasenasha1);
         $datosus = $this->db->get();
         return $datosus->result();
-    }  
+    } 
     
     function obtener_rol($usuario, $contrasenasha1)
     {
@@ -26,10 +26,10 @@ class Autenticacion_model extends CI_Model{
     
     function obtener_datos_participante($usuario, $contrasenasha1)
     {
-        $datospartic= $this->db->query("select u.idusuario, u.nombres, u.apepat, u.apemat, a.idevento, p.estado
-        from usuario u, participante p, participante_evento a
-        where u.idusuario = p.idusuario and p.idusuario = a.idusuario and p.estado = 'Habilitado'
-        and u.usuario = '$usuario' and u.contrasena = '$contrasenasha1'");
+        $datospartic= $this->db->query("select u.idusuario, u.apepat, u.apemat, u.nombres, p.estado, n.idevento, n.codigo
+            from usuario u, participante p, entrada n
+            where u.idusuario = p.idusuario and p.idusuario = n.idusuario
+            and u.usuario='" . $usuario . "' and u.contrasena='" . $contrasenasha1. "'");
         return $datospartic->result();
     }
     

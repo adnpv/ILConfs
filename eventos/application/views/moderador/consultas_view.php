@@ -9,8 +9,7 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <script src="<?php echo base_url() ; ?>static/js/jquery-1.5.2.min.js" type="text/javascript"></script>
-    <script src="<?php echo base_url() ; ?>static/js/hideshow.js" type="text/javascript"></script>
-    <script src="<?php echo base_url() ; ?>static/js/jquery.tablesorter.min.js" type="text/javascript"></script>
+<!--script src="<?php //echo base_url(); ?>static/js/hideshow.js" type="text/javascript"></script>-->    <script src="<?php echo base_url() ; ?>static/js/jquery.tablesorter.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="<?php echo base_url() ; ?>static/js/jquery.equalHeight.js"></script>
         <script type="text/javascript">
             $(document).ready(function() 
@@ -54,7 +53,7 @@
 
         <section id="secondary_bar">
             <div class="user">
-                <p>Bienvenido moderador: John Doe</p>
+                <p>Bienvenido <?php echo  $this->session->userdata('rol') . ': ' .$this->session->userdata('nombres') . ' ' .  $this->session->userdata('apepat') . ' ' .  $this->session->userdata('apemat'); ?></p>
                 <!--<a class="logout_user" href="#" title="Logout">Logout</a>-->
             </div>
             <div class="breadcrumbs_container">
@@ -92,7 +91,7 @@
             <h3>Cuenta</h3>
             <ul class="toggle">
                 <li class="icn_profile"><a href="actualizarusuario.html">Actualizar usuario</a></li>
-                <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
+                <li class="icn_jump_back"><a href="<?php echo base_url() . 'index.php/autenticacion/cerrar_sesion' ;?>">Cerrar sesión</a></li>
             </ul>
                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </aside><!-- end of sidebar -->
@@ -169,7 +168,8 @@
         </div><!-- end of .tab_container -->
         <footer>
             <div class="submit_link" style="padding: 3px 400px;">
-                <a class="regresar" href="javascript:history.back()"></a>
+                <a class="regresar" href="<?php echo base_url() . 'index.php/evento/listar_participantes_evento?idevento=' . $idevento . 
+                        '&nombreevento=' . $nombreevento; ?>"></a>
             </div>
         </footer>
     </article><!-- end of content manager article -->

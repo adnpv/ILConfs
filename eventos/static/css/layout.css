@@ -1004,7 +1004,7 @@ float: left;
 }
 
 .imgbuttonparticipantes{
-    background-image: url(../../static/images/icn_user.png);
+    background-image: url(../../static/images/icn_view_users.png);
     height: 17px;
     width: 17px;
     margin: 0px 5px;
@@ -1086,6 +1086,33 @@ float: left;
 
 .imgcensurar{
     background-image: url(../../static/images/icono_prohibido.png);    
+    height: 17px;
+    width: 17px;
+    margin: 0px 5px;
+    padding: 0px;
+    border: 0px;
+}
+
+.imgcerrar{
+    background-image: url(../../static/images/cerrar.png);    
+    height: 17px;
+    width: 17px;
+    margin: 0px 5px;
+    padding: 0px;
+    border: 0px;
+}
+
+.imgencuesta{
+    background-image: url(../../static/images/icono_encuesta.png);    
+    height: 17px;
+    width: 17px;
+    margin: 0px 5px;
+    padding: 0px;
+    border: 0px;
+}
+
+.imgmoderador{
+    background-image: url(../../static/images/icn_add_user.png);    
     height: 17px;
     width: 17px;
     margin: 0px 5px;

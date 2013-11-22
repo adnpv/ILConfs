@@ -54,7 +54,7 @@
 
         <section id="secondary_bar">
             <div class="user">
-                <p>Bienvenido organizador: Adrián Peralta</p>
+                <p>Bienvenido <?php echo  $this->session->userdata('rol') . ': ' .$this->session->userdata('nombres') . ' ' .  $this->session->userdata('apepat') . ' ' .  $this->session->userdata('apemat'); ?></p>
                 <!--<a class="logout_user" href="#" title="Logout">Logout</a>-->
             </div>
             <div class="breadcrumbs_container">
@@ -75,19 +75,20 @@
             <ul class="toggle">
                 <li class="icn_new_article"><a href="<?php echo base_url(); ?>index.php/evento">Crear evento</a></li>                
                 <li class="icn_categories"><a href="<?php echo base_url(); ?>index.php/evento/mostrar_eventos_proximos">Eventos próximos</a></li>
-                <li class="icn_categories"><a href="listareventos.html">Eventos pasados</a></li>
+                <li class="icn_categories"><a href="<?php echo base_url(); ?>index.php/evento/mostrar_eventos_pasados">Eventos pasados</a></li>
+                <li class="icn_categories"><a href="<?php echo base_url(); ?>index.php/evento/mostrar_eventos_pendientes">Eventos pendientes</a></li>               
             </ul> 
            
            <h3>Usuarios</h3>
             <ul class="toggle">
-                <li class="icn_profile"><a href="<?php echo base_url(); ?>index.php/usuario">Crear usuario</a></li>
+                <li class="icn_profile"><a href="<?php echo base_url(); ?>index.php/usuario">Crear moderador/expositor</a></li>
                 <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
             </ul>
            
             <h3>Cuenta</h3>
             <ul class="toggle">
                 <li class="icn_profile"><a href="actualizarperfil.html">Actualizar perfil</a></li>
-                <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
+                <li class="icn_jump_back"><a href="<?php echo base_url() . 'index.php/autenticacion/cerrar_sesion' ;?>">Cerrar sesión</a></li>
             </ul>   
             <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </aside><!-- end of sidebar -->
@@ -119,8 +120,7 @@
                             <th></th>
                             <th>Código</th> 
                             <th>Nombre</th>                     
-                            <th>Hora de inicio</th>
-                            <th>Hora de fin</th>                            
+                            <th>Descripción</th>                            
                             <th>Expositor</th>
                             <!--<th>Estado</th>-->
                             <th style="text-align: center;">Acciones</th>  
@@ -132,8 +132,7 @@
                             <td></td>
                             <td><?php echo $tema->nro; ?></td> 
                             <td><?php echo $tema->nombre; ?></td>  
-                            <td><?php echo $tema->hinicio; ?></td>                              
-                            <td><?php echo $tema->hfin; ?></td>                              
+                            <td title="<?php echo $tema->descripcion; ?>"><?php echo substr($tema->descripcion, 0, 60) . '...' ;?></td>                                                     
                             <td><?php echo $tema->expositor; ?></td>                              
                             <td>
                                 <ul id="ulrdbtn">
@@ -157,7 +156,7 @@
         <footer>
             <div class="submit_link" style="padding: 3px 310px;">
                 <ul id="ulrdbtn">
-                <?php if ($tipoevento == 'próximos')
+                <?php if ($tipoevento == 'próximos' || $tipoevento == 'pendientes')
                       {?>
                     <li><form action="<?php echo base_url(); ?>index.php/evento/agregar_tema_expositor" method="get">
                             <input type="hidden" id="idevento" name="idevento" value="<?php echo $idevento; ?>" />

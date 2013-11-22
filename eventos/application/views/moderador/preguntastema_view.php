@@ -54,7 +54,7 @@
 
         <section id="secondary_bar">
             <div class="user">
-                <p>Bienvenido moderador: John Doe</p>
+                <p>Bienvenido <?php echo  $this->session->userdata('rol') . ': ' .$this->session->userdata('nombres') . ' ' .  $this->session->userdata('apepat') . ' ' .  $this->session->userdata('apemat'); ?></p>
                 <!--<a class="logout_user" href="#" title="Logout">Logout</a>-->
             </div>
             <div class="breadcrumbs_container">
@@ -92,7 +92,7 @@
             <h3>Cuenta</h3>
             <ul class="toggle">
                 <li class="icn_profile"><a href="actualizarusuario.html">Actualizar usuario</a></li>
-                <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
+                <li class="icn_jump_back"><a href="<?php echo base_url() . 'index.php/autenticacion/cerrar_sesion' ;?>">Cerrar sesión</a></li>
             </ul>
                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </aside><!-- end of sidebar -->
@@ -159,7 +159,7 @@
                                         </form>
                                     </li>
                                     <li>                                       
-                                        <form action="<?php echo base_url() ; ?>index.php/alternativa/listar_alternativas" method="post">
+                                        <form action="<?php echo base_url() ; ?>index.php/alternativa/listar_alternativas" method="get">
                                             <input type="hidden" id="idevento" name="idevento" value="<?php echo $idevento; ?>" />
                                             <input type="hidden" id="nombreevento" name="nombreevento" value="<?php echo $nombreevento; ?>" />
                                             <input type="hidden" id="idtema" name="idtema" value="<?php echo $idtema; ?>" />
@@ -188,13 +188,24 @@
                 </table>
             </div><!-- end of #tab1 -->	
         </div><!-- end of .tab_container -->
-        <footer>
-            <div class="submit_link" style="padding: 3px 400px;">
-                <a class="regresar" href="javascript:history.back()"></a>
+        <footer>            
+            <div class="submit_link" style="padding: 3px 330px;">
+                <ul id="ulrdbtn">
+                    <li>
+                        <form action="<?php echo base_url(); ?>index.php/pregunta/agregar_preguntas" method="get">
+                            <input type="hidden" id="idevento" name="idevento" value="<?php echo $idevento; ?>" />
+                            <input type="hidden" id="nombreevento" name="nombreevento" value="<?php echo $nombreevento; ?>" />
+                            <input type="hidden" id="idtema" name="idtema" value="<?php echo $idtema; ?>" />
+                            <input type="hidden" id="nombretema" name="nombretema" value="<?php echo $nombretema; ?>" />
+                            <input type="submit" class="alt_btn" value="Agregar preguntas" />
+                        </form>
+                    </li> 
+                    <li><a class="regresar" href="<?php echo base_url() . 'index.php/pregunta/mostrar_preguntas_tema_moderador?idevento=' . $idevento . '&nombreevento=' . $nombreevento; ?>"></a></li>
+                </ul>
+                
             </div>
         </footer>
-    </article><!-- end of content manager article -->
-    
+    </article><!-- end of content manager article -->   
 
         <div class="spacer"></div>
         </section>   

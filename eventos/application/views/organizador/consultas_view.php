@@ -54,7 +54,7 @@
 
         <section id="secondary_bar">
             <div class="user">
-                <p>Bienvenido moderador: John Doe</p>
+                <p>Bienvenido <?php echo  $this->session->userdata('rol') . ': ' .$this->session->userdata('nombres') . ' ' .  $this->session->userdata('apepat') . ' ' .  $this->session->userdata('apemat'); ?></p>
                 <!--<a class="logout_user" href="#" title="Logout">Logout</a>-->
             </div>
             <div class="breadcrumbs_container">
@@ -70,30 +70,25 @@
                 <input type="text" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
             </form>-->
             <hr/>
-            <h3>Eventos</h3>            
-            <ul class="toggle">  
-                <li class="icn_categories"><a href="index.html">Lista de eventos</a></li>         
-                <li class="icn_categories"><a href="listaralternativas.html">Asistentes</a></li> 
-            </ul>
-          
-           <h3>Preguntas</h3>
-            <ul class="toggle">                   
-                <li class="icn_new_article"><a href="crearpregunta.html">Crear preguntas</a></li>                       
-                <li class="icn_new_article"><a href="activarpregunta.html">Activar ronda de preguntas</a></li>     
-                <li class="icn_categories"><a href="listarpreguntas.html">Preguntas del expositor</a></li>               
-                <li class="icn_categories"><a href="listarpreguntasdelpublico.html">Preguntas del público</a></li>               
-            </ul>       
-                       
-          <h3>Encuesta</h3>            
-            <ul class="toggle">  
-                <li class="icn_new_article"><a href="encuesta.html">Encuesta</a></li>        
-            </ul>
-          
-            <h3>Cuenta</h3>
+            <h3>Eventos</h3>
             <ul class="toggle">
-                <li class="icn_profile"><a href="actualizarusuario.html">Actualizar usuario</a></li>
+                <li class="icn_new_article"><a href="<?php echo base_url(); ?>index.php/evento">Crear evento</a></li>                
+                <li class="icn_categories"><a href="<?php echo base_url(); ?>index.php/evento/mostrar_eventos_proximos">Eventos próximos</a></li>
+                <li class="icn_categories"><a href="<?php echo base_url(); ?>index.php/evento/mostrar_eventos_pasados">Eventos pasados</a></li>
+                <li class="icn_categories"><a href="<?php echo base_url(); ?>index.php/evento/mostrar_eventos_pendientes">Eventos pendientes</a></li>               
+            </ul> 
+           
+           <h3>Usuarios</h3>
+            <ul class="toggle">
+                <li class="icn_profile"><a href="<?php echo base_url(); ?>index.php/usuario">Crear usuario</a></li>
                 <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
             </ul>
+           
+            <h3>Cuenta</h3>
+            <ul class="toggle">
+                <li class="icn_profile"><a href="actualizarperfil.html">Actualizar perfil</a></li>
+                <li class="icn_jump_back"><a href="<?php echo base_url() . 'index.php/autenticacion/cerrar_sesion' ;?>">Cerrar sesión</a></li>
+            </ul>   
                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </aside><!-- end of sidebar -->
 

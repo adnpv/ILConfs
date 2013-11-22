@@ -57,7 +57,7 @@
 	
 	<section id="secondary_bar">
 		<div class="user">
-			<p>Bienvenido organizador: John Doe</p>
+			<p>Bienvenido <?php echo  $this->session->userdata('rol') . ': ' .$this->session->userdata('nombres') . ' ' .  $this->session->userdata('apepat') . ' ' .  $this->session->userdata('apemat'); ?></p>
 			<!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
 		</div>
 		<div class="breadcrumbs_container">
@@ -75,7 +75,8 @@
             <ul class="toggle">
                 <li class="icn_new_article"><a href="<?php echo base_url(); ?>index.php/evento">Crear evento</a></li>                
                 <li class="icn_categories"><a href="<?php echo base_url(); ?>index.php/evento/mostrar_eventos_proximos">Eventos próximos</a></li>
-                <li class="icn_categories"><a href="listareventos.html">Eventos pasados</a></li>
+                <li class="icn_categories"><a href="<?php echo base_url(); ?>index.php/evento/mostrar_eventos_pasados">Eventos pasados</a></li>
+                <li class="icn_categories"><a href="<?php echo base_url(); ?>index.php/evento/mostrar_eventos_pendientes">Eventos pendientes</a></li>               
             </ul> 
            
            <h3>Usuarios</h3>
@@ -87,7 +88,7 @@
             <h3>Cuenta</h3>
             <ul class="toggle">
                 <li class="icn_profile"><a href="actualizarperfil.html">Actualizar perfil</a></li>
-                <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
+                <li class="icn_jump_back"><a href="<?php echo base_url() . 'index.php/autenticacion/cerrar_sesion' ;?>">Cerrar sesión</a></li>
             </ul>   
             <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </aside><!-- end of sidebar -->
@@ -115,14 +116,11 @@
                             </select>
                         </fieldset>                       
                         <div class="clear"></div> 
-                        <fieldset style="width:48%; float:left;"> <!-- to make two field float next to one another, adjust values accordingly -->
-                            <label>Hora de inicio</label><span>P. ej. 08:00</span>
-                            <input type="text" id="hinicio" name="hinicio" style="width:92%;">
-                        </fieldset>                                         
-                        <fieldset style="width:48%; float:right;"> <!-- to make two field float next to one another, adjust values accordingly -->
-                            <label>Hora de fin</label><span>P. ej. 10:00</span>
-                            <input type="text" id="hfin" name="hfin" style="width:92%;">
-                        </fieldset>
+                        <fieldset style="width:99%; float:left;"> <!-- to make two field float next to one another, adjust values accordingly -->
+                            <label>Descripción</label><span>P. ej. Tema para ganadores</span>                            
+                            <textarea id="descripcion" name="descripcion" rows="7" cols="10" style="width:97%;">                            
+                            </textarea>                            
+                        </fieldset>                                                                
                         <div class="clear"></div>  
                     </div>
                     <footer>
@@ -154,24 +152,23 @@
                             <th></th>
                             <th>Nro.</th>
                             <th>Tema</th>
-                            <th>Inicio</th>
-                            <th>Fin</th>
+                            <th>Descripción</th>
                             <th>Expositor</th>                           
                             <th>Acciones</th>  
                         </tr> 
                     </thead> 
                     <tbody> 
-                        <?php foreach($tema_expo as $tm){ ?>
+                <?php foreach($tema_expo as $tm)
+                      { ?>
                         <tr> 
                             <td></td>
                             <td><?php echo $tm->nro ;?></td> 
                             <td><?php echo $tm->nombre ;?></td>  
-                            <td><?php echo $tm->hinicio ;?></td>                              
-                            <td><?php echo $tm->hfin ;?></td>                              
+                            <td title="<?php echo $tm->descripcion; ?>"><?php echo substr($tm->descripcion, 0, 60) . '...' ;?></td>                              
                             <td><?php echo $tm->expositor ;?></td>    
                             <td><ul id="ulrdbtn"><li><form action="actualizarevento.html"><input type="image" src="<?php echo base_url(); ?>static/images/icn_edit_article.png" title="Actualizar"/></form></li><li><form action="subirarchivos.html"><input type="image" src="<?php echo base_url(); ?>static/images/icn_folder.png" title="Subir archivos"/></form></li><li><form  action="registrados.html"><input type="image" src="<?php echo base_url(); ?>static/images/icn_user.png" title="Registrados " width="17" height="17"/></form></li></td>
                         </tr> 
-                        <?php }?>                                          
+                <?php }?>                                          
                     </tbody> 
                 </table>
             </div><!-- end of #tab1 -->	

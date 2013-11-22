@@ -13,16 +13,18 @@ class Tema extends CI_Controller {
     
     public function abrir_consultas()
     {
-        $idevento = 1;//$this->input->get('idevento');         
-        $idusuario = 1;//$this->input->get('idusuario'); 
-        //$this->input->get('idtema'); 
-        $aviso = array(
+        $idtema = $this->input->get('idtema');         
+        $idevento = $this->input->get('idevento');
+        $nombreevento = $this->input->post('nombreevento'); 
+        /*$aviso = array(
           'aviso' => 1,  
           'idevento' => $idevento,
           'idusuario' => $idusuario,   
           'idtema' => $idtema
-        );        
-        $url = 'http://localhost/curl2/index.php';        
+        );   */ 
+        $this->tema_model->abrir_ronda_consultas($idtema); 
+        redirect( base_url() . 'index.php/tema/mostrar_temas_evento?idevento='. $idevento . '&nombreevento=' . $nombreevento);       
+        /*$url = 'http://localhost/curl2/index.php';        
         $ch = curl_init($url);
         $data_string = urlencode(json_encode($aviso));
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
@@ -30,37 +32,58 @@ class Tema extends CI_Controller {
         curl_setopt($ch, CURLOPT_VERBOSE, TRUE);
         curl_setopt($ch, CURLOPT_POSTFIELDS, array('aviso'=>$data_string));
         $result = curl_exec($ch);
-        curl_close($ch);            
+        curl_close($ch);  */          
     }
     
+    public function cerrar_consultas()
+    {
+        $idtema = $this->input->get('idtema');
+        $idevento = $this->input->get('idevento');
+        $nombreevento = $this->input->post('nombreevento'); 
+        $this->tema_model->cerrar_ronda_consultas($idtema); 
+        redirect( base_url() . 'index.php/tema/mostrar_temas_evento?idevento='.$idevento.'&nombreevento='.$nombreevento);       
+    }    
+    
+    public function cerrar_ronda_consultas()
+    {
+        $idtema = $this->input->get('idtema');
+        $idevento = $this->input->get('idevento');
+        $nombreevento = $this->input->post('nombreevento'); 
+        $this->tema_model->cerrar_ronda_consultas($idtema); 
+        redirect( base_url() . 'index.php/tema/mostrar_temas_expositor?idevento='.$idevento.'&nombreevento='.$nombreevento);       
+    }      
+    
     public function insertar_tema_expositor()
-    {        
+    {    //agregar descripcion al tema y evento
+        //ver mandar preguntas todo pot get
         $idevento = $this->input->post('idevento');
         $nombreevento = $this->input->post('nombreevento');
         $nombretema = $this->input->post('tema');
-        $hinicio = $this->input->post('hinicio');
-        $hfin = $this->input->post('hfin');
+        /*$hinicio = $this->input->post('hinicio');
+        $hfin = $this->input->post('hfin');*/
+        $descripcion = $this->input->post('descripcion');
         $idexpositor = $this->input->post('idexpositor');
         $datosnvotema = array(
             array(
                 'nombre' => $nombretema,
-                'horainicio' => $hinicio,
-                'horafin' => $hfin,
+                /*'horainicio' => $hinicio,
+                'horafin' => $hfin,*/
+                'descripcion' => $descripcion, 
                 'idevento' => $idevento,
                 'idusuario' => $idexpositor,
                 'rondapreguntas' => 0,
                 'rondaconsultas' => 0
-                )
+                ),
         );
-        $this->enviar_nuevo_tema($nombretema, $idevento);
         $this->tema_model->insertar_tema_expositor($datosnvotema);
-        $this->agregar_tema_expositor($nombreevento, $idevento);  
-    }   
+        $this->enviar_nuevo_tema($nombretema, $idevento);
+        $this->agregar_tema_expositor($nombreevento, $idevento);          
+    }
     
     public function enviar_nuevo_tema($nombretema, $idevento)
     {   
         /*$idevento = 1;
-        $nombretema = 'Novedades de HTML5';*/
+        $nombretema = 'Novedades de HTML5';
         $datosnvotema = $this->tema_model->mostrar_tema($nombretema, $idevento);
         $url = 'http://localhost/curl2/index.php';        
         $ch = curl_init($url);
@@ -70,7 +93,19 @@ class Tema extends CI_Controller {
         curl_setopt($ch, CURLOPT_VERBOSE, TRUE);
         curl_setopt($ch, CURLOPT_POSTFIELDS, array("nuevotema"=>$data_string));
         $result = curl_exec($ch);
+        curl_close($ch);       
+        $idevento = 1;
+        $nombretema = 'Novedades de HTML5';*/
+        $datosnvotema = $this->tema_model->mostrar_tema($nombretema, $idevento);
+        $data_string = urlencode(json_encode($datosnvotema));
+        $ch = curl_init();
+        
+        curl_setopt($ch, CURLOPT_URL, 'http://pietreal.herokuapp.com/json/insertop/?' . $data_string); 
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_TIMEOUT, '3');
+        $content = trim(curl_exec($ch));
         curl_close($ch);
+       // echo $content;
     }
     
     public function agregar_tema_expositor($nombreevento, $idevento)
@@ -84,8 +119,8 @@ class Tema extends CI_Controller {
     
     public function mostrar_temas_evento()
     {
-        $idevento = $this->input->post('idevento');         
-        $nombreevento = $this->input->post('nombreevento');          
+        $idevento = $this->input->get('idevento');         
+        $nombreevento = $this->input->get('nombreevento');          
         $temas_evto = $this->tema_model->mostrar_temas_evento($idevento);
         $datos['idevento'] = $idevento;        
         $datos['nombreevento'] = $nombreevento;  
@@ -113,16 +148,7 @@ class Tema extends CI_Controller {
         $datos['nombreevento'] = $nombreevento;
         $datos['tema_expo'] = $this->tema_model->mostrar_tema_expositor_evento($idevento);
         $this->load->view('/expositor/temas_view', $datos);
-    }   
-    
-    public function cerrar_ronda_consultas()
-    {
-        $idtema = $this->input->post('idtema');
-        $idevento = $this->input->post('idevento');
-        $nombreevento = $this->input->post('nombreevento'); 
-        $this->tema_model->cerrar_ronda_consultas($idtema); 
-        redirect( base_url() . 'index.php/tema/mostrar_temas_expositor/?idevento='.$idevento.'&nombreevento='.$nombreevento);       
-    }    
+    }       
     
     public function subir_archivos()
     {

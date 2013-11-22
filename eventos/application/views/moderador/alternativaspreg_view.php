@@ -54,7 +54,7 @@
 
         <section id="secondary_bar">
             <div class="user">
-                <p>Bienvenido moderador: John Doe</p>
+               <p>Bienvenido <?php echo  $this->session->userdata('rol') . ': ' .$this->session->userdata('nombres') . ' ' .  $this->session->userdata('apepat') . ' ' .  $this->session->userdata('apemat'); ?></p>
                 <!--<a class="logout_user" href="#" title="Logout">Logout</a>-->
             </div>
             <div class="breadcrumbs_container">
@@ -92,7 +92,7 @@
             <h3>Cuenta</h3>
             <ul class="toggle">
                 <li class="icn_profile"><a href="actualizarusuario.html">Actualizar usuario</a></li>
-                <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
+                <li class="icn_jump_back"><a href="<?php echo base_url() . 'index.php/autenticacion/cerrar_sesion' ;?>">Cerrar sesión</a></li>
             </ul>
                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </aside><!-- end of sidebar -->
@@ -150,7 +150,8 @@
         </div><!-- end of .tab_container -->
         <footer>
            <div class="submit_link" style="padding: 3px 380px;">
-                <a class="regresar" href="listarpreguntas.html"></a>
+                <a class="regresar" href="<?php echo base_url() . 'index.php/pregunta/mostrar_preguntas_tema_moderador/?idevento=' . $idevento . '&nombreevento=' . $nombreevento .
+            '&idpregunta=' . $idpregunta . '&nombrepregunta=' . $nombrepregunta . '&idtema=' . $idtema ; ?>"></a>
             </div>
         </footer>
     </article><!-- end of content manager article -->

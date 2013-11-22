@@ -5,15 +5,15 @@ class Usuario_model extends CI_Model{
     function Usuario_model() {
        parent::__construct(); //llamada al constructor de Model.
     }
-    //put your code here    
-    
-    public function mostrar_moderadores()
+    //put your code here      
+   
+    public function mostrar_moderadores($idorganizador)
     {       
-        $this->db->select('idusuario, apepat, apemat, nombres');
-        $this->db->from('usuario');
-        $this->db->where('rol', 'moderador');
-        $this->db->order_by('apepat', 'asc'); 
-        $datosmoderador = $this->db->get();
+        $datosmoderador = $this->db->query("select u.idusuario, u.apepat, u.apemat, u.nombres
+            from usuario u, moderador m
+            where u.idusuario = m.idusuario
+            and m.idorganizador = $idorganizador
+            order by 2");
         return $datosmoderador->result();
     }
     
@@ -62,6 +62,14 @@ class Usuario_model extends CI_Model{
         $sql = $this->db->query("select idusuario from usuario where dni =  " . $dni);
         $idus = $sql->row(0);
         return $idus->idusuario; 
+    }
+    
+    public function cambiar_organizador($usuario, $contrasena)
+    {
+        $this->db->set('rol', 'organizador');
+        $this->db->where('usuario', $usuario);
+        $this->db->where('contrasena', $contrasena);
+        $this->db->update('usuario');
     }
     
     function insertar_participante($datospartic)

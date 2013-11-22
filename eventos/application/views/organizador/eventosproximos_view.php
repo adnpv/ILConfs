@@ -55,7 +55,7 @@
 
         <section id="secondary_bar">
             <div class="user">
-                <p>Bienvenido organizador: Adrián Peralta</p>
+                <p>Bienvenido <?php echo  $this->session->userdata('rol') . ': ' .$this->session->userdata('nombres') . ' ' .  $this->session->userdata('apepat') . ' ' .  $this->session->userdata('apemat'); ?></p>
                 <!--<a class="logout_user" href="#" title="Logout">Logout</a>-->
             </div>
             <div class="breadcrumbs_container">
@@ -77,19 +77,19 @@
                 <li class="icn_new_article"><a href="<?php echo base_url(); ?>index.php/evento">Crear evento</a></li>                
                 <li class="icn_categories"><a href="<?php echo base_url(); ?>index.php/evento/mostrar_eventos_proximos">Eventos próximos</a></li>
                 <li class="icn_categories"><a href="<?php echo base_url(); ?>index.php/evento/mostrar_eventos_pasados">Eventos pasados</a></li>
-                <li class="icn_profile"><a href="<?php echo base_url(); ?>index.php/usuario/asignar_particip_evento">Asignar participantes a evento</a></li>                
+                <li class="icn_categories"><a href="<?php echo base_url(); ?>index.php/evento/mostrar_eventos_pendientes">Eventos pendientes</a></li>               
             </ul> 
            
            <h3>Usuarios</h3>
             <ul class="toggle">
-                <li class="icn_profile"><a href="<?php echo base_url(); ?>index.php/usuario">Crear usuario</a></li>
+                <li class="icn_profile"><a href="<?php echo base_url(); ?>index.php/usuario">Crear moderador/expositor</a></li>
                 <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
             </ul>
            
             <h3>Cuenta</h3>
             <ul class="toggle">
                 <li class="icn_profile"><a href="actualizarperfil.html">Actualizar perfil</a></li>
-                <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
+                <li class="icn_jump_back"><a href="<?php echo base_url() . 'index.php/autenticacion/cerrar_sesion' ;?>">Cerrar sesión</a></li>
             </ul>   
             <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </aside><!-- end of sidebar -->
@@ -140,6 +140,13 @@
                                 <ul id="ulrdbtn">
                                     <li><form action="actualizarevento.html"><input type="image" src="<?php echo base_url(); ?>static/images/icn_edit_article.png" title="Actualizar"/></form></li>                                    
                                     <li>
+                                        <form action="<?php echo base_url(); ?>index.php/evento/asignar_moderador" method="get">
+                                            <input type="hidden" id="idevento" name="idevento" value="<?php echo $evento->idevento; ?>" />
+                                            <input type="hidden" id="nombreevento" name="nombreevento" value="<?php echo $evento->nombre; ?>" />
+                                            <button type="submit" class="imgmoderador" title="Asignar moderador"></button>
+                                        </form>
+                                    </li>
+                                    <li>
                                         <form action="<?php echo base_url(); ?>index.php/evento/mostrar_participantes_evento" method="post">
                                             <input type="hidden" id="idevento" name="idevento" value="<?php echo $evento->idevento; ?>" />
                                             <input type="hidden" id="nombreevento" name="nombreevento" value="<?php echo $evento->nombre; ?>" />
@@ -160,7 +167,14 @@
                                             <input type="hidden" id="tipoevento" name="tipoevento" value="<?php echo $tipoevento; ?>" />
                                             <button type="submit" class="imgbuttontemas"title="Temas"></button>
                                         </form>
-                                    </li>    
+                                    </li> 
+                                    <li>
+                                        <form action="<?php echo base_url(); ?>index.php/encuesta/mostrar_preguntas_encuesta" method="post">
+                                            <input type="hidden" id="idevento" name="idevento" value="<?php echo $evento->idevento;?>" /> 
+                                            <input type="hidden" id="nombreevento" name="nombreevento" value="<?php echo $evento->nombre;?>" />   
+                                            <button type="submit" class="imgencuesta" title="Resultados de encuestas"></button>                                                                        
+                                        </form>
+                                    </li>
                                     <li><form  action="mostrar_participantes_evento"><input type="image" src="<?php echo base_url(); ?>static/images/prohibido.jpg" title="Cancelar" width="17" height="17"/></form></li>
                                 </ul>
                             </td>

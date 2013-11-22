@@ -54,7 +54,7 @@
 
         <section id="secondary_bar">
             <div class="user">
-                <p>Bienvenido moderador: Adrián Peralta</p>
+                <p>Bienvenido <?php echo  $this->session->userdata('rol') . ': ' .$this->session->userdata('nombres') . ' ' .  $this->session->userdata('apepat') . ' ' .  $this->session->userdata('apemat'); ?></p>
                 <!--<a class="logout_user" href="#" title="Logout">Logout</a>-->
             </div>
             <div class="breadcrumbs_container">
@@ -93,7 +93,7 @@
             <h3>Cuenta</h3>
             <ul class="toggle">
                 <li class="icn_profile"><a href="actualizarusuario.html">Actualizar usuario</a></li>
-                <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
+                <li class="icn_jump_back"><a href="<?php echo base_url() . 'index.php/autenticacion/cerrar_sesion' ;?>">Cerrar sesión</a></li>
             </ul>
             <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </aside><!-- end of sidebar -->
@@ -108,7 +108,7 @@
 
      </header>        
      <div class="tab_container" style="margin: 0 auto;">            
-         <form action="<?php echo base_url(); ?>index.php/alternativa/actualizar_alternativa" method="post">
+         <form action="<?php echo base_url(); ?>index.php/alternativa/actualizar_alternativas" method="post">
                 <div class="module_content">          
                     <fieldset style="float:left; width: 99%;">
                         <label>Alternativa</label>
@@ -118,6 +118,7 @@
                          <input type="hidden" id="idtema" name="idtema" value="<?php echo $idtema; ?>" />
                          <input type="hidden" id="nombretema" name="nombretema" value="<?php echo $nombretema; ?>" />
                          <input type="hidden" id="idpregunta" name="idpregunta" value="<?php echo $idpregunta; ?>" />
+                         <input type="hidden" id="idalternativa" name="idalternativa" value="<?php echo $idalternativa; ?>" />                      
                          <input type="text" id="nombrealternativa" name="nombrealternativa" value="<?php echo $nombrealternativa; ?>" style="width:95%;" />                      
                     </fieldset>  
                     <div class="clear"></div>
@@ -127,7 +128,7 @@
                              <ul id="ulrdbtn">
                                  <li><input type="submit" value="Actualizar" class="alt_btn" /></li>
                                  <li>&nbsp;&nbsp;&nbsp;</li>
-                                 <li><a class="regresar" href="javascript:history.back()"></a></li>                 
+                                 <li><a class="regresar" href="javascript:history();"></a></li>                 
                              </ul>
                         </div>
                     </footer>
