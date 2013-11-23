@@ -73,10 +73,12 @@ class Autenticacion extends CI_Controller {
       $contrasenasha1 = sha1($contrasena);
       $rol = $this->autenticacion_model->obtener_rol($usuario, $contrasenasha1);
      
-      if ($rol == 'participante')
+      /*if ($rol == 'participante')
+      {*/
+      $datosus = $this->autenticacion_model->obtener_datos_participante($usuario, $contrasenasha1);
+      
+      if ($datosus <> null)
       {
-          $datosus = $this->autenticacion_model->obtener_datos_participante($usuario, $contrasenasha1);
-          
           foreach($datosus as $dt)
           {
               $datosus2 = array(
