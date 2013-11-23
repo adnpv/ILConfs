@@ -127,7 +127,7 @@ class Evento extends CI_Controller {
             
             $this->form_validation->set_rules('nombre','nombre','required|xss_clean');
             $this->form_validation->set_rules('lugar','lugar','required|xss_clean');
-            $this->form_validation->set_rules('descripcion','descripcion','required|xss_clean|max_length[2000]');
+            $this->form_validation->set_rules('descripcion','descripcion','xss_clean|max_length[2000]');
             $this->form_validation->set_rules('finicio','finicio','required|xss_clean|callback_validar_finicio|callback_validar_finicio_ffin');
             $this->form_validation->set_rules('ffin','ffin','required|xss_clean|callback_validar_ffin|callback_validar_finicio_ffin');
             $this->form_validation->set_rules('hinicio','hinicio','required|xss_clean');

@@ -9,7 +9,7 @@ class Evento_model extends CI_Model{
     
     public function mostrar_eventos_moderador($idusuario)
     {
-        $this->db->select('idevento, nombre, fechainicio, horaregistro, horainicio, horafin, estado');
+        $this->db->select("idevento, nombre, descripcion, fechainicio, horaregistro, horainicio, horafin, estado");
         $this->db->from('evento');
         //$this->db->where('estado', 'Activo');
         $this->db->where('idusuario', $idusuario);
@@ -19,7 +19,7 @@ class Evento_model extends CI_Model{
     
     public function mostrar_eventos_proximos($idusuario)
     {
-        $this->db->select('idevento, nombre, fechainicio, horaregistro, horainicio, horafin, estado');
+        $this->db->select("idevento, nombre, descripcion, fechainicio, horaregistro, horainicio, horafin, estado");
         $this->db->from('evento');
         $this->db->where('estado', 'Activo');
         $this->db->where('idorganizador', $idusuario);
@@ -29,7 +29,7 @@ class Evento_model extends CI_Model{
     
     public function mostrar_eventos_pendientes($idusuario)
     {
-        $this->db->select('idevento, nombre, fechainicio, horaregistro, horainicio, horafin, estado');
+        $this->db->select('idevento, nombre, descripcion, fechainicio, horaregistro, horainicio, horafin, estado');
         $this->db->from('evento');
         $this->db->where('estado', 'Pendiente');
         $this->db->where('idorganizador', $idusuario);

@@ -95,7 +95,6 @@
            <h3>Usuarios</h3>
             <ul class="toggle">
                 <li class="icn_profile"><a href="<?php echo base_url(); ?>index.php/usuario">Crear usuario</a></li>
-                <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
             </ul>
            
             <h3>Cuenta</h3>

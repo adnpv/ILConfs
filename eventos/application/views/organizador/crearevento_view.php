@@ -95,14 +95,13 @@
            
            <h3>Usuarios</h3>
             <ul class="toggle" />
-                <li class="icn_profile" /><a href="<?php echo base_url(); ?>index.php/usuario" />Crear moderador/expositor</a></li>
-                <li class="icn_jump_back" /><a href="#" />Cerrar sesión</a></li>
+                <li class="icn_profile" /><a href="<?php echo base_url(); ?>index.php/usuario" />Crear moderador/expositor</a></li>                
             </ul>
            
             <h3>Cuenta</h3>
             <ul class="toggle" />
                 <li class="icn_profile" /><a href="actualizarperfil.html" />Actualizar perfil</a></li>
-                <li class="icn_jump_back" /><a href="#" />Cerrar sesión</a></li>
+                <li class="icn_jump_back"><a href="<?php echo base_url() . 'index.php/autenticacion/cerrar_sesion' ;?>">Cerrar sesión</a></li>
             </ul>   
             <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </aside><!-- end of sidebar -->
@@ -129,7 +128,14 @@
                             <textarea id="descripcion" name="descripcion" rows="7" cols="10" style="width:97%;">                            
                             <?php echo set_value('descripcion'); ?>
                             </textarea>                            
-                        </fieldset>          
+                        </fieldset>    
+                    <div class="form-group">
+                        <label for="lugar">Coordenadas de evento :</label><input class="form-control" type="text" name="coordenadas" value="" placeholder="Ejm: -12.050232901863597,-77.025146484375" required>
+                    </div>
+                    <div class="form-group">
+                    <a href="javascript:popUp('http://www.agenciacreativa.net/coordenadas_google_maps.php')">Buscar coordenadas</a>
+
+                    </div>
                         <fieldset style="width:48%; float:left;" /> <!-- to make two field float next to one another, adjust values accordingly -->
                             <label>Fecha de inicio</label>
                             <?php echo form_error('finicio'); ?>

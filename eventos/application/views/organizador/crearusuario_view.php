@@ -82,7 +82,6 @@
            <h3>Usuarios</h3>
             <ul class="toggle">
                 <li class="icn_profile"><a href="<?php echo base_url(); ?>index.php/usuario">Crear moderador/expositor</a></li>
-                <li class="icn_jump_back"><a href="#">Cerrar sesión</a></li>
             </ul>
            
             <h3>Cuenta</h3>
@@ -192,7 +191,6 @@
                                 <!--<option value="administrador">Administrador</option>-->
                                 <option value="expositor" <?php echo set_select('rol', 'expositor'); ?> >Expositor</option>
                                 <option value="moderador" <?php echo set_select('rol', 'moderador'); ?> >Moderador</option>                                        
-                                <option value="participante" <?php echo set_select('rol', 'participante'); ?> >Participante</option>  
                             </select>                            
                         </fieldset>
                         <div class="clear"></div> 
