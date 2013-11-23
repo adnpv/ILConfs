@@ -119,10 +119,9 @@
                             <th></th>
                             <th>Código</th> 
                             <th>Nombre</th>                     
-                            <th>Hora de inicio</th>
-                            <th>Hora de fin</th>                            
+                            <th>Descripción</th>                            
                             <th>Expositor</th>
-                            <th>Consultas</th>
+                            <th>Estado</th>
                             <th>Acciones</th>  
                         </tr> 
                     </thead> 
@@ -132,8 +131,7 @@
                             <td></td>
                             <td><?php echo $tema->nro; ?></td> 
                             <td><?php echo $tema->nombre; ?></td>  
-                            <td><?php echo $tema->hinicio; ?></td>                              
-                            <td><?php echo $tema->hfin; ?></td>                              
+                            <td title="<?php echo $tema->descripcion; ?>"><?php echo substr($tema->descripcion, 0, 60) . '...' ;?></td>                                                                            
                             <td><?php echo $tema->expositor; ?></td>    
                             <td><?php   if($tema->rondaconsultas == 1)                                        
                                             echo 'Activo';

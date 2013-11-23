@@ -11,14 +11,14 @@
 			<?php 
 			
 			if($rol == "organizador") {
-			$url1= "index.php/autenticacion/autenticar";
+			//$url1= "index.php/autenticacion/autenticar";
 			
 			?>
 			<ul class="nav navbar-nav">
-			<form action="<?php echo $url1 ?>" method="post">
+			<form action="index.php/autenticacion/aut_org" method="post">
 			<input  class="btn btn-success navbar-btn dropdown-toggle" type="submit" name="submit" value="Mis eventos">
-			<input type="hidden" name="opcion" value="<?php echo $usuario ?>">
-			<input type="hidden" name="opcion" value="<?php echo $contrasena?>">
+			<input type="hidden" name="usuario" value="<?php echo $usuario ?>">
+			<input type="hidden" name="contrasena" value="<?php echo $contrasena?>">
 			</form>
 			</ul>
 			
@@ -27,14 +27,14 @@
 			}
 			
 			else{
-			$url1="index.php/autenticacion/aut_org";
+			//$url1="index.php/autenticacion/aut_org";
 			
 			?>
 			<ul class="nav navbar-nav">
-			<form action="<?php echo $url1 ?>" method="post">
+			<form action="index.php/autenticacion/aut_org" method="post">
 			<input  class="btn btn-success navbar-btn dropdown-toggle" type="submit" name="submit" value="Crear Evento">
-			<input type="hidden" name="opcion" value="<?php echo $usuario ?>">
-			<input type="hidden" name="opcion" value="<?php echo $contrasena?>">
+			<input type="hidden" name="usuario" value="<?php echo $usuario ?>">
+			<input type="hidden" name="contrasena" value="<?php echo $contrasena?>">
 			</form>
 			</ul>
 			<?php

@@ -120,7 +120,13 @@
                             <input type="text" x-webkit-speech id="dni" name="dni" value="<?php echo set_value('dni'); ?>" style="width:92%;">                            
                         </fieldset>
                         <div class="clear"></div>                         
-                        
+                        <fieldset style="width:99%; float:left;"> <!-- to make two field float next to one another, adjust values accordingly -->
+                            <?php echo form_error('descripcion'); ?>                            
+                            <label>Descripción de expositor</label>                                                        
+                            <textarea id="descripcion" name="descripcion" rows="7" cols="10" style="width:97%;">                            
+                            <?php echo set_value('descripcion'); ?>
+                            </textarea>                            
+                        </fieldset>                          
                         <fieldset style="width:48%; float:left;"> <!-- to make two field float next to one another, adjust values accordingly -->
                             <label>Teléfono</label>
                             <?php echo form_error('telefono'); ?>

@@ -14,7 +14,7 @@ class Autenticacion_model extends CI_Model{
         $this->db->where('contrasena', $contrasenasha1);
         $datosus = $this->db->get();
         return $datosus->result();
-    } 
+    }  
     
     function obtener_rol($usuario, $contrasenasha1)
     {
@@ -31,12 +31,7 @@ class Autenticacion_model extends CI_Model{
             where u.idusuario = p.idusuario and p.idusuario = n.idusuario
             and u.usuario='" . $usuario . "' and u.contrasena='" . $contrasenasha1. "'");
         return $datospartic->result();
-    }
-    
-    
-    
-    
-    
+    }   
 }
 
 

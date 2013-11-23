@@ -129,13 +129,12 @@
                             <?php echo set_value('descripcion'); ?>
                             </textarea>                            
                         </fieldset>    
-                    <div class="form-group">
+                    <!--d<div class="form-group">
                         <label for="lugar">Coordenadas de evento :</label><input class="form-control" type="text" name="coordenadas" value="" placeholder="Ejm: -12.050232901863597,-77.025146484375" required>
                     </div>
-                    <div class="form-group">
+                    div class="form-group">
                     <a href="javascript:popUp('http://www.agenciacreativa.net/coordenadas_google_maps.php')">Buscar coordenadas</a>
-
-                    </div>
+                    </div>-->
                         <fieldset style="width:48%; float:left;" /> <!-- to make two field float next to one another, adjust values accordingly -->
                             <label>Fecha de inicio</label>
                             <?php echo form_error('finicio'); ?>

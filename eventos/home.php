@@ -1,7 +1,6 @@
 <?php
 	session_start();
 	include("header.php");
-	//mysql_connect('mysql10.000webhost.com', 'a2968841_pitreal', 'a2968841_pitreal') or die(mysql_error());
 	mysql_connect('localhost', 'root', 'toortoor') or die(mysql_error());
 	mysql_select_db('eventos') or die(mysql_error());
 

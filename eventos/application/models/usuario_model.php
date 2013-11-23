@@ -31,14 +31,13 @@ class Usuario_model extends CI_Model{
         $this->db->insert('organizador');        
     }
     
-    public function mostrar_expositores()
+    public function mostrar_expositores($idorganizador)
     {       
-        $this->db->select('idusuario, apepat, apemat, nombres');
-        $this->db->from('usuario');
-        $this->db->where('rol', 'expositor');
-        $this->db->order_by('apepat', 'asc'); 
-        $datosexpositor = $this->db->get();
-        return $datosexpositor->result();
+        $datosmoderador = $this->db->query("select u.idusuario, u.apepat, u.apemat, u.nombres
+            from usuario u, expositor e
+            where u.idusuario = e.idusuario
+            and e.idorganizador = '" . $idorganizador . "' order by 2");
+        return $datosmoderador->result();
     }
     
     public function mostrar_organizadores()
@@ -91,8 +90,9 @@ class Usuario_model extends CI_Model{
         $this->db->insert_batch('participante', $datospartic); 
     }
     
-    function insertar_moderador($idusuario)
+    function insertar_moderador($idusuario, $idorganizador)
     {
+        $this->db->set('idorganizador',$idorganizador);
         $this->db->set('idusuario', $idusuario); 
         $this->db->insert('moderador'); 
     }
@@ -103,9 +103,11 @@ class Usuario_model extends CI_Model{
         $this->db->insert('organizador'); 
     }
     
-    function insertar_expositor($idusuario)
+    function insertar_expositor($idusuario, $descripcion, $idorganizador)
     {
+        $this->db->set('idorganizador',$idorganizador);
         $this->db->set('idusuario', $idusuario); 
+        $this->db->set('descripcion', $descripcion); 
         $this->db->insert('expositor'); 
     }
     

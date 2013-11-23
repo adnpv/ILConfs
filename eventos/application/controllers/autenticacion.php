@@ -133,32 +133,35 @@ class Autenticacion extends CI_Controller {
     
     public function aut_org()
     {
-        $usuario =  $this->input->post('usuario');
-        $contrasenasha1 = $this->input->post('contrasena');     
-        $rol = $this->autenticacion_model->obtener_rol($usuario, $contrasenasha1);
-        
-        if ($rol == 'usuario')
-        {
-            $this->usuario_model->cambiar_organizador($usuario, $contrasenasha1);
-            $this->usuario_model->insertar_organizador_uc($usuario, $contrasenasha1);   
-        }
-        
+        //$this->session->sess_destroy();
+        $usuario = $this->input->post('usuario');
+        $contrasenasha1 = $this->input->post('contrasena');   
+        //$rol = $this->autenticacion_model->obtener_rol($usuario, $contrasenasha1);
         $datosus = $this->autenticacion_model->autenticar_usuario($usuario, $contrasenasha1);       
-        
+        foreach($datosus as $dtus)        
+        {
+            $sessionusuario = array(
+                'idusuario' => $dtus->idusuario,
+                'usuario' => $dtus->usuario,
+                'nombres' => $dtus->nombres,
+                'apepat' => $dtus->apepat,
+                'apemat' => $dtus->apemat,
+                'rol' => $dtus->rol
+            );   
+        }            
+        $this->session->set_userdata($sessionusuario);
+              
         if ($datosus <> null)
         {  
-            foreach($datosus as $dtus)        
+            if ($datosus[0]->rol == 'usuario')
             {
-                $sessionusuario = array(
-                    'idusuario' => $dtus->idusuario,
-                    'usuario' => $dtus->usuario,
-                    'nombres' => $dtus->nombres,
-                    'apepat' => $dtus->apepat,
-                    'apemat' => $dtus->apemat,
-                    'rol' => $dtus->rol
-                );      
-            }            
-            $this->session->set_userdata($sessionusuario);
+                $this->usuario_model->cambiar_organizador($usuario, $contrasenasha1);
+                $this->usuario_model->insertar_organizador_uc($usuario, $contrasenasha1);
+                $this->session->set_userdata('rol', 'organizador');
+                $datos['tipoevento'] = 'proximos';
+                $datos['datosevento'] = $this->evento_model->mostrar_eventos_proximos($this->session->userdata('idusuario'));         
+                redirect (base_url() . 'index.php/evento/mostrar_eventos_proximos');
+            }           
             
             if ($datosus[0]->rol == 'organizador') 
             {

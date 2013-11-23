@@ -30,6 +30,7 @@ class Usuario extends CI_Controller {
         $this->load->library('form_validation');
         $this->form_validation->set_rules('apepat','apellido paterno','required|xss_clean');
         $this->form_validation->set_rules('apemat','apellido materno','required|xss_clean');
+        $this->form_validation->set_rules('descripcion','descripcion','xss_clean');
         $this->form_validation->set_rules('nombres','Nombres','required|xss_clean');
         $this->form_validation->set_rules('dni','DNI','required|xss_clean|exact_length[8]|integer');
         $this->form_validation->set_rules('rol','rol','required|xss_clean|alpha_numeric');
@@ -48,6 +49,7 @@ class Usuario extends CI_Controller {
             $apemat = $this->input->post('apemat');
             $nombres = $this->input->post('nombres');
             $dni = $this->input->post('dni');
+            $descripcion = $this->input->post('descripcion');
             $rol = $this->input->post('rol');
             $correo = $this->input->post('correo');
             $telefono = $this->input->post('telefono');
@@ -72,6 +74,7 @@ class Usuario extends CI_Controller {
                     'contrasena' => sha1($contrasena1)
                 )
             );
+            $idorganizador = $this->session->userdata('idusuario');
             $this->usuario_model->insertar_usuario($datosusuario);
             $idusuario = $this->usuario_model->obtener_idusuario($dni);
 
@@ -88,13 +91,13 @@ class Usuario extends CI_Controller {
                     $this->enviar_nuevo_participante($idusuario);
 
                 case 'moderador':
-                    $this->usuario_model->insertar_moderador($idusuario);
+                    $this->usuario_model->insertar_moderador($idusuario, $idorganizador);
 
                 case 'organizador':
                     $this->usuario_model->insertar_organizador($idusuario);
 
                 case 'expositor':
-                    $this->usuario_model->insertar_expositor($idusuario);
+                    $this->usuario_model->insertar_expositor($idusuario, $descripcion, $idorganizador);
 
                 /*case 'administrador':
                     $this->usuario_model->insertar_administrador($idusuario);*/

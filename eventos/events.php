@@ -2,8 +2,8 @@
 	session_start();
 	include("header.php");
 
-	mysql_connect('mysql10.000webhost.com', 'a2968841_pitreal', 'a2968841_pitreal') or die(mysql_error());
-	mysql_select_db('a2968841_pitreal') or die(mysql_error());
+	mysql_connect('localhost', 'root', 'toortoor') or die(mysql_error());
+	mysql_select_db('eventos') or die(mysql_error());
 	
 	$query="select * from evento WHERE estado = 'Activo'";
 
@@ -238,7 +238,7 @@
 									$inicio = ($pagina - 1) * $registros; 
 							} 
 							
-							$conn = new mysqli('mysql10.000webhost.com','a2968841_pitreal', 'a2968841_pitreal', 'a2968841_pitreal');
+							$conn = new mysqli('localhost','a2968841_pitreal', 'a2968841_pitreal', 'a2968841_pitreal');
 						
 					
 					
@@ -470,7 +470,7 @@
 									$inicio = ($pagina - 1) * $registros; 
 							} 
 							
-							$conn = new mysqli('mysql10.000webhost.com','a2968841_pitreal', 'a2968841_pitreal', 'a2968841_pitreal');
+							$conn = new mysqli('localhost','a2968841_pitreal', 'a2968841_pitreal', 'a2968841_pitreal');
 							$fecha= $ano."-".$mes."-".$dia;
 								
 							
@@ -692,7 +692,7 @@
 									$inicio = ($pagina - 1) * $registros; 
 							} 
 							
-							$conn = new mysqli('mysql10.000webhost.com','a2968841_pitreal', 'a2968841_pitreal', 'a2968841_pitreal');
+							$conn = new mysqli('localhost','a2968841_pitreal', 'a2968841_pitreal', 'a2968841_pitreal');
 							$fecha= $ano."-".$mes."-".$dia;
 								
 							
@@ -905,7 +905,7 @@ if (!$pagina) {
 			
 		<tbody> 
 			<?php
-		$conn = new mysqli('mysql10.000webhost.com','a2968841_pitreal', 'a2968841_pitreal', 'a2968841_pitreal');
+		$conn = new mysqli('localhost','a2968841_pitreal', 'a2968841_pitreal', 'a2968841_pitreal');
 			$resultados = mysqli_query($conn,"SELECT * FROM evento WHERE estado = 'Activo'");
  
 			$total_registros = mysqli_num_rows($resultados); 

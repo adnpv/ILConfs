@@ -39,26 +39,6 @@ class Evento extends CI_Controller {
         }
     }
     
-    function asignar_mod()//organizador
-    {
-        if ( !$this->validar_sesion() | $this->session->userdata('rol') <> 'organizador' )
-        {
-            redirect ( base_url() . 'index.php/autenticacion?error=2');
-        }
-        else
-        {
-            $idevento = $this->input->get('idevento');
-            $nombreevento = $this->input->get('nombreevento');  
-            $idmoderador = $this->input->get('idmoderador');
-            $datos['idevento'] = $idevento ;
-            $datos['nombreevento'] = $nombreevento;        
-            $idusuario = $this->session->userdata('idusuario');
-            $datos['tipoevento'] = 'próximos';
-            $datos['datosevento'] = $this->evento_model->mostrar_eventos_proximos($idusuario);         
-            redirect (base_url() . 'index.php/evento/mostrar_eventos_proximos');
-        }       
-     }    
-    
     public function activar_encuesta()//moderador
     {
         if ( !$this->validar_sesion() | $this->session->userdata('rol') <> 'moderador' )
@@ -128,8 +108,8 @@ class Evento extends CI_Controller {
             $this->form_validation->set_rules('nombre','nombre','required|xss_clean');
             $this->form_validation->set_rules('lugar','lugar','required|xss_clean');
             $this->form_validation->set_rules('descripcion','descripcion','xss_clean|max_length[2000]');
-            $this->form_validation->set_rules('finicio','finicio','required|xss_clean|callback_validar_finicio|callback_validar_finicio_ffin');
-            $this->form_validation->set_rules('ffin','ffin','required|xss_clean|callback_validar_ffin|callback_validar_finicio_ffin');
+            $this->form_validation->set_rules('finicio','finicio','required|xss_clean|callback_validar_finicio');//|callback_validar_finicio_ffin');
+            $this->form_validation->set_rules('ffin','ffin','required|xss_clean|callback_validar_ffin');//|callback_validar_finicio_ffin');
             $this->form_validation->set_rules('hinicio','hinicio','required|xss_clean');
             $this->form_validation->set_rules('hfin','hfin','trim|required|xss_clean');
             $this->form_validation->set_rules('hregistro','hregistro','required|xss_clean');            
@@ -137,11 +117,11 @@ class Evento extends CI_Controller {
             $this->form_validation->set_rules('longitud','longitud','required|xss_clean|numeric|decimal');
             $this->form_validation->set_rules('moderador','moderador','required|xss_clean|integer|greater_than[1]');
             $this->form_validation->set_rules('nroentradas','nroentradas','required|xss_clean|integer|greater_than[1]');
-            $this->form_validation->set_rules('flimite','flimite','trim|required|xss_clean|callback_validar_flimite|callback_validar_ffin_flimite');
+            $this->form_validation->set_rules('flimite','flimite','required|xss_clean|callback_validar_flimite');//|callback_validar_ffin_flimite');
             $this->form_validation->set_rules('preciounit','preciounit','required|xss_clean|decimal');
             $this->form_validation->set_rules('idorganizador','idorganizador','required|xss_clean|integer|greater_than[1]');
 
-            if ($this->form_validation->run() & $this->validar_finicio_ffin($finicio, $ffin) == TRUE)
+            if ($this->form_validation->run() & $this->validar_finicio_ffin($finicio, $ffin))
             {
                 $nombreevento = $this->input->post("nombre");                
                 $lugar = $this->input->post("lugar");        
@@ -206,7 +186,7 @@ class Evento extends CI_Controller {
             $idevento = $this->evento_model->obtener_id_evento($nombreevento);         
             $datos['idevento'] = $idevento ;
             $datos['nombreevento'] = $nombreevento;        
-            $datos['datosexpositor'] = $this->usuario_model->mostrar_expositores();
+            $datos['datosexpositor'] = $this->usuario_model->mostrar_expositores($this->session->userdata('idusuario'));
             $datos['tema_expo'] = $this->tema_model->mostrar_tema_expositor_evento($idevento);
             $this->load->view('/organizador/agregartemaexpo_view', $datos);
         }
@@ -476,8 +456,11 @@ class Evento extends CI_Controller {
     {
         $finicioex = explode('/',$finicio);
         $finicio2 = $finicioex[2].'-'.$finicioex[1].'-'.$finicioex[0];        
-        if(strtotime(date($finicio2)) < (strtotime(date("Y-m-d"))))                  
+        if(strtotime(date($finicio2)) < (strtotime(date("Y-m-d"))))    
+        {
+            $this->form_validation->set_message('validar_ffin', 'La fecha de inicio debe ser mayor o igual a la fecha de hoy');
             return FALSE;
+        }
         else
             return TRUE;
     }
@@ -487,19 +470,24 @@ class Evento extends CI_Controller {
         $ffinex = explode('/',$ffin);
         $ffin2 = $ffinex[2].'-'.$ffinex[1].'-'.$ffinex[0];
 
-        if(strtotime(date($ffin2)) < (strtotime(date("Y-m-d"))))            
+        if(strtotime(date($ffin2)) < (strtotime(date("Y-m-d")))) 
+        {
+            $this->form_validation->set_message('validar_ffin', 'La fecha de fin debe ser mayor o igual a la fecha de hoy');
             return FALSE;
-        else
+        }
+        else        
             return TRUE;
     }
     
     function validar_flimite($flimite)
     {
         $fflimex = explode('/',$flimite);
-        $flimite2 = strval($fflimex[2] .'-'.$fflimex[1].'-'.$fflimex[0]);
-    
-        if(strtotime(date($flimite2)) < (strtotime(date("Y-m-d"))))            
+        $flimite2 = $fflimex[2] .'-'.$fflimex[1].'-'.$fflimex[0];        
+        
+        if(strtotime(date($flimite2)) < (strtotime(date("Y-m-d"))))  
+        {    $this->form_validation->set_message('validar_flimite', 'La fecha de límite debe ser mayor o igual a la fecha de hoy');
             return FALSE;
+        }
         else
             return TRUE;
     }
@@ -509,10 +497,9 @@ class Evento extends CI_Controller {
         $finicioex = explode('/',$finicio);
         $finicio2 = $finicioex[2].'-'.$finicioex[1].'-'.$finicioex[0];
         $ffinex = explode('/',$ffin);
-        var_dump($ffinex);
-        echo 'ffinex';
         $ffin2 = @$ffinex[2] .'-'.@$ffinex[1].'-'.@$ffinex[0];
-        
+        /*echo "vif  inicio $finicio2";
+        echo "vif  fin $ffin2";      */        
         if(strtotime(date($finicio2)) > strtotime((date($ffin2)))) 
         {   
             $this->form_validation->set_message('validar_finicio_ffin', 'La fecha de fin debe ser mayor o igual a la fecha de inicio');
@@ -545,7 +532,7 @@ class Evento extends CI_Controller {
         $flimiteex = explode('/',$flimite);
         $flimite2 = $flimiteex[2].'-'.$flimiteex[1].'-'.$flimiteex[0];
         $finicioex = explode('/',$finicio);
-        $finicio2 = strval($finicioex[2] .'-'.$finicioex[1].'-'.$finicioex[0]);
+        $finicio2 = $finicioex[2] .'-'.$finicioex[1].'-'.$finicioex[0];
         
         if(strtotime(date($flimite2)) < strtotime((date($ffin2)))) 
         {   

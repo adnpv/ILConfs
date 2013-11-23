@@ -11,9 +11,12 @@
 	
 	}
 
-	mysql_connect('mysql10.000webhost.com', 'a2968841_pitreal', 'a2968841_pitreal') or die(mysql_error());
-	mysql_select_db('a2968841_pitreal') or die(mysql_error());
-
+	mysql_connect('localhost', 'root', 'toortoor') or die(mysql_error());
+	mysql_select_db('eventos') or die(mysql_error());
+	
+	/* mysql_connect('localhost', 'root', '') or die(mysql_error());
+	mysql_select_db('eventos') or die(mysql_error());
+*/
 	$query="select * from usuario where usuario='$usuario' and contrasena='$contrasena'";
 	$result=mysql_query($query) or die (mysql_error());
 	
@@ -40,7 +43,15 @@
 			}
 			
 			
-			}
-		
+	}
+	else{
+	
+		$url= "home.php?error=6";
+		echo '<h3>Procesando...</h3>';
+		//header ("Location: $url");
+		print "<meta http-equiv=Refresh content=\"0 ; url=$url\">";
+	
+	
+	}		
 	
 ?>

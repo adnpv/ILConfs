@@ -149,7 +149,7 @@ class Pregunta extends CI_Controller {
         $inactivas = $this->pregunta_model->obtener_cantidad_inactivas();         
         $idpregunta = $this->input->post('idpregunta');        
         $this->pregunta_model->activar_pregunta($idpregunta);         
-        //$this->mostrar_preguntas_alpublico($idpregunta);
+        $this->mostrar_preguntas_alpublico($idpregunta);
         $this->mostrar_preguntas_tema_2($inactivas);
     }
     
