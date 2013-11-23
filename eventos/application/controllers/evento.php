@@ -7,6 +7,7 @@ class Evento extends CI_Controller {
        $this->load->model('usuario_model');
        $this->load->model('evento_model');
        $this->load->model('tema_model');
+       $this->load->library('form_validation');
        $this->load->helper('url');
        $this->load->helper('form');
        $this->personalizar_msj_error();
@@ -116,59 +117,69 @@ class Evento extends CI_Controller {
             redirect ( base_url() . 'index.php/autenticacion?error=2');
         }
         else
-        {
-            $finicio = $this->input->post("finicio");
-            $ffin = $this->input->post("ffin");
+        {         
+            $finicio = $this->input->post('finicio');
+            $ffin = $this->input->post('ffin');
+            $flimite = $this->input->post('flimite');
             $hregistro = $this->input->post("hregistro");
             $hinicio = $this->input->post("hinicio");
             $hfin = $this->input->post("hfin");
-
-            $this->load->library('form_validation');
+            
             $this->form_validation->set_rules('nombre','nombre','required|xss_clean');
             $this->form_validation->set_rules('lugar','lugar','required|xss_clean');
-            $this->form_validation->set_rules('finicio','finicio','required|xss_clean|callback_validar_finicio');
-            $this->form_validation->set_rules('ffin','ffin','required|xss_clean|callback_validar_ffin');
+            $this->form_validation->set_rules('descripcion','descripcion','required|xss_clean|max_length[2000]');
+            $this->form_validation->set_rules('finicio','finicio','required|xss_clean|callback_validar_finicio|callback_validar_finicio_ffin');
+            $this->form_validation->set_rules('ffin','ffin','required|xss_clean|callback_validar_ffin|callback_validar_finicio_ffin');
             $this->form_validation->set_rules('hinicio','hinicio','required|xss_clean');
             $this->form_validation->set_rules('hfin','hfin','trim|required|xss_clean');
-            $this->form_validation->set_rules('hregistro','hregistro','required|xss_clean');
-            $this->form_validation->set_rules('destacado','destacado','required|xss_clean|numeric|exact_length[1]');
+            $this->form_validation->set_rules('hregistro','hregistro','required|xss_clean');            
             $this->form_validation->set_rules('latitud','latitud','required|xss_clean|numeric|decimal');
             $this->form_validation->set_rules('longitud','longitud','required|xss_clean|numeric|decimal');
             $this->form_validation->set_rules('moderador','moderador','required|xss_clean|integer|greater_than[1]');
             $this->form_validation->set_rules('nroentradas','nroentradas','required|xss_clean|integer|greater_than[1]');
-            $this->form_validation->set_rules('flimite','flimite','trim|required|xss_clean|callback_validar_flimite');
+            $this->form_validation->set_rules('flimite','flimite','trim|required|xss_clean|callback_validar_flimite|callback_validar_ffin_flimite');
             $this->form_validation->set_rules('preciounit','preciounit','required|xss_clean|decimal');
+            $this->form_validation->set_rules('idorganizador','idorganizador','required|xss_clean|integer|greater_than[1]');
 
-            if ($this->form_validation->run() == TRUE || $this->validar_finicio_ffin($finicio, $ffin) == TRUE)
+            if ($this->form_validation->run() & $this->validar_finicio_ffin($finicio, $ffin) == TRUE)
             {
-                $nombreevento = $this->input->post("nombre");
-                $lugar = $this->input->post("lugar");                       
-                $destacado = $this->input->post("destacado");
+                $nombreevento = $this->input->post("nombre");                
+                $lugar = $this->input->post("lugar");        
+                $descripcion = $this->input->post("descripcion");
                 $latitud = $this->input->post("latitud");
                 $longitud = $this->input->post("longitud");
                 $moderador = $this->input->post("moderador");       
-                $finicio = $this->input->post("finicio");
+                $finicio = $this->input->post('finicio');                
                 $nroentradas = $this->input->post("nroentradas");
-                $preciounit = $this->input->post("preciounit");
-                $flimite = $this->input->post("fechalimite");        
+                $preciounit = $this->input->post("preciounit");   
+                $finicioex = explode('/',$finicio);
+                $finicio2 = strval($finicioex[2] .'-'.$finicioex[1].'-'.$finicioex[0]);   
+                $ffinex = explode('/',$ffin);
+                $ffin2 = strval($ffinex[2] .'-'.$ffinex[1].'-'.$ffinex[0]);
+                $flimite = $this->input->post('flimite');
+                $flimitex = explode('/',$flimite);
+                $flimite2 = strval($flimitex[2] .'-'.$flimitex[1].'-'.$flimitex[0]);                
+                $idorganizador = $this->input->post('idorganizador');
                 $datosnvoevento = array(
                     array(
                         'nombre' => $nombreevento,
-                        'fechainicio' => $finicio,
-                        'fechafin' => $ffin,
+                        'lugar' => $lugar,
+                        'descripcion' => $descripcion,
+                        'fechainicio' => $finicio2,
+                        'fechafin' => $ffin2,
                         'horainicio' => $hinicio,
                         'horafin' => $hfin,
-                        'horaregistro' => $hregistro,
-                        'lugar' => $lugar,
+                        'horaregistro' => $hregistro,                        
                         'latitud' => $latitud,
                         'longitud' => $longitud,
-                        'destacado' => $destacado,
+                        'destacado' => 1,
                         'estado' => 'Pendiente',
                         'idusuario' => $moderador,
                         'nroentradas' => $nroentradas,
                         'entradasvendidas' => 0,
                         'preciounit' => $preciounit,
-                        'fechalimite' => $flimite
+                        'fechalimite' => $flimite2,
+                        'idorganizador' => $idorganizador
                     )
                 );
                 $this->evento_model->insertar_evento($datosnvoevento);   
@@ -177,7 +188,7 @@ class Evento extends CI_Controller {
             }
             else
             {             
-                $datos['datosmoderador'] = $this->usuario_model->mostrar_moderadores();
+                $datos['datosmoderador'] = $this->usuario_model->mostrar_moderadores($this->session->userdata('idusuario'));
                 $this->load->view('/organizador/crearevento_view', $datos);
             }
         }
@@ -442,7 +453,8 @@ class Evento extends CI_Controller {
     }*/
     private function personalizar_msj_error()
     { 	 
-        $this->form_validation->set_error_delimiters('<span class="alert_error">','</span>');	
+        $this->form_validation->set_error_delimiters('<span class="alert_error">','</span>');
+        $this->form_validation->set_message('xss_clean', 'El campo %s no debe tener caracteres extraños.');
         $this->form_validation->set_message('required', 'El campo %s es obligatorio.');
         $this->form_validation->set_message('alpha_numeric', 'El campo %s no puede contener caracteres extraños.');
         $this->form_validation->set_message('exact_length', 'El DNI debe tener 8 dígitos.');
@@ -451,17 +463,20 @@ class Evento extends CI_Controller {
 	$this->form_validation->set_message('integer', 'El %s solo debe tener números enteros.');
         $this->form_validation->set_message('numeric', 'El %s solo debe tener números.');
 	$this->form_validation->set_message('valid_email', 'El %s ingresado no es correcto.');
-        $this->form_validation->set_message('matches', 'Las contraseñas deben ser idénticas.');
-        $this->form_validation->set_message('xss_clean', 'El campo %s no debe tener caracteres extraños.');
+        $this->form_validation->set_message('matches', 'Las contraseñas deben ser idénticas.');        
         $this->form_validation->set_message('greater_than', 'Debe elegir un moderador.');
         $this->form_validation->set_message('validar_finicio', 'La fecha de inicio debe ser mayor o igual al dia de hoy.');
+        $this->form_validation->set_message('validar_flimite', 'La fecha de límite debe ser mayor o igual al dia de hoy.');
         $this->form_validation->set_message('validar_ffin', 'La fecha de fin debe ser mayor o igual al dia de hoy.');
         $this->form_validation->set_message('validar_finicio_ffin', 'La fecha de fin debe ser mayor o igual a la fecha de inicio.');
+        $this->form_validation->set_message('validar_ffin_flimite', 'La fecha de fin debe ser mayor o igual a la fecha de fin de ventas.');
     }
     
     function validar_finicio($finicio)
     {
-        if(strtotime(date($finicio)) < (strtotime(date("Y-m-d"))))                  
+        $finicioex = explode('/',$finicio);
+        $finicio2 = $finicioex[2].'-'.$finicioex[1].'-'.$finicioex[0];        
+        if(strtotime(date($finicio2)) < (strtotime(date("Y-m-d"))))                  
             return FALSE;
         else
             return TRUE;
@@ -469,7 +484,10 @@ class Evento extends CI_Controller {
     
     function validar_ffin($ffin)
     {
-        if(strtotime(date($ffin)) < (strtotime(date("Y-m-d"))))            
+        $ffinex = explode('/',$ffin);
+        $ffin2 = $ffinex[2].'-'.$ffinex[1].'-'.$ffinex[0];
+
+        if(strtotime(date($ffin2)) < (strtotime(date("Y-m-d"))))            
             return FALSE;
         else
             return TRUE;
@@ -477,16 +495,61 @@ class Evento extends CI_Controller {
     
     function validar_flimite($flimite)
     {
-        if(strtotime(date($flimite)) < (strtotime(date("Y-m-d"))))            
+        $fflimex = explode('/',$flimite);
+        $flimite2 = strval($fflimex[2] .'-'.$fflimex[1].'-'.$fflimex[0]);
+    
+        if(strtotime(date($flimite2)) < (strtotime(date("Y-m-d"))))            
             return FALSE;
         else
             return TRUE;
     }
     
     function validar_finicio_ffin($finicio, $ffin)
-    {   //echo 'F. inicio: ' . $finicio . ', F. fin: ' . $ffin;          
-        if(strtotime(date($finicio)) > strtotime((date($ffin)))) 
-        {   echo 'La fecha de fin debe ser mayor o igual a la fecha de inicio.';
+    {
+        $finicioex = explode('/',$finicio);
+        $finicio2 = $finicioex[2].'-'.$finicioex[1].'-'.$finicioex[0];
+        $ffinex = explode('/',$ffin);
+        var_dump($ffinex);
+        echo 'ffinex';
+        $ffin2 = @$ffinex[2] .'-'.@$ffinex[1].'-'.@$ffinex[0];
+        
+        if(strtotime(date($finicio2)) > strtotime((date($ffin2)))) 
+        {   
+            $this->form_validation->set_message('validar_finicio_ffin', 'La fecha de fin debe ser mayor o igual a la fecha de inicio');
+            return FALSE;
+        }
+        else
+            return TRUE;
+    }
+    
+    function validar_ffin_flimite($ffin, $flimite)
+    {
+        $flimiteex = explode('/',$flimite);
+        var_dump($flimiteex);
+        $flimite2 = @$flimiteex[2].'-'.@$flimiteex[1].'-'.@$flimiteex[0];
+        $ffinex = explode('/',$ffin);
+        $ffin2 = strval($ffinex[2] .'-'.$ffinex[1].'-'.$ffinex[0]);
+        
+        if(strtotime(date($flimite2)) > strtotime((date($ffin2)))) 
+        {   
+            $this->form_validation->set_message('validar_finicio_ffin', 'La fecha de fin debe ser mayor o igual a la fecha de límite');
+            //echo 'La fecha de fin debe ser mayor o igual a la fecha de limite.';
+            return FALSE;
+        }
+        else
+            return TRUE;
+    }
+    
+    function validar_finicio_flimite($finicio, $flimite)
+    {
+        $flimiteex = explode('/',$flimite);
+        $flimite2 = $flimiteex[2].'-'.$flimiteex[1].'-'.$flimiteex[0];
+        $finicioex = explode('/',$finicio);
+        $finicio2 = strval($finicioex[2] .'-'.$finicioex[1].'-'.$finicioex[0]);
+        
+        if(strtotime(date($flimite2)) < strtotime((date($ffin2)))) 
+        {   
+            //echo 'La fecha de fin debe ser mayor o igual a la fecha de limite.';
             return FALSE;
         }
         else
@@ -494,9 +557,10 @@ class Evento extends CI_Controller {
     }
     
     function validar_hinicio_hfin($hinicio, $hfin)
-    {   //echo 'F. inicio: ' . $finicio . ', F. fin: ' . $ffin;          
+    {         
         if(strtotime(date($hinicio)) > strtotime((date($hfin)))) 
-        {   echo 'La hora de fin debe ser mayor o igual a la hora de inicio.';
+        {   
+            echo 'La hora de fin debe ser mayor o igual a la hora de inicio.';
             return FALSE;
         }
         else

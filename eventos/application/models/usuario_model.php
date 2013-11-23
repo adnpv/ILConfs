@@ -12,9 +12,23 @@ class Usuario_model extends CI_Model{
         $datosmoderador = $this->db->query("select u.idusuario, u.apepat, u.apemat, u.nombres
             from usuario u, moderador m
             where u.idusuario = m.idusuario
-            and m.idorganizador = $idorganizador
-            order by 2");
+            and m.idorganizador = '" . $idorganizador . "' order by 2");
         return $datosmoderador->result();
+    }
+    
+    function obtener_idusuario_uc($usuario, $contrasenasha1)
+    {
+        $sql = $this->db->query("select idusuario from usuario where usuario = '" . $usuario . 
+            "' and contrasena = '" . $contrasenasha1 ."'");
+        $idusuario = $sql->row(0);  
+        return $idusuario->idusuario; 
+    }
+    
+    function insertar_organizador_uc($usuario, $contrasenasha1)
+    {
+        $idusuario = $this->obtener_idusuario_uc($usuario, $contrasenasha1);
+        $this->db->set('idusuario', $idusuario); 
+        $this->db->insert('organizador');        
     }
     
     public function mostrar_expositores()

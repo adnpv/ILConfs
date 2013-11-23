@@ -1,19 +1,25 @@
 <!doctype html>
 <html lang="es" />
 <head>
-	<meta charset="utf-8"/>
-	<title>Organizador</title>
-	
-	<link rel="stylesheet" href="<?php echo base_url(); ?>/static/css/layout.css" type="text/css" media="screen" />
+    <meta charset="utf-8"/>
+    <title>Organizador</title>
+
+    <link rel="stylesheet" href="<?php echo base_url(); ?>static/css/layout.css" type="text/css" media="screen" />
     <!--[if lt IE 9]>
-    <link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php echo base_url(); ?>static/css/ie.css" type="text/css" media="screen" />
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" /></script>
     <![endif]-->
-    <script src="<?php echo base_url(); ?>/static/js/jquery-1.5.2.min.js" type="text/javascript" /></script>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>static/css/jquery.ui.all.css">
+    <script src="<?php echo base_url(); ?>static/js/jquery-1.9.1.js"></script>
+    <script src="<?php echo base_url(); ?>static/js/jquery.ui.core.js"></script>
+    <script src="<?php echo base_url(); ?>static/js/jquery.ui.widget.js"></script>
+    <script src="<?php echo base_url(); ?>static/js/jquery.ui.datepicker.js"></script>
+    <script src="<?php echo base_url(); ?>static/js/jquery.ui.datepicker-es.js"></script>
+    
     <!--<script src="<?php //echo base_url(); ?>/static/js/hideshow.js" type="text/javascript" /></script>-->
-    <script src="<?php echo base_url(); ?>/static/js/jquery.tablesorter.min.js" type="text/javascript" /></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>/static/js/jquery.equalHeight.js" /></script>
-	<script type="text/javascript" />
+    <script src="<?php echo base_url(); ?>static/js/jquery.tablesorter.min.js" type="text/javascript" /></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>static/js/jquery.equalHeight.js" /></script>
+    <script type="text/javascript" />
 	$(document).ready(function() 
     	{ 
             $(".tablesorter").tablesorter(); 
@@ -41,10 +47,19 @@
         });
     </script>
     <script type="text/javascript" />
+	$(function() {
+            $( ".datepicker" ).datepicker( $.datepicker.regional[ "es" ] );
+            $( "#locale" ).change(function() {
+                    $( ".datepicker" ).datepicker( "option",
+                            $.datepicker.regional[ $( this ).val() ] );
+            });
+	});
+    </script>
+    <script type="text/javascript" >
     $(function(){
         $('.column').equalHeight();
     });
-</script>
+    </script>
 
 </head>
 <body>
@@ -108,15 +123,25 @@
                             <input type="text" x-webkit-speech id="lugar" name="lugar" value="<?php echo set_value('lugar'); ?>" style="width:92%;" />
                         </fieldset>                        
                         <div class="clear" /></div>                        
+                        <fieldset style="width:99%; float:left;"> <!-- to make two field float next to one another, adjust values accordingly -->
+                            <?php echo form_error('descripcion'); ?>                            
+                            <label>Descripción</label><span>P. ej. Evento grandioso</span>                                                        
+                            <textarea id="descripcion" name="descripcion" rows="7" cols="10" style="width:97%;">                            
+                            <?php echo set_value('descripcion'); ?>
+                            </textarea>                            
+                        </fieldset>          
                         <fieldset style="width:48%; float:left;" /> <!-- to make two field float next to one another, adjust values accordingly -->
-                            <label>Fecha de inicio</label><span>P. ej. 2013-11-01</span>
+                            <label>Fecha de inicio</label>
                             <?php echo form_error('finicio'); ?>
-                            <input type="text" x-webkit-speech id="finicio" name="finicio" value="<?php echo set_value('finicio'); ?>" style="width:92%;" />
+                            <?php echo form_error('validar_finicio_ffin'); ?>
+                            <input type="text" class="datepicker" name="finicio" value="<?php echo set_value('finicio'); ?>" style="width:92%;" />
                         </fieldset>                                         
                         <fieldset style="width:48%; float:right;" /> <!-- to make two field float next to one another, adjust values accordingly -->
-                            <label>Fecha de fin</label><span>P. ej. 2013-11-03</span>
+                            <label>Fecha de fin</label>
                             <?php echo form_error('ffin'); ?>
-                            <input type="text" x-webkit-speech id="ffin" name="ffin" value="<?php echo set_value('ffin'); ?>"  style="width:92%;" />
+                            <?php echo form_error('validar_finicio_ffin'); ?>
+                            <?php echo form_error('validar_ffin_flimite'); ?>
+                            <input type="text" class="datepicker" name="ffin" value="<?php echo set_value('ffin'); ?>"  style="width:92%;" />
                         </fieldset>
                         <div class="clear" /></div>                        
                         <fieldset style="width:48%; float:left;" /> <!-- to make two field float next to one another, adjust values accordingly -->
@@ -136,15 +161,15 @@
                             <input type="text" x-webkit-speech id="hregistro" name="hregistro" value="<?php echo set_value('hregistro'); ?>"  style="width:92%;" />
                         </fieldset>                                         
                         <fieldset style="width:48%; float:right;" /> <!-- to make two field float next to one another, adjust values accordingly -->
-                            <label>Destacado</label>
-                            <?php echo form_error('destacado'); ?>
-                            <ul id="ulrdbtn" />
-                                <li><input type="radio" name="destacado" id="destacado" value="1" checked/>Sí</li>
-                                <li>&nbsp;</li>
-                                <li>&nbsp;</li>
-                                <li><input type="radio" name="destacado" id="destacado" value="0"/>No</li>
-                            </ul>
-                        </fieldset>
+                            <label>Moderador</label>
+                            <?php echo form_error('moderador'); ?>
+                            <select id="moderador" name="moderador" style="width:92%;" />
+                                <option value="0" />Elegir moderador</option>
+                                <?php foreach ($datosmoderador as $moderador){?>
+                                <option value="<?php echo $moderador->idusuario ?>" /><?php echo $moderador->apepat . ' ' . $moderador->apemat . ', ' . $moderador->nombres; ?></option>
+                                <?php } ?>
+                            </select>
+                        </fieldset>    
                         <div class="clear" /></div> 
                         <fieldset style="width:48%; float:left;" /> <!-- to make two field float next to one another, adjust values accordingly -->
                             <label>Latitud</label><span>P. ej. -12.4832, 10.3433</span>
@@ -157,33 +182,26 @@
                             <input type="text" x-webkit-speech id="longitud" name="longitud" value="<?php echo set_value('longitud'); ?>"   style="width:92%;" />
                         </fieldset>
                         <div class="clear" /></div>  
-                        <fieldset style="width:48%; float:left;" /> <!-- to make two field float next to one another, adjust values accordingly -->
+                        <fieldset style="width:48%; float:left;"> <!-- to make two field float next to one another, adjust values accordingly -->
                             <label>Nro. de Entradas</label><span>P. ej. 150</span>
                             <?php echo form_error('nroentradas'); ?>
                             <input type="text" id="nroentradas" name="nroentradas" value="<?php echo set_value('nroentradas'); ?>"   style="width:92%;" />
                         </fieldset>                                         
-                        <fieldset style="width:48%; float:right;" /> <!-- to make two field float next to one another, adjust values accordingly -->
+                        <fieldset style="width:48%; float:right;"> <!-- to make two field float next to one another, adjust values accordingly -->
                             <label>Precio unitario (S/.)</label><span>P. ej. 35.00</span>
                             <?php echo form_error('preciounit'); ?>
                             <input type="text" id="preciounit" name="preciounit" value="<?php echo set_value('preciounit'); ?>"   style="width:92%;" />
                         </fieldset>
-                        <div class="clear" /></div> 
+                        <div class="clear" /></div>                            
                         <fieldset style="width:48%; float:left;" /> <!-- to make two field float next to one another, adjust values accordingly -->
-                            <label>Moderador</label>
-                            <?php echo form_error('moderador'); ?>
-                            <select id="moderador" name="moderador" style="width:92%;" />
-                                <option value="0" />Elegir moderador</option>
-                                <?php foreach ($datosmoderador as $moderador){?>
-                                <option value="<?php echo $moderador->idusuario ?>" /><?php echo $moderador->apepat . ' ' . $moderador->apemat . ', ' . $moderador->nombres; ?></option>
-                                <?php } ?>
-                            </select>
-                        </fieldset>       
-                        <fieldset style="width:48%; float:right;" /> <!-- to make two field float next to one another, adjust values accordingly -->
-                            <label>Fin de ventas</label><span>P. ej. 2013-11-01</span>
+                            <label>Fin de ventas</label>
                             <?php echo form_error('flimite'); ?>
-                            <input type="text" x-webkit-speech id="flimite" name="flimite" value="<?php echo set_value('flimite'); ?>"  style="width:92%;" />
-                        </fieldset>                                                                                 
-                        <div class="clear" /></div>                           
+                            <?php echo form_error('validar_ffin_flimite'); ?>
+                            <input type="text" class="datepicker" name="flimite" value="<?php echo set_value('flimite'); ?>"  style="width:92%;" />
+                            <input type="hidden" class="idorganizador" name="idorganizador" value="<?php echo $this->session->userdata('idusuario'); ?>" />
+                        </fieldset>   
+                        <?php echo form_error('idorganizador'); ?>
+                     <div class="clear" /></div>                           
                     </div>
                 <footer>
                     <div class="submit_link" style="padding: 5px 335px;" />

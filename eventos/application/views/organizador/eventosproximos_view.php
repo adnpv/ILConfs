@@ -138,14 +138,7 @@
                             <!--<td>Activo</td>-->
                             <td>
                                 <ul id="ulrdbtn">
-                                    <li><form action="actualizarevento.html"><input type="image" src="<?php echo base_url(); ?>static/images/icn_edit_article.png" title="Actualizar"/></form></li>                                    
-                                    <li>
-                                        <form action="<?php echo base_url(); ?>index.php/evento/asignar_moderador" method="get">
-                                            <input type="hidden" id="idevento" name="idevento" value="<?php echo $evento->idevento; ?>" />
-                                            <input type="hidden" id="nombreevento" name="nombreevento" value="<?php echo $evento->nombre; ?>" />
-                                            <button type="submit" class="imgmoderador" title="Asignar moderador"></button>
-                                        </form>
-                                    </li>
+                                    <li><form action="actualizarevento.html"><input type="image" src="<?php echo base_url(); ?>static/images/icn_edit_article.png" title="Actualizar"/></form></li>                                                                        
                                     <li>
                                         <form action="<?php echo base_url(); ?>index.php/evento/mostrar_participantes_evento" method="post">
                                             <input type="hidden" id="idevento" name="idevento" value="<?php echo $evento->idevento; ?>" />
