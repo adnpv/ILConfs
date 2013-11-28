@@ -89,15 +89,19 @@ class Usuario extends CI_Controller {
                     );
                     $this->usuario_model->insertar_participante($datospartic);
                     $this->enviar_nuevo_participante($idusuario);
+                    break;
 
                 case 'moderador':
                     $this->usuario_model->insertar_moderador($idusuario, $idorganizador);
+                    break;
 
                 case 'organizador':
                     $this->usuario_model->insertar_organizador($idusuario);
+                    break;
 
                 case 'expositor':
                     $this->usuario_model->insertar_expositor($idusuario, $descripcion, $idorganizador);
+                    break;
 
                 /*case 'administrador':
                     $this->usuario_model->insertar_administrador($idusuario);*/
@@ -105,7 +109,7 @@ class Usuario extends CI_Controller {
             echo '<script type="text/javascript">            
                    var retVal = confirm("Usuario registrado. ¿Desea continuar registrando?");
                    if( retVal == false ){
-                       window.top.location.href = "' . base_url() . 'index.php/usuario/asignar_particip_evento";
+                       window.top.location.href = "' . base_url() . 'index.php/evento/mostrar_eventos_proximos";
                           return false;
                    }else{
                        window.top.location.href = "' . base_url() . 'index.php/usuario";

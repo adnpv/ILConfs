@@ -8,10 +8,10 @@ class Evento extends CI_Controller {
        $this->load->model('evento_model');
        $this->load->model('tema_model');
        $this->load->library('form_validation');
+       $this->load->library('session');
        $this->load->helper('url');
        $this->load->helper('form');
-       $this->personalizar_msj_error();
-       $this->load->library('session');
+       $this->personalizar_msj_error();       
     }
     
     public function index()
@@ -163,13 +163,23 @@ class Evento extends CI_Controller {
                     )
                 );
                 $this->evento_model->insertar_evento($datosnvoevento);   
-                $this->enviar_nuevo_evento($nombreevento);         
-                redirect( base_url() . 'index.php/evento/agregar_tema_expositor/?nombreevento='.$nombreevento);            
+                $this->enviar_nuevo_evento($nombreevento);  
+                //redirect( base_url() . 'index.php/evento/agregar_tema_expositor/?nombreevento='.$nombreevento);            
+                echo '<script type="text/javascript">            
+                   var retVal = confirm("Evento creado. ¿Desea crear otro evento?");
+                   if( retVal == false ){
+                       window.top.location.href = "' . base_url() . 'index.php/evento/agregar_tema_expositor/?nombreevento='.$nombreevento .
+                          'return false;
+                   }else{
+                       window.top.location.href = "' . base_url() . 'index.php/evento";
+                          return true;
+                   }      
+                </script>'; 
             }
             else
             {             
                 $datos['datosmoderador'] = $this->usuario_model->mostrar_moderadores($this->session->userdata('idusuario'));
-                $this->load->view('/organizador/crearevento_view', $datos);
+                @$this->load->view('/organizador/crearevento_view', $datos);
             }
         }
     }

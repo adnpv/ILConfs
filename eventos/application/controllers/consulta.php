@@ -12,32 +12,46 @@ class Consulta extends CI_Controller {
     
     public function mostrar_consultas_tema()
     {     
-        //$this->insertar_consultas();
-        $idtema = $this->input->post('idtema');  
-        $idevento = $this->input->post('idevento'); 
-        $nombreevento = $this->input->post('nombreevento'); 
-        $datos['nombreevento'] = $nombreevento;
-        $datos['idtema'] = $idtema;        
-        $datos['idevento'] = $idevento;     
-        $nrocons = $this->consulta_model->contar_consultas_tema($idtema);
-        $datos['nrocons'] = $nrocons;
-        $datos['edorondacons'] = $this->tema_model->ver_estado_consultas($idtema);
-        $datos['total'] = $this->consulta_model->contar_consultas_tema($idtema);          
-        $datos['respondidas'] = $this->consulta_model->obtener_cantidad_respondidas($idtema);                     
-        $datos['consultas_tema'] = $this->consulta_model->mostrar_consultas_tema($idtema);
-        $this->load->view('/expositor/pregparticipantes_view', $datos);      
+        if ( !$this->validar_sesion() | $this->session->userdata('rol') <> 'expositor' )
+        {
+            redirect ( base_url() . 'index.php/autenticacion?error=2');
+        }
+        else
+        {
+            //$this->insertar_consultas();
+            $idtema = $this->input->post('idtema');  
+            $idevento = $this->input->post('idevento'); 
+            $nombreevento = $this->input->post('nombreevento'); 
+            $datos['nombreevento'] = $nombreevento;
+            $datos['idtema'] = $idtema;        
+            $datos['idevento'] = $idevento;     
+            $nrocons = $this->consulta_model->contar_consultas_tema($idtema);
+            $datos['nrocons'] = $nrocons;
+            $datos['edorondacons'] = $this->tema_model->ver_estado_consultas($idtema);
+            $datos['total'] = $this->consulta_model->contar_consultas_tema($idtema);          
+            $datos['respondidas'] = $this->consulta_model->obtener_cantidad_respondidas($idtema);                     
+            $datos['consultas_tema'] = $this->consulta_model->mostrar_consultas_tema($idtema);
+            $this->load->view('/expositor/pregparticipantes_view', $datos); 
+        }
     }  
     
     public function mostrar_consultas_partic()
     {     
-        $idevento = $this->input->get('idevento'); 
-        $nombreevento = $this->input->get('nombreevento'); 
-        $idusuario = $this->input->get('idusuario'); 
-        $datos['nombreevento'] = $nombreevento; 
-        $datos['idevento'] = $idevento;                    
-        $datos['idusuario'] = $idusuario;         
-        $datos['consultas_partic'] = $this->consulta_model->mostrar_consultas_participante($idevento, $idusuario);
-        $this->load->view('/moderador/consultas_view', $datos);      
+        if ( !$this->validar_sesion() | $this->session->userdata('rol') <> 'moderador' )
+        {
+            redirect ( base_url() . 'index.php/autenticacion?error=2');
+        }
+        else
+        { 
+            $idevento = $this->input->get('idevento'); 
+            $nombreevento = $this->input->get('nombreevento'); 
+            $idusuario = $this->input->get('idusuario'); 
+            $datos['nombreevento'] = $nombreevento; 
+            $datos['idevento'] = $idevento;                    
+            $datos['idusuario'] = $idusuario;         
+            $datos['consultas_partic'] = $this->consulta_model->mostrar_consultas_participante($idevento, $idusuario);
+            $this->load->view('/moderador/consultas_view', $datos);      
+        }
     } 
     
     public function listar_consultas_partic()
@@ -156,6 +170,30 @@ class Consulta extends CI_Controller {
     {
         $nrocons = $this->consulta_model->contar_consultas_tema($idtema);
         echo $nrocons;
+    }
+    
+    private function validar_sesion()
+    {
+        if  ($this->session->userdata('idusuario') == '' || $this->session->userdata('rol') == '' || $this->session->userdata('nombres') == '' || $this->session->userdata('apepat') == '' || $this->session->userdata('apemat') == '' )        
+            return FALSE;
+        else
+            return TRUE;
+    }
+    
+    private function validar_moderador()
+    {
+        if  ($this->session->userdata('rol') == 'moderador' )
+            return TRUE;
+        else
+            return FALSE;
+    }
+    
+    private function validar_organizador()
+    {
+        if  ($this->session->userdata('rol') == 'organizador' )
+            return TRUE;
+        else
+            return FALSE;
     }
 }
 /*cada vez que el moerador habilite la ronda de consultas, se debe enviar un aviso 

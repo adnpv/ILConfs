@@ -905,7 +905,7 @@ if (!$pagina) {
 			
 		<tbody> 
 			<?php
-		$conn = new mysqli('localhost','a2968841_pitreal', 'a2968841_pitreal', 'a2968841_pitreal');
+                        $conn = new mysqli('localhost', 'root', 'toortoor', 'eventos');
 			$resultados = mysqli_query($conn,"SELECT * FROM evento WHERE estado = 'Activo'");
  
 			$total_registros = mysqli_num_rows($resultados); 

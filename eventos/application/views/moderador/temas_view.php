@@ -131,7 +131,7 @@
                             <td></td>
                             <td><?php echo $tema->nro; ?></td> 
                             <td><?php echo $tema->nombre; ?></td>  
-                            <td title="<?php echo $tema->descripcion; ?>"><?php echo substr($tema->descripcion, 0, 60) . '...' ;?></td>                                                                            
+                            <td title="<?php echo $tema->descripcion; ?>"><?php echo substr($tema->descripcion, 0, 50) . '...' ;?></td>                                                                            
                             <td><?php echo $tema->expositor; ?></td>    
                             <td><?php   if($tema->rondaconsultas == 1)                                        
                                             echo 'Activo';

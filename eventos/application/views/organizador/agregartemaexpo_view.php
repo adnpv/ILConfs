@@ -103,12 +103,14 @@
                     <div class="module_content">                         
                        <fieldset style="width:48%; float:left;"> <!-- to make two field float next to one another, adjust values accordingly -->
                             <label>Tema</label>
-                            <input type="text" id="tema" name="tema" style="width:92%;">
+                            <?php echo form_error('tema'); ?>
+                            <input type="text" id="tema" name="tema" value="<?php if ( isset($error) && ! $error) echo set_value('tema'); ?>" style="width:92%;">
                         </fieldset>
                         <fieldset style="width:48%; float:right; margin-left: 3%;"> <!-- to make two field float next to one another, adjust values accordingly -->
                             <label>Expositor</label>
+                            <?php echo form_error('idexpositor'); ?>
                             <select id="idexpositor" name="idexpositor" style="width:92%;">
-                                <option value="0">Elegir expositor</option>
+                                <option value="">Elegir expositor</option>
                                 <?php foreach ($datosexpositor as $expositor){?>
                                 <option value="<?php echo $expositor->idusuario ?>"><?php echo $expositor->apepat . ' ' . $expositor->apemat . ', ' . $expositor->nombres; ?></option>
                                 <?php } ?>                                                                  
@@ -116,8 +118,10 @@
                         </fieldset>                       
                         <div class="clear"></div> 
                         <fieldset style="width:99%; float:left;"> <!-- to make two field float next to one another, adjust values accordingly -->
-                            <label>Descripción</label><span>P. ej. Tema para ganadores</span>                            
+                            <label>Descripción</label><span>P. ej. Desarrollo de casos prácticos para aprendizaje real de participantes</span>                            
+                            <?php echo form_error('descripcion'); ?>
                             <textarea id="descripcion" name="descripcion" rows="7" cols="10" style="width:97%;">                            
+                            <?php if ( isset($error) && ! $error) echo set_value('descripcion'); ?>
                             </textarea>                            
                         </fieldset>                                                                
                         <div class="clear"></div>  

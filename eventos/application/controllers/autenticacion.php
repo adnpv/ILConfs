@@ -8,6 +8,7 @@ class Autenticacion extends CI_Controller {
        $this->load->model('evento_model');
        $this->load->model('usuario_model');
        $this->load->helper('url');
+       $this->load->helper('security');
        $this->load->library('session');
     }
     
@@ -16,17 +17,11 @@ class Autenticacion extends CI_Controller {
         $this->load->view('/login_view');
     }
     
-    public function expositor()    
-    {        
-        $datos['datosevento']  = $this->evento_model->mostrar_eventos_proximos();        
-        $this->load->view('/expositor/eventos_view', $datos);
-    }
-
     public function autenticar() 
     {        
-     $usuario =  $this->input->post('usuario');
-     $contrasena = $this->input->post('contrasena');     
-     $contrasenasha1 = sha1($contrasena);
+     $usuario =  $this->input->post('usuario', TRUE);
+     $contrasena = $this->input->post('contrasena', TRUE);     
+     $contrasenasha1 = do_hash($contrasena);
      //$rol = $this->autenticacion_model->obtener_rol($usuario, $contrasenasha1);
      $datosus = $this->autenticacion_model->autenticar_usuario($usuario, $contrasenasha1);  
      
@@ -68,10 +63,10 @@ class Autenticacion extends CI_Controller {
   public function autenticar_participante()
   {
       header("Content-Type: application/json charset=UTF-8");       
-      $usuario = strval($this->input->post('usuario'));
-      $contrasena = strval($this->input->post('contrasena'));     
+      $usuario = 'amunoz';//strval($this->input->post('usuario'));
+      $contrasena = '123456';//strval($this->input->post('contrasena'));     
       $contrasenasha1 = sha1($contrasena);
-      $rol = $this->autenticacion_model->obtener_rol($usuario, $contrasenasha1);
+      //$rol = $this->autenticacion_model->obtener_rol($usuario, $contrasenasha1);
      
       /*if ($rol == 'participante')
       {*/
@@ -100,6 +95,7 @@ class Autenticacion extends CI_Controller {
           }
           //$jsondatosus = json_encode($datosus2);
           //return $jsondatosus;
+          var_dump($datosus2);
           $this->output->set_output(json_encode($datosus2));
           //mandar todos los eventos en los q el usuario
           //estuvo, asi sean pasados
@@ -112,9 +108,12 @@ class Autenticacion extends CI_Controller {
           curl_setopt($ch, CURLOPT_POSTFIELDS, array("nuevotema"=>$data_string));
           $result = curl_exec($ch);
           curl_close($ch);*/
-      }
+      } 
       else
-          redirect ( base_url() . 'index.php/autenticacion?error=1');
+      {
+          $error = array('error' => 'Nombre de usuario y/o contraseña incorrecto(s).');
+          $this->output->set_output(json_encode($error));
+      }
     }
     
     public function cerrar_sesion()

@@ -92,22 +92,29 @@ class Pregunta extends CI_Controller {
           
     public function mostrar_preguntas_tema()
     {
-        $datos['inactivas'] = 4;
-        $idtema = $this->input->post('idtema'); 
-        $idevento = $this->input->post('idevento'); 
-        $nombreevento = $this->input->post('nombreevento'); 
-        $datos['preguntas_tema'] = $this->pregunta_model->mostrar_preguntas_tema($idtema);
-        $datos['idtema'] = $idtema;
-        $datos['idevento'] = $idevento;
-        $datos['nombreevento'] = $nombreevento;
-        $this->load->view('/expositor/pregevento_view', $datos);
+        if ( !$this->validar_sesion() | $this->session->userdata('rol') <> 'expositor' )
+        {
+            redirect ( base_url() . 'index.php/autenticacion?error=2');
+        }
+        else
+        {
+            $datos['inactivas'] = 4;
+            $idtema = $this->input->post('idtema', TRUE); 
+            $idevento = $this->input->post('idevento', TRUE); 
+            $nombreevento = $this->input->post('nombreevento', TRUE); 
+            $datos['preguntas_tema'] = $this->pregunta_model->mostrar_preguntas_tema($idtema);
+            $datos['idtema'] = $idtema;
+            $datos['idevento'] = $idevento;
+            $datos['nombreevento'] = $nombreevento;
+            $this->load->view('/expositor/pregevento_view', $datos);
+        }
     }
     
     public function mostrar_preguntas_tema_2($inactivas)
     {    
-        $idtema = $this->input->post('idtema');     
-        $idevento = $this->input->post('idevento'); 
-        $nombreevento = $this->input->post('nombreevento'); 
+        $idtema = $this->input->post('idtema', TRUE); 
+        $idevento = $this->input->post('idevento', TRUE); 
+        $nombreevento = $this->input->post('nombreevento', TRUE); 
         $datos['idtema'] = $idtema;
         $datos['inactivas'] = $inactivas - 1;        
         $datos['preguntas_tema'] = $this->pregunta_model->mostrar_preguntas_tema($idtema);       
@@ -117,17 +124,24 @@ class Pregunta extends CI_Controller {
     }
     
     public function mostrar_preguntas_tema_moderador()
-    {           
-        $idevento = $this->input->get('idevento'); 
-        $nombreevento = $this->input->get('nombreevento');
-        $idtema = $this->input->get('idtema');  
-        $nombretema = $this->input->get('nombretema');
-        $datos['idtema'] = $idtema;
-        $datos['nombretema'] = $nombretema;
-        $datos['preguntas_tema'] = $this->pregunta_model->mostrar_preguntas_tema_moderador($idtema);       
-        $datos['idevento'] = $idevento;
-        $datos['nombreevento'] = $nombreevento;
-        $this->load->view('/moderador/preguntastema_view', $datos);
+    {  
+        if ( !$this->validar_sesion() | $this->session->userdata('rol') <> 'moderador' )
+        {
+            redirect ( base_url() . 'index.php/autenticacion?error=2');
+        }
+        else
+        { 
+            $idevento = $this->input->get('idevento'); 
+            $nombreevento = $this->input->get('nombreevento');
+            $idtema = $this->input->get('idtema');  
+            $nombretema = $this->input->get('nombretema');
+            $datos['idtema'] = $idtema;
+            $datos['nombretema'] = $nombretema;
+            $datos['preguntas_tema'] = $this->pregunta_model->mostrar_preguntas_tema_moderador($idtema);       
+            $datos['idevento'] = $idevento;
+            $datos['nombreevento'] = $nombreevento;
+            $this->load->view('/moderador/preguntastema_view', $datos);
+        }
     }  
     
     /*function mostrar_preguntas_tema_moderador()
@@ -268,6 +282,29 @@ class Pregunta extends CI_Controller {
         $this->form_validation->set_message('xss_clean', 'El campo %s no debe tener caracteres extraños.');
     }
  
+    private function validar_sesion()
+    {
+        if  ($this->session->userdata('idusuario') == '' || $this->session->userdata('rol') == '' || $this->session->userdata('nombres') == '' || $this->session->userdata('apepat') == '' || $this->session->userdata('apemat') == '' )        
+            return FALSE;
+        else
+            return TRUE;
+    }
+    
+    private function validar_moderador()
+    {
+        if  ($this->session->userdata('rol') == 'moderador' )
+            return TRUE;
+        else
+            return FALSE;
+    }
+    
+    private function validar_organizador()
+    {
+        if  ($this->session->userdata('rol') == 'organizador' )
+            return TRUE;
+        else
+            return FALSE;
+    }
     /*function constestar_alternativa()
     {
         $idsalternativas = json_decode(@file_get_contents('http://localhost/eventos/altrntmarcadas/altrnmarcadas.json'));  

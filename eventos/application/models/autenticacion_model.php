@@ -26,9 +26,9 @@ class Autenticacion_model extends CI_Model{
     
     function obtener_datos_participante($usuario, $contrasenasha1)
     {
-        $datospartic= $this->db->query("select u.idusuario, u.apepat, u.apemat, u.nombres, p.estado, n.idevento, n.codigo
-            from usuario u, participante p, entrada n
-            where u.idusuario = p.idusuario and p.idusuario = n.idusuario
+        $datospartic = $this->db->query("select u.idusuario, u.apepat, u.apemat, u.nombres, n.idevento, n.codigo
+            from usuario u, entrada n
+            where u.idusuario = n.idusuario
             and u.usuario='" . $usuario . "' and u.contrasena='" . $contrasenasha1. "'");
         return $datospartic->result();
     }   

@@ -212,4 +212,13 @@ class Alternativa extends CI_Controller {
         $this->form_validation->set_message('xss_clean', 'La alternativa no debe tener caracteres extraños.');
         $this->form_validation->set_message('integer', 'El id de pregunta debe ser un entero.');
     }
+    
+    private function validar_sesion()
+    {
+        if  ($this->session->userdata('idusuario') == '' || $this->session->userdata('rol') == '' || $this->session->userdata('nombres') == '' || $this->session->userdata('apepat') == '' || $this->session->userdata('apemat') == '' )        
+            return FALSE;
+        else
+            return TRUE;
+    }
+    
 }
